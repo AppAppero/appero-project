@@ -1,12 +1,14 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-
+import React from "react";
+import Home from './screen/Home';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
   return (
-    <div className="container-fluid">
-      <h1>TEST</h1>
-      <button className="btn btn-primary">Click me</button>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
