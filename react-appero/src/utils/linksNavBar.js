@@ -4,11 +4,11 @@ const links = [
         path: "/"
     },
     {
-        name: "About",
+        name: "Chi siamo",
         path: "#"
     },
     {
-        name: "Premium",
+        name: "Pacchetto viaggi",
         path: "#"
     },
     {

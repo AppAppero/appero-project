@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom';
 
 const Navbar = () => {
     return (
-        <nav className="navbar navbar-expand-lg navbar-light" style={navbarStyle}>
+        <nav className="navbar navbar-expand-lg navbar-dark p-0"
+            style={navbarStyle}>
             <div className="container">
                 <img src={logo}
                     alt="logo"
@@ -29,9 +30,9 @@ const Navbar = () => {
                                         key={index}>
                                         <Link style={{
                                             color: "white",
-                                            fontSize: "22px",
+                                            fontSize: "15px",
                                             fontWeight: "bold",
-                                            marginLeft: "50px"
+                                            marginLeft: "30px"
                                         }}
                                             className="nav-link"
                                             to={el.path}
@@ -42,9 +43,9 @@ const Navbar = () => {
                                 )
                             })
                         }
-                        <li className="nav-link"
-                            style={{ marginLeft: "50px", fontSize: "22px", fontWeight: "bold" }}>
-                            <button className="btn btn-lg btn-outline-light">Explore</button>
+                        <li className="nav-item mt-1"
+                            style={{ marginLeft: "30px", fontSize: "15px", fontWeight: "bold" }}>
+                            <button className="btn btn-md btn-outline-light">Login</button>
                         </li>
                     </ul>
                 </div>
@@ -55,12 +56,9 @@ const Navbar = () => {
 
 
 const navbarStyle = {
-    position: "absolute",
-    top: 0,
-    left: 0,
-    width: "100%",
-    zIndex: 4,
-    backgroundColor: "transparent",
+    with: "100%",
+    boxShadow: '0px 2px 10px rgba(0, 0, 0, 0.2)',
+    background: 'rgba(0, 0, 0, 0.5)' /* Grigio più chiaro con trasparenza al 50% */
 };
 
 
