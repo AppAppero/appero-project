@@ -1,15 +1,20 @@
+import { Link } from 'react-router-dom';
 import logo from "../../images/logo.svg";
 import links from "../../utils/linksNavBar";
-import { Link } from 'react-router-dom';
+import PopUpCurrency from '../currency/PopUpCurrency';
 
 const Navbar = () => {
+
     return (
         <nav className="navbar navbar-expand-lg navbar-dark p-0"
             style={navbarStyle}>
-            <div className="container">
+            <div className="container-fluid">
                 <img src={logo}
                     alt="logo"
                     className="navbar-brand" />
+
+                <PopUpCurrency />
+
                 <button
                     className="navbar-toggler"
                     type="button"
@@ -21,6 +26,7 @@ const Navbar = () => {
                 >
                     <span className="navbar-toggler-icon"></span>
                 </button>
+
                 <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
                     <ul className="navbar-nav">
                         {
@@ -56,7 +62,7 @@ const Navbar = () => {
 
 
 const navbarStyle = {
-    with: "100%",
+    width: "100%",
     boxShadow: '0px 2px 10px rgba(0, 0, 0, 0.2)',
     background: 'rgba(0, 0, 0, 0.5)' /* Grigio più chiaro con trasparenza al 50% */
 };

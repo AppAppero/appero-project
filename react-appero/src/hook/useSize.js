@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 /** HOOK PER GRANDEZZE DELLO SCHERMO*/
 const useSize = (id) => {
-    console.log(id)
+
     const [size, setSize] = useState({})
     const [isOverflowing, setIsOverflowing] = useState(false);
     const [windowSize, setWindowSize] = useState(

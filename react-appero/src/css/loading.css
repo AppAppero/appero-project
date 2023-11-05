@@ -1,0 +1,66 @@
+.loading-spinner {
+    position: relative;
+    text-align: center;
+    margin: 20px;
+}
+
+.airplane {
+    width: 50px;
+    height: 20px;
+    background: #3498db;
+    position: absolute;
+    top: 50%;
+    left: -50px;
+    transform: translateY(-50%);
+    animation: movePlane 2s linear infinite;
+}
+
+.cloud {
+    width: 20px;
+    height: 20px;
+    background: #f1c40f;
+    border-radius: 50%;
+    position: absolute;
+    opacity: 0;
+    animation: moveCloud 2s linear infinite;
+}
+
+.cloud1 {
+    left: -20px;
+    top: 10px;
+    animation-delay: 0.5s;
+}
+
+.cloud2 {
+    left: -40px;
+    top: 40px;
+    animation-delay: 1s;
+}
+
+.cloud3 {
+    left: -20px;
+    top: 70px;
+    animation-delay: 1.5s;
+}
+
+@keyframes movePlane {
+    0% {
+        left: -50px;
+    }
+
+    100% {
+        left: 100%;
+    }
+}
+
+@keyframes moveCloud {
+    0% {
+        left: -20px;
+        opacity: 0.7;
+    }
+
+    100% {
+        left: 100%;
+        opacity: 0;
+    }
+}
