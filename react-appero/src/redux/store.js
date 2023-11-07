@@ -1,9 +1,17 @@
-import { configureStore } from "@reduxjs/toolkit"
-import reducerExample from "./reducerExample";
+import { configureStore } from "@reduxjs/toolkit";
+import reducerFlight from "./reducerFlight";
 
 
 const store = configureStore({
-    reducer: reducerExample
+    reducer: {reducerFlight}
 })
 
 export default store;
+
+
+/** Nel caso servisse :
+const rootReducer = combineReducers({
+    some: someReducer,
+    // Altri riduttori
+  });
+*/

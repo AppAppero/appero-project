@@ -16,17 +16,25 @@ const instance = axios.create({
     }
 })
 
+// Login Condizionale
 const loginAmadeus = async (isLogin) => {
-    const response = await instance.post("", formData)
-        .then(data => {
-            // Salvo il token
-            localStorage.setItem("token-amadeus", data.data.token_type + " " + data.data.access_token)
-        })
-        .catch(error => {
-            console.error(error);
-        });
-    return response;
+    if (isLogin) {
+        const response = await instance.post("", formData)
+            .then(data => {
+                // Salvo il token
+                localStorage.setItem("token-amadeus", data.data.token_type + " " + data.data.access_token)
+            })
+            .catch(error => {
+                console.error(error);
+            });
+        return response;
+    }
+}
+
+// Login
+const login = async () => {
+    return await loginAmadeus(true)
 }
 
 
-export default loginAmadeus;
+export { loginAmadeus, login };

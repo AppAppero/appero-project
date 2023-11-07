@@ -13,16 +13,18 @@ const PopUpCurrency = () => {
     useEffect(() => {
         if (localStorage.getItem("currentCodCurrency")) {
             setCurrentCodCurrency(localStorage.getItem("currentCodCurrency"))
-        } else //Default Euro:EUR
+        } else {
+            // Default Euro:EUR
             setCurrentCodCurrency("EUR")
+            localStorage.setItem("currentCodCurrency", "EUR")
+        }
     }, [currentCodCurrency])
 
     const searchChanheCurrency = (e) => {
-        setDataCurrency(currency)
         setQuery(e.target.value)
-        setDataCurrency(old => {
-            return old.filter(el => el.name.toLowerCase().includes(query.toLowerCase()))
-        })
+        const filterCurrency = currency.
+            filter(el => { return el.name.toLowerCase().includes(query.toLowerCase()) })
+        setDataCurrency(filterCurrency)
     }
 
     return (

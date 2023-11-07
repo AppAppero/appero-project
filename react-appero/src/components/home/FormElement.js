@@ -1,9 +1,10 @@
 import { ErrorMessage, Form, Formik } from "formik";
 import React from 'react';
 import { Col, FormControl, FormGroup, FormLabel, Row } from "react-bootstrap";
+import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from "yup";
-import iataFetch from "../../api/fetchIATACode"
-
+import SearchIATA from "./SearchIATA";
+import { useNavigate } from "react-router-dom";
 
 const ERROR_EMPTY = "Non può essere vuoto !";
 const ERROR_MIN = "Minimo 2 caratteri !";
@@ -13,36 +14,56 @@ const MORE_THAN = ERROR_0;
 
 const FormElement = ({ sizeGlobal }) => {
 
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
+    const stateFlights = useSelector(state => state.reducerFlight)
+    const { loading } = stateFlights;
+
     const { size } = sizeGlobal;
 
     // Formik
     const initialValues = {
-        origin: "",
-        destination: "",
-        departureDate: "",
-        returnDate: "",
-        adults: "",
-        budget: "",
+        origin: "BRI",
+        destination: "FCO",
+        departureDate: "2023-11-12",
+        returnDate: "2023-11-13",
+        adults: 1,
+        budget: 1,
         childrenNumber: "",
         overnightCity: ""
     }
 
 
     const onSub = (values, { setSubmitting }) => {
-        searchFlight(values)
-        setSubmitting(true)
-        setTimeout(() => {
-            setSubmitting(false)
-        }, 1000)
-    }
+        let originLocationCode = values.origin.slice(-3)
+        let destinationLocationCode = values.destination.slice(-3)
+        let params =
+        {
+            originLocationCode, destinationLocationCode,
+            departureDate: values.departureDate,
+            returnDate: values.returnDate,
+            adults: values.adults,
+            currencyCode: localStorage.getItem("currentCodCurrency"),
+            maxPrice: values.budget,
+            // nonStop:false,
+            max: 250
+        }
 
-    const searchFlight = async (values) => {
-        // Search IataCode Origin
-        let iataOrigin = await iataFetch(values.origin)
-        console.log(iataOrigin)
-        // Search IataCode Destination
-        let iataDestination = await iataFetch(values.destination)
-        alert(iataOrigin,iataDestination)
+        // Disabilita il bottone del "Cerca"
+        setSubmitting(true)
+
+        /**
+         * Va nella nuova pagina dei voli:con {state{...}} passo gli oggetti nello state altrimenti : 
+         * Serializza l'oggetto params in una stringa JSON const paramsString :
+         * JSON.stringify(params);
+         * 
+         * */
+        navigate("flight", { state: { params } })
+
+
+        // setTimeout(() => {
+        //     setSubmitting(false)
+        // }, 1000)
     }
 
 
@@ -85,23 +106,24 @@ const FormElement = ({ sizeGlobal }) => {
                         validationSchema={validationSchema}
                         onSubmit={onSub} >{(
                             { values, errors, handleChange, handleSubmit, handleBlur,
-                                isSubmitting, isValid, touched, dirty }
+                                isSubmitting, isValid, touched, dirty, setFieldValue }
                         ) => (
                             <Form onSubmit={handleSubmit}>
                                 <div className="bg-white p-3 rounded mt-0">
                                     <FormGroup className='row m-auto'>
                                         <Col xs={6} sm={6} md={4}>
-                                            <FormControl
-                                                className='mt-2'
-                                                placeholder='Partenza'
-                                                value={values.origin}
-                                                type="text"
+
+                                            {/* Custom component: Per Gestire meglio l'autocompletamento dei codIATA */}
+                                            <SearchIATA
+                                                size={size}
+                                                values={values.origin}
                                                 onBlur={handleBlur}
-                                                onChange={handleChange}
-                                                id='origin'
-                                                name='origin'
-                                                style={{ border: errors.origin && touched.origin ? "1px solid red" : "" }}
-                                            />
+                                                errors={errors.origin}
+                                                setFieldValue={setFieldValue}
+                                                touched={touched.origin}
+                                                placeholder='Partenza'
+                                                name='origin' />
+
                                             <ErrorMessage name='origin' component="p" style={customErrorMessage} />
 
                                             {size.isMobile && <FormLabel style={{ fontSize: "13px" }}>Data di partenza</FormLabel>}
@@ -121,17 +143,17 @@ const FormElement = ({ sizeGlobal }) => {
 
                                         </Col>
                                         <Col xs={6} sm={6} md={4}>
-                                            <FormControl
-                                                className='mt-2'
-                                                placeholder='Ritorno'
-                                                type="text"
-                                                id='destination'
-                                                name='destination'
-                                                value={values.destination}
+
+                                            {/* Custom component: Per Gestire meglio l'autocompletamento dei codIATA */}
+                                            <SearchIATA
+                                                size={size}
+                                                values={values.destination}
                                                 onBlur={handleBlur}
-                                                onChange={handleChange}
-                                                style={{ border: errors.destination && touched.destination ? "1px solid red" : "" }}
-                                            />
+                                                errors={errors.destination}
+                                                setFieldValue={setFieldValue}
+                                                touched={touched.destination}
+                                                placeholder='Destinazione'
+                                                name='destination' />
                                             <ErrorMessage name='destination' component="p" style={customErrorMessage} />
 
                                             {size.isMobile && <FormLabel style={{ fontSize: "13px" }}>Data di ritorno</FormLabel>}
