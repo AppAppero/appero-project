@@ -1,9 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import reducerFlight from "./reducerFlight";
+import reducerItinerary from "./reducerItinerary";
 
 
 const store = configureStore({
-    reducer: {reducerFlight}
+  reducer: {
+    reducerFlight,
+    reducerItinerary
+  }
 })
 
 export default store;

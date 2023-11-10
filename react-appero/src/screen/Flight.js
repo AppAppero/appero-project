@@ -1,30 +1,77 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { useLocation } from 'react-router-dom'
-import { searchFlightAmadeus } from '../redux/reducerFlight'
+import React from 'react';
+import { Col, Container, Row } from 'react-bootstrap';
+import { BiSolidUser } from 'react-icons/bi';
+import { BsCalendar3 } from 'react-icons/bs';
+import { SiGooglemaps } from 'react-icons/si';
+import Cart from '../components/Cart';
+import HeaderDetail from '../components/HeaderDetail';
+import HeaderImg from '../components/HeaderImg';
+import SideBar from '../components/SideBar';
+import ContentFlight from '../components/flight/ContentFlight';
+import HeaderFilterFlight from '../components/flight/HeaderFilterFlight';
+import { useGlobalContext } from '../context/context';
+import useTitle from '../hook/useTitle';
 
-/**
- * Pagina per i voli
- * 
- * @returns 
- */
 const Flight = () => {
-    // Con useLocation recupero lo state per evitare di passare tutto nell'url
-    const { params } = useLocation().state
-    const dispatch = useDispatch()
-    const reducerFlight = useSelector(state => state.reducerFlight)
-    const { flights, isLoading, isError, messageError } = reducerFlight;
-
-    /** useEffect(() => {
-         dispatch(searchFlightAmadeus(params))
-     }, []) */
-
+    useTitle("Voli")
+    const { colContentXS, colContentSM, colContentMD } = useGlobalContext();
 
     return (
-        <div>
+        <Container fluid>
+            <Row className='justify-content-center align-items-center'>
+                <SideBar page="Voli" />
 
-        </div>
-    )
+                <Col
+                    xs={colContentXS} sm={colContentSM} md={colContentMD}>
+                    <HeaderImg />
+                    <HeaderDetail detail={detailFlight} />
+                    <HeaderFilterFlight />
+                    <ContentFlight />
+                </Col>
+
+                <Cart />
+            </Row>
+        </Container>
+    );
 }
 
-export default Flight
+const detailFlight =
+    [
+        {
+            title: "Destinazione",
+            detail: [
+                {
+                    icon: <SiGooglemaps />,
+                    text: "Zapponeta"
+                },
+                {
+                    icon: "",
+                    text: "Da Monte"
+                }
+            ]
+        },
+        {
+            title: "Data del viaggio",
+            detail: [
+                {
+                    icon: <BsCalendar3 />,
+                    text: "13.12.2023 22.12.2022"
+                },
+                {
+                    icon: "",
+                    text: "9 Giorni"
+                }
+            ]
+        },
+        {
+            title: "Persone",
+            detail: [
+                {
+                    icon: <BiSolidUser />,
+                    text: "2 Adulti 1 Stanza"
+                }
+            ]
+        }
+    ]
+
+export default Flight;
