@@ -24,8 +24,7 @@ function App() {
 
 const colorBackground = "#F7F7F7"
 const styleBackground = {
-  backgroundColor: `${colorBackground}`
-  , paddingBottom: "50px"
+  backgroundColor: `${colorBackground}`, paddingBottom: "50px", fontFamily: 'montserrat'
 }
 
 

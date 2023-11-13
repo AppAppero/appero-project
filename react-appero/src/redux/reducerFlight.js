@@ -72,20 +72,16 @@ export const searchFlightAmadeus = (params) => async (dispatch) => {
     dispatch(loading(true))
     await login()
         .then(_ => {
-            console.log(params)
             return instanceFlight.get("", { params: params })
                 .then(data => {
-                    console.log(data)
                     dispatch(loading(false))
                     dispatch(containerFlights(data.data.data));
                 })
                 .catch(e => {
-                    console.log(e)
                     dispatch(loading(false))
                     dispatch(error(e.message));
                 });
         }).catch(error => {
-            console.log(error)
             dispatch(loading(false))
             dispatch(error(error.message));
         });

@@ -52,8 +52,8 @@ const SideBar = ({ page }) => {
                 </button>
                 <SideNav.Nav defaultSelected={currentPage}>
                     {
-                        linksSideBar.map(el => (
-                            <NavItem eventKey={el.name}>
+                        linksSideBar.map((el, index) => (
+                            <NavItem key={index} eventKey={el.name}>
                                 <NavIcon>
                                     {el.icon}
                                 </NavIcon>
