@@ -6,12 +6,14 @@ import { AiFillCar, AiFillSetting, AiOutlineClose, AiOutlineMenu } from 'react-i
 import { BiLogOut } from 'react-icons/bi';
 import { FaHome } from 'react-icons/fa';
 import { MdAttractions, MdHotel, MdOutlineFlight } from 'react-icons/md';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useGlobalContext } from '../context/context';
 import useSize from '../hook/useSize';
+import '../css/sidebar.css'
 
 
 const SideBar = ({ page }) => {
+    const { params } = useLocation().state
     const sizeGlobal = useSize()
     const { isMobile } = sizeGlobal.size;
     const { isOpen, setIsOpen } = useGlobalContext()
@@ -21,19 +23,22 @@ const SideBar = ({ page }) => {
 
     const column = isOpen && !isMobile ? 1 : "none";
 
+    const sidebarClasses = `sidenav---sidenav---_2tBP ${isOpen && !isMobile
+            ? "sidenav---expanded---1KdUL"
+            : "sidenav---collapsed---LQDEv"
+        } ${isMobile ? "mobile-sidebar" : ""}`;
+
     return (
 
-        <Col xs={column} sm={column} md={column}>
+        <Col xs={"none"}>
 
-            <SideNav className={isOpen && !isMobile ?
-                "sidenav---sidenav---_2tBP sidenav---expanded---1KdUL" :
-                "sidenav---sidenav---_2tBP sidenav---collapsed---LQDEv"}
-                style={{ background: "white", position: "fixed" }}
+            <SideNav className={sidebarClasses}
+                style={{ background: "white", position: "fixed"}}
                 onSelect={(selected) => {
                     linksSideBar.map(el => {
                         if (selected === el.name) {
                             setCurrentPage(selected)
-                            navigate(el.path)
+                            navigate(el.path, { state: { params } })
                         }
                     })
                 }}

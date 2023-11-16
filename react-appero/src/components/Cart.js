@@ -2,8 +2,10 @@ import React, { useState } from 'react'
 import { Button, Col, Modal, Row } from 'react-bootstrap'
 import useSize from '../hook/useSize';
 import { useGlobalContext } from '../context/context';
+import { useDispatch, useSelector } from 'react-redux';
 
 const Cart = () => {
+  const { itinerary } = useSelector(state => state.reducerItinerary);
   const sizeGlobal = useSize()
   const { isMobile } = sizeGlobal.size;
   const { isOpen, setIsOpen } = useGlobalContext()
@@ -17,12 +19,17 @@ const Cart = () => {
   if (true) {
     if (!isMobile)
       return (
-        <Col xs={column} sm={column} md={column}
-          className="position-fixed top-0 end-0 vh-100 bg-white"
-        >
+        <Col xs={2} className="position-fixed top-0 end-0 vh-100 bg-white">
 
           <Row>
-            <Col>Riepilogo del tuo viaggio</Col>
+            <Col style={{ fontWeight: "bold", textAlign: "center", margin: "20px 0 0 0" }}>Riepilogo del tuo viaggio</Col>
+          </Row>
+          <Row>
+            {
+              itinerary.flights.map((el, index) => (
+                <p>test</p>
+              ))
+            }
           </Row>
 
 

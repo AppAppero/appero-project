@@ -9,7 +9,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<div style={{ ...styleBackground, backgroundColor: "", paddingBottom: "" }}><Home /></div>} />
         <Route path="/flight"
           element={<div style={styleBackground}><Flight /></div>}
         />
@@ -24,7 +24,10 @@ function App() {
 
 const colorBackground = "#F7F7F7"
 const styleBackground = {
-  backgroundColor: `${colorBackground}`, paddingBottom: "50px", fontFamily: 'montserrat'
+  backgroundColor: `${colorBackground}`,
+  paddingBottom: "50px",
+  fontFamily: 'Montserrat, sans-serif',
+  color: "#141414"
 }
 
 

@@ -4,25 +4,25 @@
     margin: 20px;
 }
 
-.airplane {
+.customIcon {
     width: 50px;
     height: 20px;
-    background: #3498db;
+    /* background: #3498db; */
     position: absolute;
     top: 50%;
     left: -50px;
     transform: translateY(-50%);
-    animation: movePlane 2s linear infinite;
+    animation: movePlane 4s linear infinite;
 }
 
 .cloud {
     width: 20px;
     height: 20px;
-    background: #f1c40f;
+    /* background: #f1c40f; */
     border-radius: 50%;
     position: absolute;
     opacity: 0;
-    animation: moveCloud 2s linear infinite;
+    animation: moveCloud 4s linear infinite;
 }
 
 .cloud1 {
@@ -42,6 +42,23 @@
     top: 70px;
     animation-delay: 1.5s;
 }
+
+.loading-spinner .customIcon {
+    color: red; /* Colore per l'icona customIcon */
+  }
+  
+  .loading-spinner .cloud1 {
+    color: green; /* Colore per l'icona cloud1 */
+  }
+  
+  .loading-spinner .cloud2 {
+    color: blue; /* Colore per l'icona cloud2 */
+  }
+  
+  .loading-spinner .cloud3 {
+    color: orange; /* Colore per l'icona cloud3 */
+  }
+  
 
 @keyframes movePlane {
     0% {

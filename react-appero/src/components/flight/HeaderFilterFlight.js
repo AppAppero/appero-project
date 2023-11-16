@@ -1,22 +1,49 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Card, Col, Row } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
+import { filterFlight } from '../../redux/reducerFlight';
 
 const HeaderFilterFlight = () => {
-
+  const dispatch = useDispatch();
   const [select, setSelect] = useState(0);
+  const reducerFlight = useSelector(state => state.reducerFlight)
+  const { filterFly } = reducerFlight;
 
-  const filter = (index) => {
-    setSelect(index)
-  }
+
+  // Applica il filtro ogni volta che il select cambia
+  useEffect(() => {
+    let action = "";
+    switch (select) {
+      case 0: {
+        action = "best"
+        break;
+      }
+      case 1: {
+        action = "economy"
+        break;
+      }
+      case 2: {
+        action = "flash"
+        break;
+      }
+      default: {
+        action = "economy"
+        break;
+      }
+    }
+
+    // Filtra nel redux i vari voli
+    dispatch(filterFlight(action))
+  }, [select])
 
   return (
     <Row className='gx-0'>
       {
-        structure.map((el, index) => (
+        filterFly.map((el, index) => (
           <Col key={index}>
             <Card
               style={select !== index ? styleBase : styleSelect}
-              onClick={() => filter(index)}>
+              onClick={() => setSelect(index)}>
               <Row className='gx-0'>
                 <Col xs={1}></Col>
                 <Col
@@ -38,7 +65,7 @@ const HeaderFilterFlight = () => {
                 <Col
                   style={select !== index ? styleDuringBase : styleDuringSelect}
                 >
-                  {el.during}min
+                  {el.durationTotal}min
                 </Col>
               </Row>
             </Card>
@@ -50,18 +77,6 @@ const HeaderFilterFlight = () => {
     </Row >
   )
 }
-
-const structure = [
-  {
-    title: "Il migliore", price: "90", during: 120
-  },
-  {
-    title: "Il più economico", price: "90", during: 120
-  },
-  {
-    title: "Il più veloce", price: "100", during: 120
-  }
-]
 
 
 const styleBase = {

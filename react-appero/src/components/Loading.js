@@ -1,26 +1,37 @@
-import { useState } from "react";
-import { useGlobalContext } from "../context/context";
+import { IoAirplaneOutline } from 'react-icons/io5'
+import { MdOutlineTravelExplore } from 'react-icons/md'
+import { RiHotelBedLine } from 'react-icons/ri'
 
+const Loading = ({ icon }) => {
 
-const Loading = () => {
-
-    const { setIsloading } = useGlobalContext()
-
-    const handleButtonClick = () => {
-        setIsloading(true)
-
-        setTimeout(() => {
-            setIsloading(true)
-        }, 200)
+    const searchIcon = (iconName) => {
+        switch (iconName) {
+            case "airplane":
+                return <IoAirplaneOutline size={30} />
+            case "hotel":
+                return <RiHotelBedLine size={30} />
+            default:
+                return <MdOutlineTravelExplore size={30} />;
+        }
     }
 
+    const iconIcon = searchIcon(icon);
+
     return (
-        <div>
+        <div style={{ marginBottom: "400px" }}>
             <div className="loading-spinner">
-                <div className="airplane"></div>
-                <div className="cloud cloud1"></div>
-                <div className="cloud cloud2"></div>
-                <div className="cloud cloud3"></div>
+                <div className="customIcon">
+                    {iconIcon}
+                </div>
+                <div className="cloud cloud1">
+                    {iconIcon}
+                </div>
+                <div className="cloud cloud2">
+                    {iconIcon}
+                </div>
+                <div className="cloud cloud3">
+                    {iconIcon}
+                </div>
             </div>
         </div>
     )
