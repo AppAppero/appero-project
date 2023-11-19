@@ -1,5 +1,5 @@
 import React from "react";
-import { Container } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
 import FormElement from "../components/home/FormElement";
 import Navbar from "../components/home/NavBar";
 import SuggestedTravel from "../components/home/SuggestedTravel";
@@ -13,7 +13,8 @@ const Home = () => {
   const sizeGlobal = useSize("container")
 
   const containerStyle = {
-    padding: "0 0 40px 0", margin: "0",
+    paddingBottom: "40px",
+    margin: "0",
     backgroundImage: `url('${bg}')`,
     backgroundSize: "cover",
     backgroundPosition: "center",

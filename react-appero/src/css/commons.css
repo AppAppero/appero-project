@@ -1,5 +1,6 @@
-.textCustom {
-    font-weight: "regular";
-    font-size: "18px";
+:root {
+    /* @media (max-width: 767px) {
+      orientation: portrait;
+    } */
     color: "#141414";
 }

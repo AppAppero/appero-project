@@ -1,11 +1,11 @@
 /* Aggiungi queste regole CSS per l'animazione */
 .sidenav---sidenav---_2tBP {
-    transition: transform 0.3s ease;
+  transition: transform 0.3s ease;
+}
+
+/* Applica questa regola solo quando la sidebar è chiusa su dispositivi mobili */
+@media screen and (max-width: 576px) {
+  .sidenav---collapsed---LQDEv.sidenav---sidenav---_2tBP {
+    transform: translateX(-100%);
   }
-  
-  /* Applica questa regola solo quando la sidebar è chiusa su dispositivi mobili */
-  /* @media screen and (max-width: 767px) {
-    .sidenav---collapsed---LQDEv.sidenav---sidenav---_2tBP {
-      transform: translateX(-100%);
-    }
-  } */
+}

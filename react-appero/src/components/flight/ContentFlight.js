@@ -1,15 +1,16 @@
-import React, { memo, useCallback, useEffect } from 'react';
+import React, { memo, useCallback, useEffect, useState } from 'react';
 import { Card, Col, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import Loading from '../../components/Loading';
+import Loading from '../commons/Loading';
 import { searchFlightAmadeus } from '../../redux/reducerFlight';
-import ErrorElement from '../ErrorElement';
+import ErrorElement from '../commons/ErrorElement';
 import CardContentFlight from './CardContentFlight';
 
 const ContentFlight = memo(({ params }) => {
     const dispatch = useDispatch()
     const reducerFlight = useSelector(state => state.reducerFlight)
     const { flights, isLoading, isError, messageError } = reducerFlight;
+    const [selectIdFlight, setSelectIdFlight] = useState(0)
 
     const searchFlight = useCallback(() => {
         dispatch(searchFlightAmadeus(params, true));
@@ -22,20 +23,22 @@ const ContentFlight = memo(({ params }) => {
 
     return (
         <>
-            <Row style={styleTitle}>
+            <Row className='fw-bold fs-4 lh-1.5 text-dark mt-2'>
                 <Col>Scegli il volo</Col>
             </Row>
             <Row className='gx-5'>
                 {!isLoading && !isError ?
-                    (flights && flights.length > 0 ?
+                    (flights?.length > 0 ?
                         (
-                            flights.map((card, index) => {
+                            flights.map((flight, index) => {
                                 return (
                                     <Col key={index} xs={12} >
                                         <Card
-                                            className='justify-content-center'
-                                            style={styleCard}>
-                                            <CardContentFlight {...card} />
+                                            className='shadow-lg border-0 justify-content-center rounded-3 p-3 mt-3 border-none'>
+                                            <CardContentFlight
+                                                selectIdFlight={selectIdFlight}
+                                                setSelectIdFlight={setSelectIdFlight}
+                                                flight={flight} />
                                         </Card>
                                     </Col>
                                 )
@@ -52,26 +55,5 @@ const ContentFlight = memo(({ params }) => {
         </>
     )
 })
-
-const styleTitle = {
-    font: "normal normal bold 24px/40px Mukta",
-    letterSpacing: "0px",
-    color: "#000000",
-    opacity: 1,
-    marginTop: "10px"
-}
-
-
-const styleCard = {
-    background: "#FFFFFF",
-    boxShadow: "0px 10px 20px #0005770D",
-    borderRadius: "12px",
-    opacity: 1,
-    padding: "20px",
-    border: "none",
-    marginTop: "25px",
-
-}
-
 
 export default ContentFlight

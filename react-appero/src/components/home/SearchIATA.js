@@ -2,6 +2,7 @@ import { useState } from "react";
 import { FormControl, Row } from "react-bootstrap";
 import codeIATA from "../../utils/codeIATA";
 
+//** PopUp per la ricerca delle città mentre si compila il form */
 const SearchIATA = ({
     size,
     onBlur,
@@ -71,7 +72,7 @@ const search = {
     padding: "20px",
     boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.3)",
     border: "1px solid #ccc",
-    maxHeight: "150px",
+    maxHeight: "180px",
     overflow: "auto",
     zIndex: 1
 }

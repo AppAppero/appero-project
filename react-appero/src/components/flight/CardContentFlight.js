@@ -1,32 +1,52 @@
-import { Card, Col, Row } from "react-bootstrap";
+import { memo, useEffect } from "react";
+import { Button, Card, Col, Row } from "react-bootstrap";
 import { BsFillCartPlusFill } from 'react-icons/bs';
 import { GoArrowSwitch } from 'react-icons/go';
+import { useDispatch, useSelector } from "react-redux";
 import rya from "../../images/imgEx/rya.png";
+import { addFlight, removeFlight } from "../../redux/reducerItinerary";
 import { formatDuration, formatHourByDate } from "../../utils/formatDuration";
 
-const CardContentFlight = ({ itineraries, price }) => {
+const CardContentFlight = memo(({ selectIdFlight, setSelectIdFlight, flight }) => {
+    const { id, itineraries, price } = flight;
+    const { counterCart } = useSelector(state => state.reducerItinerary)
+    const dispatch = useDispatch();
+
+    /**
+     * Gestisce il bottone del carrello del volo controllando per id volo
+     * Se non c'è lo aggiunge all'itinerario e illumina il bottone 
+     * Altrimenti lo rimuove spegnendo il bottone
+     */
+    const checkFlightItinery = () => {
+        if (id === selectIdFlight) {
+            setSelectIdFlight(0)
+            dispatch(removeFlight())
+        } else {
+            setSelectIdFlight(id)
+            dispatch(addFlight(flight))
+        }
+    }
+
+    // Se il carrello è vuoto, toglie il seleziona da bottone
+    useEffect(() => {
+        if (counterCart === 0)
+            setSelectIdFlight(0)
+    }, [counterCart])
 
     return (
         <>
             {
                 itineraries.map((iti, i) => (
-                    <Card key={i}
-                        style={
-                            {
-                                marginTop: "20px",
-                                boxShadow: "3px 10px 20px #0005770D",
-                                border: "none"
-                            }
-                        }>
+                    <Card className="mt-3 border-0 shadow-sm" key={i}>
                         {
                             iti?.segments.map((seg, ind) => (
                                 <Row key={ind} className='gx-0 m-2'>
-                                    <Col sm={3}>
+                                    <Col xs={3}>
                                         <img src={rya} />
                                     </Col>
-                                    <Col sm={3} style={{ textAlign: "center" }}>
+                                    <Col className="text-center" xs={3}>
                                         <Row>
-                                            <Col style={styleHour}>
+                                            <Col className="fw-bold">
                                                 {formatHourByDate(seg?.departure?.at)}
                                             </Col>
                                         </Row>
@@ -36,7 +56,7 @@ const CardContentFlight = ({ itineraries, price }) => {
                                             </Col>
                                         </Row>
                                     </Col>
-                                    <Col sm={3} style={{ ...styleTime, ...styleAlign }}>
+                                    <Col xs={3} className="text-center">
                                         <Row>
                                             <Col>
                                                 {formatDuration(seg?.duration)}
@@ -50,16 +70,16 @@ const CardContentFlight = ({ itineraries, price }) => {
                                         <Row>
                                             <Col>
                                                 {
-                                                    iti?.segments.length === 1 ?
+                                                    iti?.segments?.length === 1 ?
                                                         "Diretto"
-                                                        : iti?.segments.length - 1 + " Scali"
+                                                        : iti?.segments?.length - 1 + " Scali"
                                                 }
                                             </Col>
                                         </Row>
                                     </Col>
-                                    <Col sm={3} style={styleAlign}>
+                                    <Col xs={3} className="text-center">
                                         <Row>
-                                            <Col style={styleHour}>
+                                            <Col className="fw-bold">
                                                 {formatHourByDate(seg?.arrival?.at)}
                                             </Col>
                                         </Row>
@@ -79,33 +99,20 @@ const CardContentFlight = ({ itineraries, price }) => {
 
             }
 
-            <button style={
-                {
-                    position: 'absolute',
-                    color: "white",
-                    padding: "3px",
-                    top: -10, right: -10,
-                    background: "#FDB12A",
-                    boxShadow: "0px 10px 20px #00000008",
-                    borderRadius: "12px",
-                    border: "none",
-                    opacity: 1
-                }
-            }>
+            <Button
+                variant={selectIdFlight !== id ? "secondary" : "warning"}
+                className="btn btn-sm btn-outline-warning position-absolute shadow-sm text-white border-0 rounded-pill p-2"
+                onClick={checkFlightItinery}
+                style={{ top: -10, right: -10 }}>
                 <Col>
                     <BsFillCartPlusFill />
                 </Col>
                 <Col>{price?.grandTotal}</Col>
-            </button>
+            </Button>
 
         </>
     )
 
-}
-
-const styleHour = { fontWeight: "bold", fontSize: "18px" }
-const styleTime = { fontSize: "13px" }
-const styleAlign = { textAlign: "center" }
-
+})
 
 export default CardContentFlight

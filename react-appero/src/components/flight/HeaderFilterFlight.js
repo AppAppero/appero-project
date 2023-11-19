@@ -87,7 +87,7 @@ const styleBase = {
   borderRadius: "12px",
   opacity: 1,
   padding: "10px",
-  font: "normal normal normal 18px / 30px Mukta",
+  font: "normal normal normal 18px/30px Mukta",
   letterSpacing: "0px",
   color: "#000000",
   opacity: 0.85,
@@ -97,7 +97,7 @@ const styleBase = {
 const styleSelect = {
   ...styleBase,
   background: "#0468BF",
-  font: "normal normal normal 18px / 30px Mukta",
+  font: "normal normal normal 18px/30px Mukta",
   letterSpacing: "0px",
   color: "#FFFFFF",
   opacity: 0.85

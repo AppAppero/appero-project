@@ -1,5 +1,8 @@
+import { Row } from "react-bootstrap"
+
 const Currency = ({ name, code, symbol, setCurrentCodCurrency, setIsOpenCurrency }) => {
 
+    // Setta nel localStorage la moneta
     const handleChangeCurrentCodCurrency = (symbol) => {
         localStorage.setItem("currentCodCurrency", symbol)
         setCurrentCodCurrency(symbol)
@@ -7,24 +10,12 @@ const Currency = ({ name, code, symbol, setCurrentCodCurrency, setIsOpenCurrency
     }
 
     return (
-        <p
+        <Row
             onClick={() => handleChangeCurrentCodCurrency(symbol)}
-            className='row'
-            style={curText}>
+            className='row ms-1 fw-bold' style={{ cursor: "pointer" }}>
             {name} - {code}  ({symbol})
-        </p>
+        </Row>
     )
-}
-
-
-const curText = {
-    color: "white",
-    cursor: "pointer",
-    borderBottom: "1px solid gray",
-    paddingBottom: "5px",
-    margin: "0 0 0 10px",
-    fontWeight: "bold"
-
 }
 
 export default Currency;

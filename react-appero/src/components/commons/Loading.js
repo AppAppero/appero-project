@@ -18,7 +18,7 @@ const Loading = ({ icon }) => {
     const iconIcon = searchIcon(icon);
 
     return (
-        <div style={{ marginBottom: "400px" }}>
+        <div className='mb-5'>
             <div className="loading-spinner">
                 <div className="customIcon">
                     {iconIcon}

@@ -1,5 +1,3 @@
-import { MdConnectingAirports } from 'react-icons/md'
-import { formatDuration } from './formatDuration'
 import codeIATA from './codeIATA'
 
 // Crea Stringa per formattare gli adulti e bambini
@@ -19,15 +17,19 @@ export const checkTextPerson = (params) => {
 
 // Crea il formato della data del viaggio in base alla cultura
 export const checkTextDate = (params) => {
+    let dep = checkTextDateByValue(params?.departureDate)
+    let ret = checkTextDateByValue(params?.returnDate);
+    return dep + " - " + ret
+}
+
+export const checkTextDateByValue = (value) => {
     const culture = "it-IT";
     const options = { year: 'numeric', month: 'numeric', day: 'numeric' };
-    const icon = <MdConnectingAirports />
-    let dep = new Date(params?.departureDate)
-    let ret = new Date(params?.returnDate);
-    const datDep = dep.toLocaleDateString(culture, options);
-    const datRet = ret.toLocaleDateString(culture, options);
-
-    return datDep + " - " + datRet
+    if (value) {
+        let val = new Date(value)
+        return val?.toLocaleDateString(culture, options);
+    }
+    return ""
 }
 
 // Restituisce il totale dei giorni
@@ -45,7 +47,7 @@ export const checkNameCity = (param) => {
     if (result) {
         let city = Object.values(result[0])[0]
         let arr = city?.split('-')
-        return arr.slice(0, 2)?.join(' ')
+        return arr.slice(0, 1)?.join(' ')
 
     }
 }

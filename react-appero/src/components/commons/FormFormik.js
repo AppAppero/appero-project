@@ -1,7 +1,7 @@
 import { ErrorMessage, Form, Formik } from "formik";
 import { Col, FormControl, FormGroup, FormLabel, Row } from "react-bootstrap";
 import * as Yup from "yup";
-import SearchIATA from "./home/SearchIATA";
+import SearchIATA from "../home/SearchIATA";
 
 const FormFormik = ({ buttonHidden, size, clickBottonNavigate }) => {
 
@@ -24,7 +24,13 @@ const FormFormik = ({ buttonHidden, size, clickBottonNavigate }) => {
     }
 
 
-    const onSub = (values, { setSubmitting }) => {
+    /**
+     * Override del submit per gestire alcuni valori e inviare i parametri alla API di Amadeus
+     * @param {*} values 
+     * @param {*} param1 
+     */
+
+    const onSubmitOverride = (values, { setSubmitting }) => {
         let originLocationCode = values.origin.slice(-3)
         let destinationLocationCode = values.destination.slice(-3)
         let params =
@@ -34,9 +40,9 @@ const FormFormik = ({ buttonHidden, size, clickBottonNavigate }) => {
             returnDate: values.returnDate,
             adults: values.adults,
             currencyCode: localStorage.getItem("currentCodCurrency"),
-            // maxPrice: values.budget,
+            maxPrice: values.budget,
             children: values.childrenNumber === "" ? 0 : values.childrenNumber,
-            // infants: 0,
+            infants: 0,
             nonStop: false,
             max: 20
         }
@@ -44,8 +50,7 @@ const FormFormik = ({ buttonHidden, size, clickBottonNavigate }) => {
         // Disabilita il bottone del "Cerca"
         setSubmitting(true)
 
-        if (clickBottonNavigate)
-            clickBottonNavigate(params)
+        clickBottonNavigate(params)
 
     }
 
@@ -83,14 +88,14 @@ const FormFormik = ({ buttonHidden, size, clickBottonNavigate }) => {
         <Formik
             initialValues={initialValues}
             validationSchema={validationSchema}
-            onSubmit={onSub} >{(
+            onSubmit={onSubmitOverride} >{(
                 { values, errors, handleChange, handleSubmit, handleBlur,
                     isSubmitting, isValid, touched, dirty, setFieldValue }
             ) => (
                 <Form onSubmit={handleSubmit}>
-                    <div className="bg-white p-3 rounded mt-0">
+                    <Row className="bg-white p-3 rounded mt-0 gx-5">
                         <FormGroup className='row m-auto'>
-                            <Col xs={6} sm={6} md={4}>
+                            <Col xs={12} md={4}>
 
                                 {/* Custom component: Per Gestire meglio l'autocompletamento dei codIATA */}
                                 <SearchIATA
@@ -121,7 +126,7 @@ const FormFormik = ({ buttonHidden, size, clickBottonNavigate }) => {
 
 
                             </Col>
-                            <Col xs={6} sm={6} md={4}>
+                            <Col xs={12} md={4}>
 
                                 {/* Custom component: Per Gestire meglio l'autocompletamento dei codIATA */}
                                 <SearchIATA
@@ -152,7 +157,7 @@ const FormFormik = ({ buttonHidden, size, clickBottonNavigate }) => {
 
                             </Col>
 
-                            <Col xs={6} sm={5} md={2}>
+                            <Col xs={12} md={4}>
                                 <FormControl
                                     className='mt-2'
                                     placeholder='Adulti'
@@ -179,9 +184,7 @@ const FormFormik = ({ buttonHidden, size, clickBottonNavigate }) => {
                                     onChange={handleChange}
                                 />
                                 <ErrorMessage name='childrenNumber' />
-                            </Col>
 
-                            <Col xs={6} sm={5} md={2}>
                                 <FormControl
                                     className='mt-2'
                                     placeholder='Budget'
@@ -222,7 +225,7 @@ const FormFormik = ({ buttonHidden, size, clickBottonNavigate }) => {
                                 </Col>
                             </Row>
                         </FormGroup>
-                    </div>
+                    </Row>
                 </Form>
             )
             }

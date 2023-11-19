@@ -4,22 +4,21 @@ import instanceFlight from "../api/fetchFlight";
 import { bar_mil, rom_val } from '../utils/exFlights';
 
 
-// Create action
+// Create action : Crea il filtro per i voli migliori,economici e veloci
 const filterFlight = createAction("filter-flight")
 
-// Create match
+// Riordina con questo metodo dopo aver chiamato la API per i voli
 const reorderFlight = (action) => {
     return action.type.endsWith("containerFlights")
 }
 
 //Create MultipleMatch
 const multiple = (action) => {
-    //Per tutti i Match return isAllOf
+    // Per tutti i Match return isAllOf
     return isAnyOf(reorderFlight)(action)
 }
 
 const initialState = {
-    logged: true,
     isLoading: true,
     isError: false,
     messageError: "",
@@ -33,9 +32,6 @@ const reducerFlight = createSlice(
         name: "flight",
         initialState,
         reducers: {
-            logged: (state, action) => {
-                state.logged = action.payload
-            },
             loading: (state, action) => {
                 state.isLoading = action.payload
                 state.isError = false
@@ -61,7 +57,10 @@ const reducerFlight = createSlice(
                 .addCase(filterFlight, (state, action) => {
                     // Definisco la scelta del volo in base ai filtri
                     switch (action.payload) {
-                        case "best":
+                        case "best": {
+                            state.flights.sort(compareFlights);
+                        }
+                            break;
                         case "economy": {
                             let arr = reorderByPrice(state.flights)
                             state.flights = arr;
@@ -75,23 +74,26 @@ const reducerFlight = createSlice(
                     }
                 })
                 // Riordina i voli in base al prezzo
-                .addMatcher(multiple, (state) => {
+                .addMatcher(reorderFlight, (state) => {
                     state.flights = reorderByPrice(state.flights)
                     let flightStandard = calculateHour(state.flights.slice(0, 1))
 
                     let flash = reorderDuration(state.flights)
                     let flashTotal = calculateHour(flash.slice(0, 1))
 
+                    let best = state.flights.sort(compareFlights);
+                    let bestTotal = calculateHour(best.slice(0, 1))
+
                     // Definisco il contenitore dei filtri
                     state.filterFly =
                         [
                             {
                                 title: "Il migliore",
-                                price: state?.flights[0]?.price?.grandTotal,
-                                durationTotal: flightStandard
+                                price: best[0]?.price?.grandTotal,
+                                durationTotal: bestTotal
                             },
                             {
-                                title: "Il più economico",
+                                title: "L'economico",
                                 price: state?.flights[0]?.price?.grandTotal,
                                 durationTotal: flightStandard
                             },
@@ -112,6 +114,13 @@ export const { logged, loading, error, containerFlights } = reducerFlight.action
 
 export { filterFlight, reorderFlight };
 
+/**
+ * Chiama la API di Amadeus massandogli i parametri dopo il login (sempre AMADEUS)
+ * e dispatcha le varie azioni
+ * @param {*} params 
+ * @param {*} isTest 
+ * @returns 
+ */
 export const searchFlightAmadeus = (params, isTest) => (dispatch) => {
     if (!isTest) {
         dispatch(loading(true))
@@ -253,5 +262,37 @@ const calculateHour = (flights) => {
     return `${totalHours.h}h ${totalHours.m}m`;
 }
 
+// Funzione per calcolare la durata totale in minuti
+function calculateTotalDuration(itinerary) {
+    return itinerary.reduce((total, segment) => total + segment.duration, 0);
+}
+
+// Funzione per confrontare due voli basandosi su durata totale, numero di scali e costo totale
+function compareFlights(flight1, flight2) {
+    const duration1 = calculateTotalDuration(flight1.itineraries[0].segments);
+    const duration2 = calculateTotalDuration(flight2.itineraries[0].segments);
+
+    if (duration1 < duration2) {
+        return -1;
+    } else if (duration1 > duration2) {
+        return 1;
+    } else {
+        // Se le durate sono uguali, confronta basandosi sul numero di scali
+        const stops1 = flight1.itineraries[0].segments.length - 1;
+        const stops2 = flight2.itineraries[0].segments.length - 1;
+
+        if (stops1 < stops2) {
+            return -1;
+        } else if (stops1 > stops2) {
+            return 1;
+        } else {
+            // Se sia la durata che il numero di scali sono uguali, confronta basandosi sul costo totale
+            const cost1 = parseFloat(flight1.price.grandTotal);
+            const cost2 = parseFloat(flight2.price.grandTotal);
+
+            return cost1 - cost2;
+        }
+    }
+}
 
 export default reducerFlight.reducer;

@@ -2,14 +2,12 @@ import SideNav, { NavIcon, NavItem, NavText } from '@trendmicro/react-sidenav';
 import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 import React, { useState } from 'react';
 import { Col } from 'react-bootstrap';
-import { AiFillCar, AiFillSetting, AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
-import { BiLogOut } from 'react-icons/bi';
-import { FaHome } from 'react-icons/fa';
-import { MdAttractions, MdHotel, MdOutlineFlight } from 'react-icons/md';
+import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { useGlobalContext } from '../context/context';
-import useSize from '../hook/useSize';
-import '../css/sidebar.css'
+import { useGlobalContext } from '../../../context/context';
+import useSize from '../../../hook/useSize';
+import { linksMenu } from '../../../utils/links';
+import '../../../css/sidebar.css';
 
 
 const SideBar = ({ page }) => {
@@ -21,21 +19,19 @@ const SideBar = ({ page }) => {
     const navigate = useNavigate()
     const [currentPage, setCurrentPage] = useState(page);
 
-    const column = isOpen && !isMobile ? 1 : "none";
-
     const sidebarClasses = `sidenav---sidenav---_2tBP ${isOpen && !isMobile
-            ? "sidenav---expanded---1KdUL"
-            : "sidenav---collapsed---LQDEv"
-        } ${isMobile ? "mobile-sidebar" : ""}`;
+        ? "sidenav---expanded---1KdUL"
+        : "sidenav---collapsed---LQDEv"
+        } ${isOpen && isMobile ? "mobile-sidebar" : ""}`;
 
     return (
 
-        <Col xs={"none"}>
+        <Col xs={2}>
 
             <SideNav className={sidebarClasses}
-                style={{ background: "white", position: "fixed"}}
+                style={{ background: "white", position: "fixed" }}
                 onSelect={(selected) => {
-                    linksSideBar.map(el => {
+                    linksMenu().linksTop.map(el => {
                         if (selected === el.name) {
                             setCurrentPage(selected)
                             navigate(el.path, { state: { params } })
@@ -57,7 +53,7 @@ const SideBar = ({ page }) => {
                 </button>
                 <SideNav.Nav defaultSelected={currentPage}>
                     {
-                        linksSideBar.map((el, index) => (
+                        linksMenu().linksTop.map((el, index) => (
                             <NavItem key={index} eventKey={el.name}>
                                 <NavIcon>
                                     {el.icon}
@@ -80,72 +76,27 @@ const SideBar = ({ page }) => {
                         ))
                     }
                 </SideNav.Nav>
-                <SideNav.Nav style={footerStyle} expanded={isOpen}>
-
-                    <NavItem eventKey="Impostazioni">
-                        <NavIcon>
-                            <AiFillSetting color={colorIcon} size={sizeIcon} />
-                        </NavIcon>
-                        <NavText style={{ color: `${colorText}` }}>
-                            Impostazioni
-                        </NavText>
-                    </NavItem>
-
-                    <NavItem eventKey="LogOut">
-                        <NavIcon>
-                            <BiLogOut color={colorIcon} size={sizeIcon} />
-                        </NavIcon>
-                        <NavText style={{ color: `${colorText}` }}>
-                            LogOut
-                        </NavText>
-                    </NavItem>
-
+                <SideNav.Nav
+                    className="position-absolute bottom-0 end-0 mb-4"
+                    expanded={isOpen}>
+                    {
+                        linksMenu().linksFooter.map((el, index) => (
+                            <NavItem key={index} eventKey={el.name}>
+                                <NavIcon>
+                                    {el.icon}
+                                </NavIcon>
+                                <NavText style={{ color: `${colorText}` }}>
+                                    {el.name}
+                                </NavText>
+                            </NavItem>
+                        ))
+                    }
                 </SideNav.Nav>
             </SideNav>
         </Col>
 
     )
 }
-
-
-const colorIcon = "blue";
-const sizeIcon = 22;
 const colorText = "#141414";
-
-
-const linksSideBar =
-    [
-        {
-            name: "Home",
-            icon: <FaHome color={colorIcon} size={sizeIcon} />,
-            path: "/"
-        },
-        {
-            name: "Voli",
-            icon: <MdOutlineFlight color={colorIcon} size={sizeIcon} />,
-            path: "/flight"
-        },
-        {
-            name: "Hotel",
-            icon: <MdHotel color={colorIcon} size={sizeIcon} />,
-            path: "/hotel"
-        },
-        {
-            name: "Noleggio",
-            icon: <AiFillCar color={colorIcon} size={sizeIcon} />,
-            path: "*"
-        },
-        {
-            name: "Attrazioni",
-            icon: <MdAttractions color={colorIcon} size={sizeIcon} />,
-            path: "*"
-        }
-    ]
-
-const footerStyle = {
-    position: 'absolute',
-    bottom: 40,
-};
-
 
 export default SideBar

@@ -1,16 +1,17 @@
 import React from 'react';
 import { Col, Row } from 'react-bootstrap';
+import detailFlight from '../../model/flight/detailFlight';
 
-const HeaderDetail = ({ detail }) => {
+const HeaderDetail = ({ params }) => {
     // const [showModal, setShowModal] = useState(false)
 
     return (
         <>
-            <Row className='p-2 justify-content-center gx-0'
-                style={{ background: "#F29F05", borderRadius: "10px" }}>
+            <Row className='rounded-3 p-2 justify-content-center gx-0'
+                style={{ background: "#F29F05"}}>
                 {
-                    detail.map((el, index) => (
-                        <Col sm={4} key={index}>
+                    detailFlight(params).map((el, index) => (
+                        <Col  key={index}>
                             <Row style={styleTile}>
                                 <Col xs={1}></Col>
                                 <Col>{el?.title}</Col>
