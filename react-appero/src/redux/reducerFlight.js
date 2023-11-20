@@ -88,17 +88,17 @@ const reducerFlight = createSlice(
                     state.filterFly =
                         [
                             {
-                                title: "Il migliore",
+                                title: "Migliore",
                                 price: best[0]?.price?.grandTotal,
                                 durationTotal: bestTotal
                             },
                             {
-                                title: "L'economico",
+                                title: "Economico",
                                 price: state?.flights[0]?.price?.grandTotal,
                                 durationTotal: flightStandard
                             },
                             {
-                                title: "Il più veloce",
+                                title: "Veloce",
                                 price: flash[0]?.price?.grandTotal,
                                 durationTotal: flashTotal
                             }
@@ -258,8 +258,13 @@ const calculateHour = (flights) => {
     const extraHoursFromMinutes = Math.floor(totalHours.m / 60);
     totalHours.h += extraHoursFromMinutes;
     totalHours.m %= 60;
+    if (totalHours.h > 0 && totalHours.m > 0)
+        return `${totalHours.h}h ${totalHours.m}m`
+    else if (totalHours.h > 0 && totalHours.m <= 0)
+        return `${totalHours.h}h`
+    else if (totalHours.h <= 0 && totalHours.m > 0)
+        return `${totalHours.m}m`
 
-    return `${totalHours.h}h ${totalHours.m}m`;
 }
 
 // Funzione per calcolare la durata totale in minuti

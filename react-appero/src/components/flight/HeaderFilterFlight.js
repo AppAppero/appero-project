@@ -40,32 +40,30 @@ const HeaderFilterFlight = () => {
     <Row className='gx-0'>
       {
         filterFly.map((el, index) => (
-          <Col key={index}>
+          <Col xs={4} key={index}>
             <Card
+              className='text-center'
               style={select !== index ? styleBase : styleSelect}
               onClick={() => setSelect(index)}>
-              <Row className='gx-0'>
-                <Col xs={1}></Col>
+              <Row>
                 <Col
                   style={select !== index ? styleTileBase : styleTileSelect}
                 >
                   {el.title}
                 </Col>
               </Row>
-              <Row className='gx-0'>
-                <Col xs={1}></Col>
+              <Row>
                 <Col
                   style={select !== index ? stylePriceBase : stylePriceSelect}
                 >
                   {el.price}€
                 </Col>
               </Row>
-              <Row className='gx-0'>
-                <Col xs={1}></Col>
+              <Row>
                 <Col
                   style={select !== index ? styleDuringBase : styleDuringSelect}
                 >
-                  {el.durationTotal}min
+                  {el.durationTotal}
                 </Col>
               </Row>
             </Card>
@@ -86,7 +84,7 @@ const styleBase = {
   boxShadow: " 0px 10px 20px #00057714",
   borderRadius: "12px",
   opacity: 1,
-  padding: "10px",
+  padding: "0px",
   font: "normal normal normal 18px/30px Mukta",
   letterSpacing: "0px",
   color: "#000000",

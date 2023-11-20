@@ -1,9 +1,11 @@
 import { ErrorMessage, Form, Formik } from "formik";
 import { Col, FormControl, FormGroup, FormLabel, Row } from "react-bootstrap";
 import * as Yup from "yup";
-import SearchIATA from "../home/SearchIATA";
+import SearchIATA from "../../home/SearchIATA";
+import SingleInput from "./SingleInput";
 
 const FormFormik = ({ buttonHidden, size, clickBottonNavigate }) => {
+
 
     const ERROR_EMPTY = "Non può essere vuoto !";
     const ERROR_MIN = "Minimo 2 caratteri !";
@@ -13,14 +15,13 @@ const FormFormik = ({ buttonHidden, size, clickBottonNavigate }) => {
 
     // Formik
     const initialValues = {
-        origin: "FCO",
-        destination: "VLC",
-        departureDate: "2023-12-04",
-        returnDate: "2023-12-10",
-        adults: 1,
-        budget: 1,
-        childrenNumber: "",
-        overnightCity: ""
+        origin: "",
+        destination: "",
+        departureDate: "",
+        returnDate: "",
+        adults: "",
+        budget: "",
+        childrenNumber: ""
     }
 
 
@@ -71,8 +72,7 @@ const FormFormik = ({ buttonHidden, size, clickBottonNavigate }) => {
                 .moreThan(0, MORE_THAN)
                 .positive(ERROR_NEGATIVE)
                 .required(ERROR_EMPTY),
-            adults: Yup.number().min(1, ERROR_0).required(ERROR_EMPTY),
-            overnightCity: Yup.string().min(2, ERROR_MIN)
+            adults: Yup.number().min(1, ERROR_0).required(ERROR_EMPTY)
             // childrenNumber: Yup.number().when("adults",
             //     {
             //         is: (adults) => adults > 0,
@@ -102,28 +102,24 @@ const FormFormik = ({ buttonHidden, size, clickBottonNavigate }) => {
                                     size={size}
                                     values={values.origin}
                                     onBlur={handleBlur}
-                                    errors={errors.origin}
                                     setFieldValue={setFieldValue}
-                                    touched={touched.origin}
                                     placeholder='Partenza'
-                                    name='origin' />
-
-                                <ErrorMessage name='origin' component="p" style={customErrorMessage} />
-
-                                {size.isMobile && <FormLabel style={{ fontSize: "13px" }}>Data di partenza</FormLabel>}
-                                <FormControl
-                                    placeholder='Data di partenza'
-                                    className='mt-2'
-                                    value={values.departureDate}
-                                    type="date"
-                                    id="departureDate"
-                                    name="departureDate"
-                                    onBlur={handleBlur}
-                                    onChange={handleChange}
-                                    style={{ border: errors.departureDate && touched.departureDate ? "1px solid red" : "" }}
+                                    name='origin'
+                                    errors={errors.origin}
+                                    touched={touched.origin}
                                 />
-                                <ErrorMessage name='departureDate' component="p" style={customErrorMessage} />
 
+                                <SingleInput
+                                    labelUp={true}
+                                    type='date'
+                                    onBlur={handleBlur}
+                                    value={values.departureDate}
+                                    nameValue="departureDate"
+                                    nameInput="Data di partenza"
+                                    handleChange={handleChange}
+                                    errors={errors.departureDate}
+                                    touched={touched.departureDate}
+                                />
 
                             </Col>
                             <Col xs={12} md={4}>
@@ -133,86 +129,66 @@ const FormFormik = ({ buttonHidden, size, clickBottonNavigate }) => {
                                     size={size}
                                     values={values.destination}
                                     onBlur={handleBlur}
-                                    errors={errors.destination}
                                     setFieldValue={setFieldValue}
-                                    touched={touched.destination}
                                     placeholder='Destinazione'
-                                    name='destination' />
-                                <ErrorMessage name='destination' component="p" style={customErrorMessage} />
-
-                                {size.isMobile && <FormLabel style={{ fontSize: "13px" }}>Data di ritorno</FormLabel>}
-                                <FormControl
-                                    placeholder='Data di ritorno'
-                                    className='mt-2'
-                                    type="date"
-                                    id="returnDate"
-                                    name="returnDate"
-                                    value={values.returnDate}
-                                    onBlur={handleBlur}
-                                    onChange={handleChange}
-                                    style={{ border: errors.returnDate && touched.returnDate ? "1px solid red" : "" }}
-
+                                    name='destination'
+                                    errors={errors.destination}
+                                    touched={touched.destination}
                                 />
-                                <ErrorMessage name='returnDate' component="p" style={customErrorMessage} />
+
+                                <SingleInput
+                                    labelUp={true}
+                                    type='date'
+                                    onBlur={handleBlur}
+                                    value={values.returnDate}
+                                    nameValue="returnDate"
+                                    nameInput="Data di ritorno"
+                                    handleChange={handleChange}
+                                    errors={errors.returnDate}
+                                    touched={touched.returnDate}
+                                />
 
                             </Col>
 
                             <Col xs={12} md={4}>
-                                <FormControl
-                                    className='mt-2'
-                                    placeholder='Adulti'
+                                <SingleInput
+                                    labelUp={false}
                                     type='number'
-                                    id="adults"
-                                    name="adults"
                                     value={values.adults}
+                                    nameValue="adults"
+                                    nameInput="Adulti"
+                                    handleChange={handleChange}
+                                    errors={errors.adults}
                                     onBlur={handleBlur}
-                                    onChange={handleChange}
-                                    style={{ border: errors.adults && touched.adults ? "1px solid red" : "" }}
-
+                                    touched={touched.adults}
                                 />
-                                <ErrorMessage name='adults' component="p" style={customErrorMessage} />
 
-                                <FormControl
+                                <SingleInput
+                                    labelUp={false}
                                     disabled={values.adults <= 0}
-                                    className='mt-2'
-                                    placeholder='Bambini'
                                     type='number'
-                                    id="childrenNumber"
-                                    name="childrenNumber"
                                     value={values.childrenNumber}
+                                    nameValue="childrenNumber"
+                                    nameInput="Bambini"
+                                    handleChange={handleChange}
+                                    errors={errors.childrenNumber}
                                     onBlur={handleBlur}
-                                    onChange={handleChange}
+                                    touched={touched.childrenNumber}
                                 />
-                                <ErrorMessage name='childrenNumber' />
 
-                                <FormControl
-                                    className='mt-2'
-                                    placeholder='Budget'
+                                <SingleInput
+                                    labelUp={false}
                                     type='number'
-                                    id="budget"
-                                    name="budget"
                                     value={values.budget}
+                                    nameValue="budget"
+                                    nameInput="Budget"
+                                    handleChange={handleChange}
+                                    errors={errors.budget}
                                     onBlur={handleBlur}
-                                    onChange={handleChange}
-                                    style={{ border: errors.budget && touched.budget ? "1px solid red" : "" }}
+                                    touched={touched.budget}
                                 />
-                                <ErrorMessage name='budget' component="p" style={customErrorMessage} />
+
                             </Col>
-
-
-                            {/* <Col xs={6} sm={5} md={2}>
-                        <FormControl
-                            className='mt-2'
-                            placeholder='C'
-                            type='text'
-                            id="overnightCity"
-                            name="overnightCity"
-                            value={values.budget}
-                            onBlur={handleBlur}
-                            onChange={handleChange}
-                        />
-                        <ErrorMessage name='overnightCity'/>
-                    </Col> */}
 
                             <Row className='justify-content-center align-items-center'>
                                 <Col xs={6} sm={5} md={3} className="mt-2">
@@ -232,11 +208,6 @@ const FormFormik = ({ buttonHidden, size, clickBottonNavigate }) => {
 
         </Formik>
     )
-}
-
-const customErrorMessage = {
-    color: "red",
-    fontSize: "10px"
 }
 
 

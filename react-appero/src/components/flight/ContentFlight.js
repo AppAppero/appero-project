@@ -34,7 +34,7 @@ const ContentFlight = memo(({ params }) => {
                                 return (
                                     <Col key={index} xs={12} >
                                         <Card
-                                            className='shadow-lg border-0 justify-content-center rounded-3 p-3 mt-3 border-none'>
+                                            className='shadow-lg border-0 justify-content-center rounded-3 p-3 mt-4 border-none'>
                                             <CardContentFlight
                                                 selectIdFlight={selectIdFlight}
                                                 setSelectIdFlight={setSelectIdFlight}

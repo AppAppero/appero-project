@@ -1,0 +1,30 @@
+.input-container {
+    position: relative;
+}
+
+label {
+    position: absolute;
+    left: 10px;
+    top: 8px;
+    transition: 0.3s ease-out;
+    pointer-events: none;
+}
+
+/* input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+} */
+
+/* Stile dell'etichetta quando l'input è focalizzato o contiene testo */
+.input-container.focused label,
+.input-container label-up {
+    top: -9px;
+    padding: 1px;
+    font-size: 12px;
+    font-weight: "bold";
+    color: #141414;
+    /* Cambia colore a tuo piacimento */
+}

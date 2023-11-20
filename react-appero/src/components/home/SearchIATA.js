@@ -1,17 +1,21 @@
-import { useState } from "react";
-import { FormControl, Row } from "react-bootstrap";
+import { memo, useState } from "react";
+import { Col, Row } from "react-bootstrap";
 import codeIATA from "../../utils/codeIATA";
+import SingleInput from "../commons/form/SingleInput";
+import { nameCityByIATA } from "../../utils/formatState";
+
 
 //** PopUp per la ricerca delle città mentre si compila il form */
-const SearchIATA = ({
+const SearchIATA = memo(({
     size,
-    onBlur,
     values,
-    touched,
     placeholder,
     name,
     setFieldValue,
-    errors }) => {
+    errors,
+    onBlur,
+    touched
+}) => {
 
     const [showSearch, setShowSearch] = useState(false)
     const [searchResults, setSearchResults] = useState([]);
@@ -39,32 +43,43 @@ const SearchIATA = ({
 
     return (
         <>
-            <FormControl
-                autoComplete="off"
-                className='mt-2'
-                placeholder={placeholder}
-                value={values}
-                type="text"
+            <SingleInput
+                touched={touched}
                 onBlur={onBlur}
-                onChange={(e) => handleInputChange(e, setFieldValue)}
-                id={name}
-                name={name}
-                style={{ border: errors && touched ? "1px solid red" : "" }}
+                labelUp={false}
+                type="text"
+                nameValue={name}
+                value={values}
+                handleChange={(e) => handleInputChange(e, setFieldValue)}
+                nameInput={placeholder}
+                errors={errors}
             />
             {showSearch && searchResults?.length > 0 && (
                 <div style={{ ...search, width: size.isMobile ? "80%" : "60%" }}>
                     {searchResults.map((el, index) => (
                         <Row
                             onClick={() => clickRowIATA(name, el)}
-                            style={{ color: "white", cursor: "pointer", fontSize: "14px" }}
-                            key={index}>{`${Object.values(el)[0]} - ${Object.keys(el)[0]}`}
+                            className="text-white mt-1"
+                            style={{
+                                border: "1px solid gray",
+                                cursor: "pointer",
+                                fontSize: "14px",
+                                textAlign: "justify"
+                            }}
+                            key={index}>
+                            <Col xs={8}>
+                                {nameCityByIATA(Object.keys(el)[0])}
+                            </Col>
+                            <Col xs={2}>
+                                {Object.keys(el)[0]}
+                            </Col>
                         </Row>
                     ))}
                 </div>
             )}
         </>
     )
-}
+})
 
 const search = {
     position: "absolute",

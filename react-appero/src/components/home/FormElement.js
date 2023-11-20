@@ -3,7 +3,7 @@ import { Col, Row } from "react-bootstrap";
 import { useDispatch } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 import { updateBudget } from '../../redux/reducerItinerary';
-import FormFormik from '../commons/FormFormik';
+import FormFormik from '../commons/form/FormFormik';
 
 const FormElement = ({ sizeGlobal }) => {
 

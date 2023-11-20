@@ -42,7 +42,7 @@ export const checkTextCalculateDate = (params) => {
 }
 
 // Restituisce il nome della città tramite cod IATA volo
-export const checkNameCity = (param) => {
+export const nameCityByIATA = (param) => {
     let result = codeIATA.filter(el => Object.keys(el)[0].toString() === param);
     if (result) {
         let city = Object.values(result[0])[0]

@@ -8,8 +8,8 @@ const Cart = () => {
 
   const { itinerary, actualBudget, counterCart } = useSelector(state => state.reducerItinerary);
   const { isAllScreen } = useSize().size;
-  const commonClasses = 'fw-bold text-center mt-2';
-  // className={actualBudget > 0 ? 'text-green' : 'text-red'}
+  const commonClasses = 'fw-bold';
+
   return (
     <>
       {!isAllScreen &&
@@ -17,9 +17,11 @@ const Cart = () => {
           <Row>
             <Col className="fw-bold text-center mt-4 fs-5">Riepilogo del tuo viaggio</Col>
           </Row>
-          <Row className={actualBudget <= 0 ? `text-danger ${commonClasses}` : `text-success ${commonClasses}`}>
-            <Col>Budget</Col>
-            <Col className={actualBudget <= 0 ? 'text-danger' : 'text-success'}>{actualBudget}</Col>
+          <Row className='mt-2 mb-3 text-center'>
+            <Col style={{ marginTop: "1px", fontSize: "15px" }} xs={6}>Budget</Col>
+            <Col
+              className={actualBudget <= 0 ? `text-danger ${commonClasses}` : `text-success ${commonClasses}`}
+              xs={6}>{actualBudget} €</Col>
           </Row>
 
           {/* Contenitore di tutto l'itineriario che verrà riutilizzato anche nel Modal */}

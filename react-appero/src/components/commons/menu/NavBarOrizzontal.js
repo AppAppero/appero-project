@@ -69,10 +69,10 @@ const ModalCart = memo(({ show, setShow, actualBudget, itinerary, counterCart })
     <Modal show={show} onHide={() => setShow(!show)}>
       <ModalHeader closeButton>
         <div className="d-flex justify-content-between w-100">
-          <ModalTitle>Il tuo Carrello</ModalTitle>
+          <ModalTitle>Carrello - Budget :</ModalTitle>
           <ModalTitle
             className={actualBudget <= 0 ? 'text-danger' : 'text-success'}>
-            Budget {actualBudget}
+            {actualBudget} €
           </ModalTitle>
         </div>
       </ModalHeader>

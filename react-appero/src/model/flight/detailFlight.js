@@ -1,11 +1,13 @@
-import { checkNameCity, checkTextCalculateDate, checkTextDate, checkTextPerson } from "../../utils/formatState";
+import { nameCityByIATA, checkTextCalculateDate, checkTextDate, checkTextPerson } from "../../utils/formatState";
 import { BiSolidUser } from 'react-icons/bi';
 import { BsCalendar3 } from 'react-icons/bs';
 import { SiGooglemaps } from 'react-icons/si';
 
 // Modello per i dettagli del volo
 const detailFlight = (params) => {
-    
+
+    const sizeIcon = 12
+
     const detail =
         [
             {
@@ -14,25 +16,25 @@ const detailFlight = (params) => {
                     {
                         hidden: true,
                         type: "text",
-                        icon: <SiGooglemaps />,
-                        text: checkNameCity(params?.destinationLocationCode)
+                        icon: <SiGooglemaps size={sizeIcon} />,
+                        text: nameCityByIATA(params?.destinationLocationCode)
                     },
                     {
                         hidden: true,
                         type: "text",
-                        text: "Da " + checkNameCity(params?.originLocationCode),
+                        text: "Da " + nameCityByIATA(params?.originLocationCode),
                         style: { fontSize: "12px" }
                     }
                 ]
             },
             {
                 type: "text",
-                title: "Data del viaggio",
+                title: "Data",
                 detail: [
                     {
                         hidden: true,
                         type: "date",
-                        icon: <BsCalendar3 />,
+                        icon: <BsCalendar3 size={sizeIcon} />,
                         text: checkTextDate(params)
                     },
                     {
@@ -48,7 +50,7 @@ const detailFlight = (params) => {
                 detail: [
                     {
                         hidden: true,
-                        icon: <BiSolidUser />,
+                        icon: <BiSolidUser size={sizeIcon} />,
                         text: checkTextPerson(params)
                     }
                 ]

@@ -7,12 +7,12 @@ const HeaderDetail = ({ params }) => {
 
     return (
         <>
-            <Row className='rounded-3 p-2 justify-content-center gx-0'
-                style={{ background: "#F29F05"}}>
+            <Row className='rounded-3 p-1 justify-content-center gx-3'
+                style={{ background: "#F29F05" }}>
                 {
                     detailFlight(params).map((el, index) => (
-                        <Col  key={index}>
-                            <Row style={styleTile}>
+                        <Col xs={4} key={index}>
+                            <Row className='text-white' style={{ fontSize: "12px" }}>
                                 <Col xs={1}></Col>
                                 <Col>{el?.title}</Col>
                             </Row>
@@ -22,7 +22,8 @@ const HeaderDetail = ({ params }) => {
                                         <Col xs={1}>
                                             {d?.icon}
                                         </Col>
-                                        <Col style={d?.style ? d.style : styleAu}>
+                                        <Col className='mt-1' xs={9}
+                                            style={d?.style ? d.style : { fontSize: "12px", fontWeight: "bold" }}>
                                             {d?.text}
                                         </Col>
                                     </Row>
@@ -32,34 +33,9 @@ const HeaderDetail = ({ params }) => {
                     ))
                 }
             </Row>
-
-            {/* <Col className="mt-1 d-flex justify-content-end">
-                <Button onClick={() => setShowModal(!showModal)} className="btn btn-md" variant='light'>
-                    <GrUpdate />
-                </Button>
-            </Col>
-            <Modal show={showModal} onHide={() => setShowModal(false)}>
-                <Modal.Header closeButton>
-                    <Modal.Title key={0}>Cambia Parametri</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <FormFormik size={size} buttonHidden={false} />
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={() => setShowModal(false)}>
-                        Chiudi
-                    </Button>
-                    <Button variant="warning" onClick={() => setShowModal(false)}>
-                        Cerca
-                    </Button>
-                </Modal.Footer>
-            </Modal> */}
         </>
     )
 }
-
-const styleTile = { fontSize: "12px", color: "white" }
-const styleAu = { fontSize: "15px", fontWeight: "bold" }
 
 
 export default HeaderDetail

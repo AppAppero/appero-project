@@ -37,7 +37,7 @@ const CardContentFlight = memo(({ selectIdFlight, setSelectIdFlight, flight }) =
         <>
             {
                 itineraries.map((iti, i) => (
-                    <Card className="mt-3 border-0 shadow-sm" key={i}>
+                    <Card className="mt-2 border-0 shadow-sm" key={i}>
                         {
                             iti?.segments.map((seg, ind) => (
                                 <Row key={ind} className='gx-0 m-2'>
@@ -99,17 +99,17 @@ const CardContentFlight = memo(({ selectIdFlight, setSelectIdFlight, flight }) =
 
             }
 
-            <Button
-                variant={selectIdFlight !== id ? "secondary" : "warning"}
-                className="btn btn-sm btn-outline-warning position-absolute shadow-sm text-white border-0 rounded-pill p-2"
-                onClick={checkFlightItinery}
-                style={{ top: -10, right: -10 }}>
+            <Row style={{ bottom: -12 }} className="position-absolute start-50 translate-middle-x">
                 <Col>
-                    <BsFillCartPlusFill />
+                    <Button
+                        variant={selectIdFlight !== id ? "secondary" : "warning"}
+                        className="btn-md btn-outline-warning shadow-sm text-white border-0"
+                        onClick={checkFlightItinery}
+                    >
+                        {price?.grandTotal} €
+                    </Button>
                 </Col>
-                <Col>{price?.grandTotal}</Col>
-            </Button>
-
+            </Row>
         </>
     )
 

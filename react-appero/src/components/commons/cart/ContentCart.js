@@ -19,7 +19,7 @@ const ContentCart = memo(({ itinerary, counterCart }) => {
                     <>
                         <Row className="text-center mt-5">
                             <Col>
-                                <Link to={"/"} style={{ fontSize: "13px" }} className="text-dark">Conferma itinerario e vai ai check-in</Link>
+                                <Link to={"/"} style={{ fontSize: "13px" }} className="text-dark">Conferma itinerario e scarica il preventivo</Link>
                             </Col>
                         </Row>
                         <Row className="text-center mt-5">
