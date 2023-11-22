@@ -121,26 +121,19 @@ export { filterFlight, reorderFlight };
  * @param {*} isTest 
  * @returns 
  */
-export const searchFlightAmadeus = (params, isTest) => (dispatch) => {
+export const searchFlightAmadeus = (params, isTest) => async (dispatch) => {
     if (!isTest) {
         dispatch(loading(true))
-        login()
-            .then(_ => {
-                return instanceFlight.get("", { params: params })
-                    .then(data => {
-                        dispatch(loading(false))
-                        dispatch(containerFlights(data.data.data));
-                    })
-                    .catch(e => {
-                        console.log(1)
-                        dispatch(loading(false))
-                        dispatch(error(e.message));
-                    });
-            }).catch(error => {
-                console.log(2)
-                dispatch(loading(false))
-                dispatch(error(error.message));
-            });
+        try {
+            await login()
+            let data = await instanceFlight.get("", { params: params });
+            dispatch(loading(false))
+            dispatch(containerFlights(data.data.data));
+        } catch (e) {
+            console.log(e.response.status)
+            dispatch(loading(false))
+            dispatch(error(e.message));
+        }
     }
     else {
         dispatch(loading(false))

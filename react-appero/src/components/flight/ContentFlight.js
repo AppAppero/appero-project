@@ -13,7 +13,7 @@ const ContentFlight = memo(({ params }) => {
     const [selectIdFlight, setSelectIdFlight] = useState(0)
 
     const searchFlight = useCallback(() => {
-        dispatch(searchFlightAmadeus(params, true));
+        dispatch(searchFlightAmadeus(params, false));
     }, [params]);
 
     useEffect(() => {
@@ -26,7 +26,7 @@ const ContentFlight = memo(({ params }) => {
             <Row className='fw-bold fs-4 lh-1.5 text-dark mt-2'>
                 <Col>Scegli il volo</Col>
             </Row>
-            <Row className='gx-5'>
+            <Row className='gx-4'>
                 {!isLoading && !isError ?
                     (flights?.length > 0 ?
                         (

@@ -14,6 +14,16 @@ const FormFormik = ({ buttonHidden, size, clickBottonNavigate }) => {
     const MORE_THAN = ERROR_0;
 
     // Formik
+    /*const initialValues = {
+        origin: "BRI",
+        destination: "VLC",
+        departureDate: "2023-11-27",
+        returnDate: "2023-12-03",
+        adults: "1",
+        budget: "1000",
+        childrenNumber: "0"
+    }*/
+
     const initialValues = {
         origin: "",
         destination: "",
@@ -41,17 +51,17 @@ const FormFormik = ({ buttonHidden, size, clickBottonNavigate }) => {
             returnDate: values.returnDate,
             adults: values.adults,
             currencyCode: localStorage.getItem("currentCodCurrency"),
-            maxPrice: values.budget,
+            // maxPrice: values.budget,
             children: values.childrenNumber === "" ? 0 : values.childrenNumber,
             infants: 0,
-            nonStop: false,
+            // nonStop: false,
             max: 20
         }
 
         // Disabilita il bottone del "Cerca"
         setSubmitting(true)
 
-        clickBottonNavigate(params)
+        clickBottonNavigate(params, values.budget)
 
     }
 

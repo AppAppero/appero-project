@@ -1,5 +1,5 @@
-import React, { memo, useState } from 'react';
-import { Badge, Col, Modal, ModalBody, ModalHeader, ModalTitle, Nav, Navbar } from 'react-bootstrap';
+import React, { useState } from 'react';
+import { Badge, Col, Modal, ModalBody, ModalHeader, Nav, Navbar } from 'react-bootstrap';
 import { FaCartArrowDown } from "react-icons/fa";
 import { useSelector } from 'react-redux';
 import { linksMenu } from '../../../utils/links';
@@ -7,19 +7,14 @@ import ContentCart from '../cart/ContentCart';
 
 const NavBarOrizzontal = () => {
 
-  const { itinerary, actualBudget, counterCart } = useSelector(state => state.reducerItinerary);
+  const { counterCart } = useSelector(state => state.reducerItinerary);
   const [show, setShow] = useState(false);
 
   return (
     <>
 
       {/* Modal del carrello */}
-      <ModalCart
-        show={show} setShow={setShow}
-        counterCart={counterCart}
-        itinerary={itinerary}
-        actualBudget={actualBudget}
-      />
+      <ModalCart show={show} setShow={setShow} />
 
       {/* NavBar orizzontale */}
       <Navbar
@@ -64,26 +59,26 @@ const NavBarOrizzontal = () => {
 };
 
 // Modal per il carrello ---> Attualmente interno
-const ModalCart = memo(({ show, setShow, actualBudget, itinerary, counterCart }) => {
+const ModalCart = ({ show, setShow }) => {
   return (
     <Modal show={show} onHide={() => setShow(!show)}>
       <ModalHeader closeButton>
-        <div className="d-flex justify-content-between w-100">
+        {/* <div className="d-flex justify-content-between w-100">
           <ModalTitle>Carrello - Budget :</ModalTitle>
           <ModalTitle
             className={actualBudget <= 0 ? 'text-danger' : 'text-success'}>
             {actualBudget} €
           </ModalTitle>
-        </div>
+        </div> */}
       </ModalHeader>
       <ModalBody>
 
         {/* CARRELLO VOLI */}
-        <ContentCart counterCart={counterCart} itinerary={itinerary} />
+        <ContentCart />
 
       </ModalBody>
     </Modal>
   )
-})
+}
 
 export default NavBarOrizzontal;

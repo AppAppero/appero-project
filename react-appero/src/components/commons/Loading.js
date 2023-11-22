@@ -18,7 +18,7 @@ const Loading = ({ icon }) => {
     const iconIcon = searchIcon(icon);
 
     return (
-        <div className='mb-5'>
+        <div style={{ marginTop: "150px", height: "100vh" }}>
             <div className="loading-spinner">
                 <div className="customIcon">
                     {iconIcon}
@@ -30,6 +30,15 @@ const Loading = ({ icon }) => {
                     {iconIcon}
                 </div>
                 <div className="cloud cloud3">
+                    {iconIcon}
+                </div>
+                <div className="cloud cloud4">
+                    {iconIcon}
+                </div>
+                <div className="cloud cloud5">
+                    {iconIcon}
+                </div>
+                <div className="cloud cloud6">
                     {iconIcon}
                 </div>
             </div>

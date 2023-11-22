@@ -1,6 +1,5 @@
 import { memo, useEffect } from "react";
 import { Button, Card, Col, Row } from "react-bootstrap";
-import { BsFillCartPlusFill } from 'react-icons/bs';
 import { GoArrowSwitch } from 'react-icons/go';
 import { useDispatch, useSelector } from "react-redux";
 import rya from "../../images/imgEx/rya.png";

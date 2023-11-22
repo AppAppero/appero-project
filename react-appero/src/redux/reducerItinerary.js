@@ -2,7 +2,7 @@ import { createSlice, isAnyOf } from "@reduxjs/toolkit";
 
 // Match per ricalcolare il budget
 const reloadBudget = (action) => {
-    return isAnyOf(addFlight, removeFlight)(action)
+    return isAnyOf(addFlight, removeFlight, updateBudget)(action)
 }
 
 // Match per contare la quantità del carrello
@@ -34,7 +34,7 @@ const reducerItinerary = createSlice({
         },
         // Aggiorna il budget
         updateBudget: (state, action) => {
-            state.principalBudget = parseFloat(action.payload.toFixed(2))
+            state.principalBudget = parseFloat(action.payload).toFixed(2)
             state.actualBudget = state.principalBudget
         },
         // Aggiunge il volo

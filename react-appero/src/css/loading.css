@@ -43,6 +43,24 @@
     animation-delay: 1.5s;
 }
 
+.cloud4 {
+    left: -20px;
+    top: 90px;
+    animation-delay: 2s;
+}
+
+.cloud5 {
+    left: -40px;
+    top: 110px;
+    animation-delay: 2.5s;
+}
+
+.cloud6 {
+    left: -60px;
+    top: 140px;
+    animation-delay: 3s;
+}
+
 .loading-spinner .customIcon {
     color: red; /* Colore per l'icona customIcon */
   }

@@ -21,10 +21,10 @@ label {
 /* Stile dell'etichetta quando l'input è focalizzato o contiene testo */
 .input-container.focused label,
 .input-container label-up {
-    top: -9px;
+    top: -12px;
     padding: 1px;
-    font-size: 12px;
-    font-weight: "bold";
-    color: #141414;
+    font-size: 13px;
+    color: #464343c4;
+    font-family: 'Montserrat, sans-serif',
     /* Cambia colore a tuo piacimento */
 }

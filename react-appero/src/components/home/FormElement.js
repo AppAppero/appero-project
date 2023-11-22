@@ -12,9 +12,12 @@ const FormElement = ({ sizeGlobal }) => {
 
     const { size } = sizeGlobal;
 
-    const clickBottonNavigate = (params) => {
+    const clickBottonNavigate = (params, budget) => {
         // Aggiorna direttamente il budget
-        dispatch(updateBudget(parseFloat(params?.maxPrice)))
+        dispatch(updateBudget(parseFloat(budget)))
+        // E lo salva anche nello storage
+        localStorage.setItem("budgetSession", budget)
+        
         /**
            * Va nella nuova pagina dei voli:con {state{...}} passo gli oggetti nello state altrimenti : 
            * Serializza l'oggetto params in una stringa JSON const paramsString :
