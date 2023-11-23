@@ -85,53 +85,48 @@ const styleBase = {
   borderRadius: "12px",
   opacity: 1,
   padding: "0px",
-  font: "normal normal normal 18px/30px Mukta",
-  letterSpacing: "0px",
   color: "#000000",
   opacity: 0.85,
-  border: "none"
+  border: "none",
+  padding: "4px",
+  fontSize: "15px"
 }
 
 const styleSelect = {
   ...styleBase,
   background: "#0468BF",
-  font: "normal normal normal 18px/30px Mukta",
-  letterSpacing: "0px",
   color: "#FFFFFF",
-  opacity: 0.85
+  opacity: 0.85,
 }
 
 const styleTileBase = {
-  font: "normal normal 300 16px/27px Mukta",
-  letterSpacing: "0px",
   color: "#000000",
   opacity: 0.7
 }
 const styleTileSelect = {
   ...styleTileBase,
-  color: "#FFFFFF"
+  color: "#FFFFFF",
+  fontWeight:"bold"
 }
 
 const stylePriceBase = {
-  font: "normal normal 800 22px/37px Mukta",
-  letterSpacing: "0px",
   color: "#000000",
-  opacity: 1
+  opacity: 1,
 }
 const stylePriceSelect = {
   ...stylePriceBase,
-  color: "#FFFFFF"
+  color: "#FFFFFF",
+  fontWeight:"bold"
 }
 
 const styleDuringBase = {
-  font: "normal normal normal 18px/30px Mukta",
-  letterSpacing: "0px",
   color: "#000000",
   opacity: 0.85
 }
 const styleDuringSelect = {
   ...styleDuringBase,
-  color: "#FFFFFF"
+  color: "#FFFFFF",
+  fontWeight:"bold"
 }
 
 export default HeaderFilterFlight

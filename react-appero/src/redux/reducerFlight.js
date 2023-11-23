@@ -1,7 +1,7 @@
 import { createAction, createSlice, isAnyOf } from "@reduxjs/toolkit";
 import { login } from "../api/fecthLoginAmadeus";
 import instanceFlight from "../api/fetchFlight";
-import { bar_mil, rom_val } from '../utils/exFlights';
+import { bar_mil, bar_val_children, rom_val } from '../utils/exFlights';
 
 
 // Create action : Crea il filtro per i voli migliori,economici e veloci
@@ -33,6 +33,7 @@ const reducerFlight = createSlice(
         initialState,
         reducers: {
             loading: (state, action) => {
+                state.filterFly = []
                 state.isLoading = action.payload
                 state.isError = false
                 state.messageError = ""
@@ -42,8 +43,10 @@ const reducerFlight = createSlice(
                 state.isError = true
                 state.messageError = action.payload
                 state.flights = []
+                state.filterFly = []
             },
             containerFlights: (state, action) => {
+                state.filterFly = []
                 state.isLoading = false
                 state.isError = false
                 state.messageError = ""
@@ -85,24 +88,25 @@ const reducerFlight = createSlice(
                     let bestTotal = calculateHour(best.slice(0, 1))
 
                     // Definisco il contenitore dei filtri
-                    state.filterFly =
-                        [
-                            {
-                                title: "Migliore",
-                                price: best[0]?.price?.grandTotal,
-                                durationTotal: bestTotal
-                            },
-                            {
-                                title: "Economico",
-                                price: state?.flights[0]?.price?.grandTotal,
-                                durationTotal: flightStandard
-                            },
-                            {
-                                title: "Veloce",
-                                price: flash[0]?.price?.grandTotal,
-                                durationTotal: flashTotal
-                            }
-                        ]
+                    if (best.length > 0 && state.flights.length > 0 && flash.length > 0)
+                        state.filterFly =
+                            [
+                                {
+                                    title: "Migliore",
+                                    price: best[0]?.price?.grandTotal,
+                                    durationTotal: bestTotal
+                                },
+                                {
+                                    title: "Economico",
+                                    price: state?.flights[0]?.price?.grandTotal,
+                                    durationTotal: flightStandard
+                                },
+                                {
+                                    title: "Veloce",
+                                    price: flash[0]?.price?.grandTotal,
+                                    durationTotal: flashTotal
+                                }
+                            ]
 
                 })
                 .addDefaultCase(state => { return state })
@@ -137,7 +141,7 @@ export const searchFlightAmadeus = (params, isTest) => async (dispatch) => {
     }
     else {
         dispatch(loading(false))
-        dispatch(containerFlights(rom_val));
+        dispatch(containerFlights(bar_val_children.data));
     }
 }
 

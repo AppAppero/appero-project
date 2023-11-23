@@ -7,6 +7,7 @@ import { Provider } from 'react-redux';
 import store from './redux/store';
 import "./css/loading.css"
 import "./css/commons.css"
+import "./css/form.css";
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

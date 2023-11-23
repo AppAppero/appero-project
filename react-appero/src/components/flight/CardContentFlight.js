@@ -1,13 +1,16 @@
-import { memo, useEffect } from "react";
+import { memo, useEffect, useState } from "react";
 import { Button, Card, Col, Row } from "react-bootstrap";
 import { GoArrowSwitch } from 'react-icons/go';
 import { useDispatch, useSelector } from "react-redux";
 import rya from "../../images/imgEx/rya.png";
 import { addFlight, removeFlight } from "../../redux/reducerItinerary";
 import { formatDuration, formatHourByDate } from "../../utils/formatDuration";
+import { FaArrowCircleRight } from "react-icons/fa";
+import DetailFlight from "./DetailFlight";
+import { AiOutlineInfoCircle } from "react-icons/ai";
 
 const CardContentFlight = memo(({ selectIdFlight, setSelectIdFlight, flight }) => {
-    const { id, itineraries, price } = flight;
+    const { id, itineraries, price, travelerPricings } = flight;
     const { counterCart } = useSelector(state => state.reducerItinerary)
     const dispatch = useDispatch();
 
@@ -34,6 +37,14 @@ const CardContentFlight = memo(({ selectIdFlight, setSelectIdFlight, flight }) =
 
     return (
         <>
+            <Row>
+                {/* <Col xs={2} className="text-start m-0">
+                    <Button size="sm" variant="warning" ><AiOutlineInfoCircle color="white"/></Button>
+                </Col> */}
+                <Col xs={12} className="text-end fw-bold text-success" style={{ fontSize: "15px" }}>
+                    Totale : {price?.grandTotal} €
+                </Col>
+            </Row>
             {
                 itineraries.map((iti, i) => (
                     <Card className="mt-2 border-0 shadow-sm" key={i}>
@@ -98,17 +109,29 @@ const CardContentFlight = memo(({ selectIdFlight, setSelectIdFlight, flight }) =
 
             }
 
-            <Row style={{ bottom: -12 }} className="position-absolute start-50 translate-middle-x">
-                <Col>
+            <Row className="mt-3 gx-1">
+                <Col xs={10}>
                     <Button
+                        style={{ width: "100%" }}
                         variant={selectIdFlight !== id ? "secondary" : "warning"}
                         className="btn-md btn-outline-warning shadow-sm text-white border-0"
                         onClick={checkFlightItinery}
                     >
-                        {price?.grandTotal} €
+                        <Row>
+                            <Col xs={8} className="text-end">Seleziona volo</Col>
+                            <Col xs={4} className="text-end"><FaArrowCircleRight /></Col>
+                        </Row>
                     </Button>
                 </Col>
+
+                <DetailFlight
+                    price={price}
+                    travelerPricings={travelerPricings}
+                    checkFlightItinery={checkFlightItinery}
+                />
             </Row>
+
+
         </>
     )
 

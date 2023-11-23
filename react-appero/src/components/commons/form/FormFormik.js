@@ -1,44 +1,54 @@
-import { ErrorMessage, Form, Formik } from "formik";
-import { Col, FormControl, FormGroup, FormLabel, Row } from "react-bootstrap";
+import { Form, Formik } from "formik";
+import { Col, FormCheck, FormGroup, Row } from "react-bootstrap";
 import * as Yup from "yup";
+import {
+    ERROR_DATE, ERROR_DATE_RETURN,
+    ERROR_DATE_TODAY,
+    ERROR_EMPTY,
+    ERROR_MAX_ADULTS,
+    ERROR_MIN,
+    ERROR_MIN_ADULTS,
+    ERROR_NEGATIVE,
+    ERROR_REQUIRED_ADULTS,
+    MESSAGE_INFO_ADULTS,
+    MESSAGE_INFO_BUDGET,
+    MESSAGE_INFO_CHILDREN, MESSAGE_INFO_INFANTS
+} from "../../../utils/message";
 import SearchIATA from "../../home/SearchIATA";
 import SingleInput from "./SingleInput";
 
 const FormFormik = ({ buttonHidden, size, clickBottonNavigate }) => {
 
-
-    const ERROR_EMPTY = "Non può essere vuoto !";
-    const ERROR_MIN = "Minimo 2 caratteri !";
-    const ERROR_0 = "Non può essere 0 !";
-    const ERROR_NEGATIVE = "Non può essere un numero negativo!";
-    const MORE_THAN = ERROR_0;
-
     // Formik
-    /*const initialValues = {
+    const initialValues = {
         origin: "BRI",
         destination: "VLC",
         departureDate: "2023-11-27",
         returnDate: "2023-12-03",
-        adults: "1",
-        budget: "1000",
-        childrenNumber: "0"
-    }*/
-
-    const initialValues = {
-        origin: "",
-        destination: "",
-        departureDate: "",
-        returnDate: "",
-        adults: "",
-        budget: "",
-        childrenNumber: ""
+        adults: 1,
+        budget: 300,
+        childrenNumber: "",
+        infants: "",
+        overnightStayCity: ""
     }
+
+    /*  const initialValues = {
+         origin: "",
+         destination: "",
+         departureDate: "",
+         returnDate: "",
+         adults: "",
+         budget: "",
+         infants: "",
+         childrenNumber: "",
+         overnightStayCity: ""
+     }*/
 
 
     /**
      * Override del submit per gestire alcuni valori e inviare i parametri alla API di Amadeus
-     * @param {*} values 
-     * @param {*} param1 
+     * @param {*} values
+     * @param {*} param1
      */
 
     const onSubmitOverride = (values, { setSubmitting }) => {
@@ -51,9 +61,9 @@ const FormFormik = ({ buttonHidden, size, clickBottonNavigate }) => {
             returnDate: values.returnDate,
             adults: values.adults,
             currencyCode: localStorage.getItem("currentCodCurrency"),
-            // maxPrice: values.budget,
+            maxPrice: values.budget,
             children: values.childrenNumber === "" ? 0 : values.childrenNumber,
-            infants: 0,
+            infants: values.infants === "" ? 0 : values.infants,
             // nonStop: false,
             max: 20
         }
@@ -61,35 +71,56 @@ const FormFormik = ({ buttonHidden, size, clickBottonNavigate }) => {
         // Disabilita il bottone del "Cerca"
         setSubmitting(true)
 
-        clickBottonNavigate(params, values.budget)
+        let otherParams = { budget: values.budget, overnightStayCity: values.overnightStayCity }
+        clickBottonNavigate(params, otherParams)
 
     }
 
 
     // YUP
     const today = new Date();
-    const validationSchema = Yup.object(
+    const validationSchema = Yup.object().shape(
         {
             origin: Yup.string().min(2, ERROR_MIN).required(ERROR_EMPTY),
+
             destination: Yup.string().min(2, ERROR_MIN).required(ERROR_EMPTY),
+
             departureDate: Yup.date()
-                .min(today, "La data di partenza non può essere antecedente a oggi")
-                .required("Devi inserire una data di partenza"),
+                .min(today, ERROR_DATE_TODAY)
+                .required(ERROR_DATE + "partenza"),
+
             returnDate: Yup.date()
-                .min(Yup.ref("departureDate"), "La data di ritorno deve essere maggiore o uguale alla data di partenza")
-                .required("Devi inserire una data di ritorno"),
-            budget: Yup.number().min(1, ERROR_0)
-                .moreThan(0, MORE_THAN)
+                .min(Yup.ref("departureDate"), ERROR_DATE_RETURN)
+                .required(ERROR_DATE + "ritorno"),
+
+            budget: Yup.number()
+                // .min(300, MORE_THAN)
                 .positive(ERROR_NEGATIVE)
                 .required(ERROR_EMPTY),
-            adults: Yup.number().min(1, ERROR_0).required(ERROR_EMPTY)
-            // childrenNumber: Yup.number().when("adults",
-            //     {
-            //         is: (adults) => adults > 0,
-            //         then: Yup.number().min(1, "Deve esserci almeno un bambino quando ci sono adulti"),
-            //         otherwise: Yup.number().min(0, "Il numero di bambini deve essere 0 quando non ci sono adulti"),
-            //     }
-            // )
+
+            // overnightStayCity: Yup.string()
+            //     .min(2, ERROR_MIN)
+            //     .required(ERROR_EMPTY),
+
+            adults: Yup.number()
+                .min(1, ERROR_MIN_ADULTS)
+                .max(9, ERROR_MAX_ADULTS)
+                .required(ERROR_REQUIRED_ADULTS),
+
+            childrenNumber: Yup.number()
+                .min(0, MESSAGE_INFO_CHILDREN)
+                .max(9, MESSAGE_INFO_CHILDREN),
+            //     .when("adults", {
+            //         is: (adults) => Yup.number().isType(adults) && adults > 0,
+            //         then: Yup.number().min(1, "Deve esserci almeno un bambino quando ci sono adulti."),
+            //     }),
+
+            infants: Yup.number()
+                .min(0, MESSAGE_INFO_INFANTS)
+            //     .when(["adults", "childrenNumber"], {
+            //         is: (adults, childrenNumber) => Yup.number().isType(adults) > 0 || Yup.number().isType(childrenNumber) > 0,
+            //         then: Yup.number().max(Yup.ref("adults"), "Il numero di neonati non deve superare il numero di adulti."),
+            //     }),
         }
     )
 
@@ -105,8 +136,8 @@ const FormFormik = ({ buttonHidden, size, clickBottonNavigate }) => {
                 <Form onSubmit={handleSubmit}>
                     <Row className="bg-white p-3 rounded mt-0 gx-5">
                         <FormGroup className='row m-auto'>
-                            <Col xs={12} md={4}>
 
+                            <Col xs={12} md={4}>
                                 {/* Custom component: Per Gestire meglio l'autocompletamento dei codIATA */}
                                 <SearchIATA
                                     size={size}
@@ -131,9 +162,24 @@ const FormFormik = ({ buttonHidden, size, clickBottonNavigate }) => {
                                     touched={touched.departureDate}
                                 />
 
-                            </Col>
-                            <Col xs={12} md={4}>
+                                <SingleInput
+                                    labelUp={false}
+                                    type='number'
+                                    value={values.budget}
+                                    nameValue="budget"
+                                    nameInput="Budget"
+                                    handleChange={handleChange}
+                                    errors={errors.budget}
+                                    onBlur={handleBlur}
+                                    touched={touched.budget}
+                                    isInfo={true}
+                                    messageInfo={MESSAGE_INFO_BUDGET}
+                                />
 
+                            </Col>
+
+
+                            <Col xs={12} md={4}>
                                 {/* Custom component: Per Gestire meglio l'autocompletamento dei codIATA */}
                                 <SearchIATA
                                     size={size}
@@ -158,7 +204,25 @@ const FormFormik = ({ buttonHidden, size, clickBottonNavigate }) => {
                                     touched={touched.returnDate}
                                 />
 
+                                {/* <SingleInput
+                                    labelUp={false}
+                                    type='text'
+                                    value={values.overnightStayCity}
+                                    nameValue="overnightStayCity"
+                                    nameInput="Città di alloggio"
+                                    handleChange={(value) => setFieldValue("overnightStayCity", value)}
+                                    errors={errors.overnightStayCity}
+                                    onBlur={handleBlur}
+                                    touched={touched.overnightStayCity}
+                                    isCheck={true}
+                                    messageCheck="Stessa della destinazione"
+                                    param={values.destination}
+                                    setFieldValue={setFieldValue}
+                                /> */}
+
+
                             </Col>
+
 
                             <Col xs={12} md={4}>
                                 <SingleInput
@@ -171,6 +235,8 @@ const FormFormik = ({ buttonHidden, size, clickBottonNavigate }) => {
                                     errors={errors.adults}
                                     onBlur={handleBlur}
                                     touched={touched.adults}
+                                    isInfo={true}
+                                    messageInfo={MESSAGE_INFO_ADULTS}
                                 />
 
                                 <SingleInput
@@ -184,18 +250,23 @@ const FormFormik = ({ buttonHidden, size, clickBottonNavigate }) => {
                                     errors={errors.childrenNumber}
                                     onBlur={handleBlur}
                                     touched={touched.childrenNumber}
+                                    isInfo={true}
+                                    messageInfo={MESSAGE_INFO_CHILDREN}
                                 />
 
                                 <SingleInput
                                     labelUp={false}
+                                    disabled={values.adults <= 0}
                                     type='number'
-                                    value={values.budget}
-                                    nameValue="budget"
-                                    nameInput="Budget"
+                                    value={values.infants}
+                                    nameValue="infants"
+                                    nameInput="Neonati"
                                     handleChange={handleChange}
-                                    errors={errors.budget}
+                                    errors={errors.infants}
                                     onBlur={handleBlur}
-                                    touched={touched.budget}
+                                    touched={touched.infants}
+                                    isInfo={true}
+                                    messageInfo={MESSAGE_INFO_INFANTS}
                                 />
 
                             </Col>
@@ -216,7 +287,7 @@ const FormFormik = ({ buttonHidden, size, clickBottonNavigate }) => {
             )
             }
 
-        </Formik>
+        </Formik >
     )
 }
 

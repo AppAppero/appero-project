@@ -13,7 +13,7 @@ const ContentCart = () => {
     return (
         <>
             <Row className="text-center mt-4">
-                <Col className="h4">Carrello itineriario</Col>
+                <Col className="h4">Carrello itinerario</Col>
             </Row>
             
             <Budget />

@@ -12,7 +12,13 @@ export const checkTextPerson = (params) => {
             (params?.children === 1 ? params?.children + " Bambino" : "")
         ) : ""
 
-    return textAdults + " " + textChildren
+    let textInfants = params?.infants !== "" ?
+        (params?.infants > 1 ?
+            params?.infants + " Neonati" :
+            (params?.infants === 1 ? params?.infants + " Neonato" : "")
+        ) : ""
+
+    return textAdults + " " + textChildren + " " + textInfants
 }
 
 // Crea il formato della data del viaggio in base alla cultura

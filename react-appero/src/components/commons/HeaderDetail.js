@@ -22,7 +22,7 @@ const HeaderDetail = ({ params }) => {
                                         <Col xs={1}>
                                             {d?.icon}
                                         </Col>
-                                        <Col className='mt-1' xs={9}
+                                        <Col className='mt-1' xs={9} md={9}
                                             style={d?.style ? d.style : { fontSize: "12px", fontWeight: "bold" }}>
                                             {d?.text}
                                         </Col>

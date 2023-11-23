@@ -5,7 +5,7 @@
 label {
     position: absolute;
     left: 10px;
-    top: 8px;
+    top: 25px;
     transition: 0.3s ease-out;
     pointer-events: none;
 }
@@ -21,7 +21,7 @@ label {
 /* Stile dell'etichetta quando l'input è focalizzato o contiene testo */
 .input-container.focused label,
 .input-container label-up {
-    top: -12px;
+    top: 3px;
     padding: 1px;
     font-size: 13px;
     color: #464343c4;
