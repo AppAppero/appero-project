@@ -1,13 +1,12 @@
-import { memo, useEffect, useState } from "react";
+import { memo, useEffect } from "react";
 import { Button, Card, Col, Row } from "react-bootstrap";
+import { FaArrowCircleRight } from "react-icons/fa";
 import { GoArrowSwitch } from 'react-icons/go';
 import { useDispatch, useSelector } from "react-redux";
 import rya from "../../images/imgEx/rya.png";
 import { addFlight, removeFlight } from "../../redux/reducerItinerary";
 import { formatDuration, formatHourByDate } from "../../utils/formatDuration";
-import { FaArrowCircleRight } from "react-icons/fa";
 import DetailFlight from "./DetailFlight";
-import { AiOutlineInfoCircle } from "react-icons/ai";
 
 const CardContentFlight = memo(({ selectIdFlight, setSelectIdFlight, flight }) => {
     const { id, itineraries, price, travelerPricings } = flight;

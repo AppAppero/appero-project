@@ -13,7 +13,7 @@ const ContentFlight = memo(({ params }) => {
     const [selectIdFlight, setSelectIdFlight] = useState(0)
 
     const searchFlight = useCallback(() => {
-        dispatch(searchFlightAmadeus(params, true));
+        dispatch(searchFlightAmadeus(params, false));
     }, [params]);
 
     useEffect(() => {
