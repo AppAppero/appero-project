@@ -32,29 +32,34 @@ const linksMenu = () => {
     const linksTop =
         [
             {
-                name: "Home",
+                name: "home",
                 icon: <FaHome color={colorIcon} size={sizeIcon} />,
-                path: "/"
+                path: "/",
+                title: "Home"
             },
             {
-                name: "Voli",
+                name: "flight",
                 icon: <MdOutlineFlight color={colorIcon} size={sizeIcon} />,
-                path: "/flight"
+                path: "/travel/flight",
+                title: "Voli"
             },
             {
-                name: "Hotel",
+                name: "hotel",
                 icon: <MdHotel color={colorIcon} size={sizeIcon} />,
-                path: "/hotel"
+                path: "/travel/hotel",
+                title: "Hotel"
             },
             {
-                name: "Noleggio",
+                name: "render",
                 icon: <AiFillCar color={colorIcon} size={sizeIcon} />,
-                path: "*"
+                path: "/travel/render",
+                title: "Noleggio"
             },
             {
-                name: "Attrazioni",
+                name: "attraction",
                 icon: <MdAttractions color={colorIcon} size={sizeIcon} />,
-                path: "*"
+                path: "/travel/attraction",
+                title: "Attrazioni"
             }
         ]
 
@@ -69,7 +74,7 @@ const linksMenu = () => {
             {
                 name: "LogOut",
                 icon: <BiLogOut color={colorIcon} size={sizeIcon} />,
-                path: "/flight"
+                path: "/"
             }
         ]
 

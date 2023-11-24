@@ -4,11 +4,13 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 import { updateBudget } from '../../redux/reducerItinerary';
 import FormFormik from '../commons/form/FormFormik';
+import { useGlobalContext } from '../../context/context';
 
 const FormElement = ({ sizeGlobal }) => {
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
+    const { setContext, setParams } = useGlobalContext()
 
     const { size } = sizeGlobal;
 
@@ -17,14 +19,15 @@ const FormElement = ({ sizeGlobal }) => {
         dispatch(updateBudget(parseFloat(otherParams.budget)))
         // E lo salva anche nello storage
         localStorage.setItem("budgetSession", otherParams.budget)
-        
+        setContext("flight")
         /**
            * Va nella nuova pagina dei voli:con {state{...}} passo gli oggetti nello state altrimenti : 
            * Serializza l'oggetto params in una stringa JSON const paramsString :
            * JSON.stringify(params);
            * 
            * */
-        navigate("flight", { state: { params } })
+        setParams(params)
+        navigate("/travel/flight")
     }
 
     return (

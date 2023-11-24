@@ -1,10 +1,11 @@
 import React from 'react';
 import { Col, Row } from 'react-bootstrap';
+import { useLocation } from 'react-router-dom';
 import detailFlight from '../../model/flight/detailFlight';
+import { useGlobalContext } from '../../context/context';
 
-const HeaderDetail = ({ params }) => {
-    // const [showModal, setShowModal] = useState(false)
-
+const HeaderDetail = () => {
+    let { params } = useGlobalContext()
     return (
         <>
             <Row className='rounded-3 p-1 justify-content-center gx-3'

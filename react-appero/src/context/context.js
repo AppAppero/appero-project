@@ -15,14 +15,19 @@ const AppProvider = ({ children }) => {
 
     const [isLoading, setIsloading] = useState(true);
 
+    // Variabile per indicare in che contesto pagina ci troviamo
+    const [context, setContext] = useState("")
+    // Parametri di ricerca
+    const [params, setParams] = useState({})
+
 
     return (
         <AppContext.Provider value={
             {
-                isLoading,
-                setIsloading,
-                isOpen,
-                setIsOpen,
+                params, setParams,
+                context, setContext,
+                isLoading, setIsloading,
+                isOpen, setIsOpen,
                 colContentXS, colContentSM, colContentMD
             }
         }>

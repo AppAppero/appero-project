@@ -1,19 +1,21 @@
-import React, { memo, useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Card, Col, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import Loading from '../commons/Loading';
+import { useGlobalContext } from '../../context/context';
 import { searchFlightAmadeus } from '../../redux/reducerFlight';
 import ErrorElement from '../commons/ErrorElement';
+import Loading from '../commons/Loading';
 import CardContentFlight from './CardContentFlight';
 
-const ContentFlight = memo(({ params }) => {
+const ContentFlight = () => {
+    let { params } = useGlobalContext()
     const dispatch = useDispatch()
     const reducerFlight = useSelector(state => state.reducerFlight)
     const { flights, isLoading, isError, messageError } = reducerFlight;
     const [selectIdFlight, setSelectIdFlight] = useState(0)
 
     const searchFlight = useCallback(() => {
-        dispatch(searchFlightAmadeus(params, false));
+        dispatch(searchFlightAmadeus(params, true));
     }, [params]);
 
     useEffect(() => {
@@ -62,6 +64,6 @@ const ContentFlight = memo(({ params }) => {
             </Row>
         </>
     )
-})
+}
 
 export default ContentFlight

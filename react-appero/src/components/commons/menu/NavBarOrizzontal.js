@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Badge, Col, Modal, ModalBody, ModalHeader, Nav, Navbar } from 'react-bootstrap';
+import { Badge, Col, Modal, ModalBody, ModalHeader, Navbar } from 'react-bootstrap';
 import { FaCartArrowDown } from "react-icons/fa";
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { linksMenu } from '../../../utils/links';
 import ContentCart from '../cart/ContentCart';
 
@@ -28,7 +29,7 @@ const NavBarOrizzontal = () => {
         {
           linksMenu().linksTop.map((el, index) => (
             <Col key={index}>
-              <Nav.Link href={el.path}>{el.icon}</Nav.Link>
+              <Link to={el.path}>{el.icon}</Link>
             </Col>
           ))
         }
@@ -48,7 +49,7 @@ const NavBarOrizzontal = () => {
         {
           linksMenu().linksFooter.map((el, index) => (
             <Col key={index}>
-              <Nav.Link href={el.path}>{el.icon}</Nav.Link>
+              <Link to={el.path}>{el.icon}</Link>
             </Col>
           ))
         }

@@ -5,16 +5,16 @@ import { Col } from 'react-bootstrap';
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useGlobalContext } from '../../../context/context';
+import '../../../css/sidebar.css';
 import useSize from '../../../hook/useSize';
 import { linksMenu } from '../../../utils/links';
-import '../../../css/sidebar.css';
 
 
 const SideBar = ({ page }) => {
-    const { params } = useLocation().state
+
     const sizeGlobal = useSize()
     const { isMobile } = sizeGlobal.size;
-    const { isOpen, setIsOpen } = useGlobalContext()
+    const { isOpen, setIsOpen, setContext, params } = useGlobalContext()
 
     const navigate = useNavigate()
     const [currentPage, setCurrentPage] = useState(page);
@@ -34,7 +34,8 @@ const SideBar = ({ page }) => {
                     linksMenu().linksTop.map(el => {
                         if (selected === el.name) {
                             setCurrentPage(selected)
-                            navigate(el.path, { state: { params } })
+                            setContext(selected)
+                            navigate(el.path)
                         }
                     })
                 }}
@@ -59,7 +60,7 @@ const SideBar = ({ page }) => {
                                     {el.icon}
                                 </NavIcon>
                                 <NavText style={{ color: `${colorText}` }}>
-                                    {el.name}
+                                    {el.title}
                                 </NavText>
                                 {/**Per eventuali sotto pagine 
                                 <NavItem eventKey="name/linechart">
@@ -86,13 +87,14 @@ const SideBar = ({ page }) => {
                                     {el.icon}
                                 </NavIcon>
                                 <NavText style={{ color: `${colorText}` }}>
-                                    {el.name}
+                                    {el.title}
                                 </NavText>
                             </NavItem>
                         ))
                     }
                 </SideNav.Nav>
             </SideNav>
+
         </Col>
 
     )
