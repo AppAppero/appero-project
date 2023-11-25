@@ -1,25 +1,24 @@
 import SideNav, { NavIcon, NavItem, NavText } from '@trendmicro/react-sidenav';
 import '@trendmicro/react-sidenav/dist/react-sidenav.css';
-import React, { useState } from 'react';
+import React from 'react';
 import { Col } from 'react-bootstrap';
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useGlobalContext } from '../../../context/context';
 import '../../../css/sidebar.css';
 import useSize from '../../../hook/useSize';
 import { linksMenu } from '../../../utils/links';
 
 
-const SideBar = ({ page }) => {
+const SideBar = () => {
 
     const sizeGlobal = useSize()
     const { isMobile } = sizeGlobal.size;
-    const { isOpen, setIsOpen, setContext, params } = useGlobalContext()
+    const { isOpen, setIsOpen, setContext, context } = useGlobalContext()
 
     const navigate = useNavigate()
-    const [currentPage, setCurrentPage] = useState(page);
 
-    const sidebarClasses = `sidenav---sidenav---_2tBP ${isOpen && !isMobile
+    const sidebarClasses = `bg-white position-fixed sidenav---sidenav---_2tBP ${isOpen && !isMobile
         ? "sidenav---expanded---1KdUL"
         : "sidenav---collapsed---LQDEv"
         } ${isOpen && isMobile ? "mobile-sidebar" : ""}`;
@@ -28,17 +27,14 @@ const SideBar = ({ page }) => {
 
         <Col xs={2}>
 
-            <SideNav className={sidebarClasses}
-                style={{ background: "white", position: "fixed" }}
-                onSelect={(selected) => {
-                    linksMenu().linksTop.map(el => {
-                        if (selected === el.name) {
-                            setCurrentPage(selected)
-                            setContext(selected)
-                            navigate(el.path)
-                        }
-                    })
-                }}
+            <SideNav className={sidebarClasses} onSelect={(selected) => {
+                linksMenu().linksTop.map(el => {
+                    if (selected === el.name) {
+                        setContext(selected)
+                        navigate(el.path)
+                    }
+                })
+            }}
             >
                 <button role="button"
                     onClick={() => {
@@ -52,7 +48,7 @@ const SideBar = ({ page }) => {
                         (!isOpen || isMobile) ? <AiOutlineMenu /> : <AiOutlineClose />
                     }
                 </button>
-                <SideNav.Nav defaultSelected={currentPage}>
+                <SideNav.Nav defaultSelected={context}>
                     {
                         linksMenu().linksTop.map((el, index) => (
                             <NavItem key={index} eventKey={el.name}>

@@ -7,12 +7,10 @@ import HeaderImg from "../components/commons/HeaderImg"
 import Cart from "../components/commons/cart/Cart"
 import NavBarOrizzontal from "../components/commons/menu/NavBarOrizzontal"
 import SideBar from "../components/commons/menu/SideBar"
-import { useGlobalContext } from "../context/context"
 import useSize from "../hook/useSize"
 import { updateBudget } from "../redux/reducerItinerary"
 
 const ContainerScreen = () => {
-    const { context } = useGlobalContext()
 
     const { isAllScreen } = useSize().size;
     const dispatch = useDispatch()
@@ -20,7 +18,6 @@ const ContainerScreen = () => {
     useEffect(() => {
         // TODO : verrà rimosso con i salvataggi in db
         // Tiene stabile il budget principale ad ogni refresh pagina
-        console.log("eccomi")
         dispatch(updateBudget(localStorage.getItem("budgetSession")))
     }, [])
 
@@ -28,7 +25,7 @@ const ContainerScreen = () => {
     return (
         <Container fluid>
             <Row className='gx-4'>
-                {!isAllScreen && <SideBar page={context} />}
+                {!isAllScreen && <SideBar/>}
 
                 <Col xs={12} md={6}>
                     <HeaderImg/>

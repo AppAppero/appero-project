@@ -19,6 +19,10 @@ const FormElement = ({ sizeGlobal }) => {
         dispatch(updateBudget(parseFloat(otherParams.budget)))
         // E lo salva anche nello storage
         localStorage.setItem("budgetSession", otherParams.budget)
+        // Per tenere stabile i parametri di ricerca
+        localStorage.setItem("paramsSearch", JSON.stringify(params))
+        setParams(JSON.parse(localStorage.getItem("paramsSearch")))
+        // Setta il context successivo
         setContext("flight")
         /**
            * Va nella nuova pagina dei voli:con {state{...}} passo gli oggetti nello state altrimenti : 
@@ -26,7 +30,6 @@ const FormElement = ({ sizeGlobal }) => {
            * JSON.stringify(params);
            * 
            * */
-        setParams(params)
         navigate("/travel/flight")
     }
 

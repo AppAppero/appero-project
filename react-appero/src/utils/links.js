@@ -67,14 +67,16 @@ const linksMenu = () => {
     const linksFooter =
         [
             {
-                name: "Impostazioni",
+                name: "settings",
                 icon: <AiFillSetting color={colorIcon} size={sizeIcon} />,
-                path: "/"
+                path: "/",
+                title: "Impostazioni"
             },
             {
-                name: "LogOut",
+                name: "logOut",
                 icon: <BiLogOut color={colorIcon} size={sizeIcon} />,
-                path: "/"
+                path: "/",
+                title: "LogOut"
             }
         ]
 

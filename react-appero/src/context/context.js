@@ -16,9 +16,9 @@ const AppProvider = ({ children }) => {
     const [isLoading, setIsloading] = useState(true);
 
     // Variabile per indicare in che contesto pagina ci troviamo
-    const [context, setContext] = useState("")
+    const [context, setContext] = useState("flight")
     // Parametri di ricerca
-    const [params, setParams] = useState({})
+    const [params, setParams] = useState(JSON.parse(localStorage.getItem("paramsSearch")))
 
 
     return (

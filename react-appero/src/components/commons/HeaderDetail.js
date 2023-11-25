@@ -1,8 +1,7 @@
 import React from 'react';
 import { Col, Row } from 'react-bootstrap';
-import { useLocation } from 'react-router-dom';
-import detailFlight from '../../model/flight/detailFlight';
 import { useGlobalContext } from '../../context/context';
+import detailFlight from '../../model/flight/detailFlight';
 
 const HeaderDetail = () => {
     let { params } = useGlobalContext()
