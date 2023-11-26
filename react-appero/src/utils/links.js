@@ -68,13 +68,13 @@ const linksMenu = (isOrizzontal) => {
         [
             {
                 name: "settings",
-                icon: <AiFillSetting color={colorIcon} size={sizeIcon} />,
+                icon: <AiFillSetting style={{ color: "blue" }} color={colorIcon} size={!isOrizzontal ? sizeIcon : "27"} />,
                 path: "/",
                 title: "Impostazioni"
             },
             {
                 name: "logOut",
-                icon: <BiLogOut color={colorIcon} size={sizeIcon} />,
+                icon: <BiLogOut color="red" size={!isOrizzontal ? sizeIcon : "27"} />,
                 path: "/",
                 title: "LogOut"
             }

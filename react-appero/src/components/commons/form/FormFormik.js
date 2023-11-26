@@ -61,7 +61,7 @@ const FormFormik = ({ buttonHidden, size, clickBottonNavigate }) => {
             returnDate: values.returnDate,
             adults: values.adults,
             currencyCode: localStorage.getItem("currentCodCurrency"),
-             maxPrice: values.budget,
+            maxPrice: values.budget,
             children: values.childrenNumber === "" ? 0 : values.childrenNumber,
             infants: values.infants === "" ? 0 : values.infants,
             // nonStop: false,

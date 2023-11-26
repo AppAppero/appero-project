@@ -48,13 +48,6 @@ const NavBarOrizzontal = () => {
             </Badge>
           </Col>
 
-          {/* {
-          linksMenu().linksFooter.map((el, index) => (
-            <Col key={index}>
-              <Link to={el.path}>{el.icon}</Link>
-            </Col>
-          ))
-        } */}
         </Row>
       </Navbar >
     </>
