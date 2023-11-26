@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
-import { Badge, Col, Modal, ModalBody, ModalHeader, Navbar } from 'react-bootstrap';
+import { Badge, Col, Modal, ModalBody, ModalHeader, Navbar, Row } from 'react-bootstrap';
 import { FaCartArrowDown } from "react-icons/fa";
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { linksMenu } from '../../../utils/links';
 import ContentCart from '../cart/ContentCart';
+import { useGlobalContext } from '../../../context/context'
 
 const NavBarOrizzontal = () => {
 
   const { counterCart } = useSelector(state => state.reducerItinerary);
   const [show, setShow] = useState(false);
+  const { context } = useGlobalContext()
 
   return (
     <>
@@ -19,41 +21,42 @@ const NavBarOrizzontal = () => {
 
       {/* NavBar orizzontale */}
       <Navbar
-        className='position-fixed w-100 bottom-0 start-0 z-index-1000'
+        className='position-fixed w-100 bottom-0 start-0 z-index-1000 m-0 p-0'
         expand="xl"
         bg="white"
         variant="light"
-        style={{ height: "80px", padding: "10px 10px 20px 10px" }}
+        style={{ height: "80px" }}
       >
+        <Row className='w-100 text-center gx-0'>
+          {
+            linksMenu(true).linksTop.map((el, index) => (
+              <Col xs={2} key={index}>
+                <Link style={{ padding: "10px", color: "blue", background: context === el.name ? "blue" : "" }}
+                  className={context === el.name ? 'rounded-pill text-white' : ""} to={el.path}>{el.icon}</Link>
+              </Col>
+            ))
+          }
 
-        {
-          linksMenu().linksTop.map((el, index) => (
-            <Col key={index}>
-              <Link to={el.path}>{el.icon}</Link>
-            </Col>
-          ))
-        }
+          <Col xs={2} className='position-relative text-center'>
+            <FaCartArrowDown
+              style={{ color: "blue" }}
+              size={22}
+              onClick={() => setShow(!show)} />
 
-        <Col className='position-relative'
-          style={{ display: counterCart === 0 ? "none" : "" }}
-        >
-          <FaCartArrowDown
-            size={22} color="orange"
-            onClick={() => setShow(!show)} />
+            <Badge className='translate-middle position-absolute start-90 top-0 rounded-pill bg-danger'>
+              {counterCart}
+            </Badge>
+          </Col>
 
-          <Badge className=' translate-middle position-absolute start-50 top-0 rounded-pill bg-danger'>
-            {counterCart}
-          </Badge>
-        </Col>
-
-        {
+          {/* {
           linksMenu().linksFooter.map((el, index) => (
             <Col key={index}>
               <Link to={el.path}>{el.icon}</Link>
             </Col>
           ))
-        }
-      </Navbar>
+        } */}
+        </Row>
+      </Navbar >
     </>
 
   );

@@ -25,8 +25,8 @@ const linksNavBar = [
 
 
 
-const linksMenu = () => {
-    const colorIcon = "blue";
+const linksMenu = (isOrizzontal) => {
+    const colorIcon = !isOrizzontal ? "blue" : "";
     const sizeIcon = 22;
 
     const linksTop =
