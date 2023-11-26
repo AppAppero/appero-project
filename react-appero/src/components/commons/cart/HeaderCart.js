@@ -32,11 +32,11 @@ const HeaderCart = ({ name }) => {
 
 
     return (
-        <Row className="mt-3 mb-2 gx-5">
-            <Col xs={9}>
+        <Row className="mt-3 mb-2 gx-3">
+            <Col xs={9} className='text-start'>
                 {switchIcon()}
             </Col>
-            <Col xs={2}>
+            <Col xs={2} className='text-end'>
                 <Button
                     onClick={checkRemove}
                     variant="light"

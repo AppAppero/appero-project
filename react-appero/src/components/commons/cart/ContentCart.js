@@ -2,14 +2,20 @@ import { Button, Col, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from 'react-router-dom';
 import { cleanCart } from "../../../redux/reducerItinerary";
-import NavigateButton from "../NavigateButton";
 import Budget from "./Budget";
+import DropdownToggleCart from "./DropdownToggleCart";
 import CartFlight from "./flight/CartFlight";
+import useSize from "../../../hook/useSize"
 
 const ContentCart = () => {
+    const { isAllScreen } = useSize().size
     const { itinerary, counterCart } = useSelector(state => state.reducerItinerary);
-
     const dispach = useDispatch()
+
+    const elements = [
+        // CARRELLO VOLI 
+        { title: "Volo", element: <CartFlight {...itinerary} /> }
+    ]
 
     return (
         <>
@@ -24,8 +30,25 @@ const ContentCart = () => {
                     (
 
                         <>
-                            {/* CARRELLO VOLI */}
-                            <CartFlight {...itinerary} />
+                            {!isAllScreen ?
+                                (
+                                    elements.map((el, key) => {
+                                        return <DropdownToggleCart key={key} title={el.title} >
+                                            {el.element}
+                                        </DropdownToggleCart>
+                                    })
+                                ) :
+                                (
+                                    elements.map((el, key) => {
+                                        return <Row className="mt-2" key={key}>
+                                            <Col>
+                                                {el.element}
+                                            </Col>
+                                        </Row>
+                                    })
+                                )
+                            }
+
 
                             <Row className="text-center mt-5">
                                 <Col>
@@ -33,13 +56,13 @@ const ContentCart = () => {
                                 </Col>
                             </Row>
                             <Row className="text-center mt-5 gx-0">
-                                <NavigateButton action="preview" />
+                                {/* <NavigateButton action="preview" /> */}
                                 <Col className="text-center">
                                     <Button
                                         onClick={() => dispach(cleanCart())}
                                         variant="danger">Svuota</Button>
                                 </Col>
-                                <NavigateButton action="next" />
+                                {/* <NavigateButton action="next" /> */}
                             </Row>
                         </>
                     ) :

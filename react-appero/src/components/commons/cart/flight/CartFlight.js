@@ -10,7 +10,7 @@ const CartFlight = ({ flight }) => {
         <>
             {
                 flight?.id &&
-                <Card className="p-1 border-0">
+                <Card className="p-2 border-0 bg-light">
 
                     <HeaderCart name="flight" />
 
@@ -34,7 +34,7 @@ const CartFlight = ({ flight }) => {
 // Header Voli
 const HeaderFlight = memo(({ index, segments }) => {
     return (
-        <Card className="mt-1 p-1">
+        <Card className="mt-2 p-1 border-0">
             <Row className="text-center">
                 <Col>{index === 0 ? "Andata" : "Ritorno"}</Col>
             </Row>
