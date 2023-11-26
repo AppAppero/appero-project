@@ -9,7 +9,7 @@ const HeaderImg = () => {
     const { isAllScreen } = useSize().size
 
     return (
-        <Row className=' mb-2'>
+        <Row className='gx-2 mb-2'>
             <Col xs={2} sm={2} className='mt-3'>
                 <img className='rounded-pill' src={ex} width={60} height={60} />
             </Col>
