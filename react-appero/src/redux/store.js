@@ -1,12 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
 import reducerFlight from "./reducerFlight";
 import reducerItinerary from "./reducerItinerary";
+import reducerHotel from "./reducerHotel";
 
 
 const store = configureStore({
   reducer: {
     reducerFlight,
-    reducerItinerary
+    reducerItinerary,
+    reducerHotel
   }
 })
 

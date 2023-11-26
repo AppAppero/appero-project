@@ -1,18 +1,17 @@
 import React from 'react';
 import { Col, Row } from 'react-bootstrap';
-import { useGlobalContext } from '../../context/context';
-import detailFlight from '../../model/flight/detailFlight';
+import useDetails from '../../hook/useDetails';
 
 const HeaderDetail = () => {
-    let { params } = useGlobalContext()
+    let details = useDetails()
     return (
         <>
             <Row className='rounded-3 p-1 justify-content-center gx-3'
                 style={{ background: "#F29F05" }}>
                 {
-                    detailFlight(params).map((el, index) => (
+                    details.map((el, index) => (
                         <Col xs={4} key={index}>
-                            <Row className='text-white' style={{ fontSize: "12px" }}>
+                            <Row className='text-white' style={{ fontSize: "10px" }}>
                                 <Col xs={1}></Col>
                                 <Col>{el?.title}</Col>
                             </Row>
