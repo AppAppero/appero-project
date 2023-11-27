@@ -1,4 +1,4 @@
-const ERROR_EMPTY = "Non può essere vuoto !"
+const ERROR_EMPTY = "Campo Obbligatorio !"
 const ERROR_MIN = "Minimo 2 caratteri !"
 const ERROR_0 = "Non può essere 0 !"
 const ERROR_NEGATIVE = "Non può essere un numero negativo!"
