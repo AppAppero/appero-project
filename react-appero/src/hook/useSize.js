@@ -13,7 +13,7 @@ const useSize = (id) => {
     );
 
     // Per togliere carrello e sidebar applicandolo sotto lo schermo
-    const isAllScreen = windowSize.width <= 767;
+    const isAllScreen = windowSize.width <= 767 || windowSize.height <= 576;;
     
     // Considera tutto sotto i 768px come mobile
     const isMobile = windowSize.width <= 576 || windowSize.height <= 576;

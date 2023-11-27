@@ -26,11 +26,11 @@ const ContainerScreen = () => {
     return (
         <Container fluid>
             <Row className='gx-4'>
-                {!isAllScreen && <SideBar/>}
+                {!isAllScreen && <SideBar />}
 
-                <Col xs={12} md={6}>
-                    <HeaderImg/>
-                    <HeaderDetail/>
+                <Col xs={12} md={!isAllScreen ? 6 : 12}>
+                    <HeaderImg />
+                    <HeaderDetail />
                     <Outlet />
                 </Col>
 

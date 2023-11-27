@@ -39,6 +39,7 @@ const NavBarOrizzontal = () => {
 
           <Col xs={2} className='position-relative text-center'>
             <FaCartArrowDown
+              cursor="pointer"
               style={{ color: "blue" }}
               size={22}
               onClick={() => setShow(!show)} />
