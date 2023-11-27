@@ -3,6 +3,7 @@ import { Button, Col, FormControl, Modal, ModalBody, ModalFooter, ModalHeader, M
 import { CiEdit } from "react-icons/ci";
 import { useDispatch, useSelector } from 'react-redux';
 import { updateBudget } from '../../../redux/reducerItinerary';
+import { BUDGET } from '../../../utils/constStorageCookie';
 
 const Budget = () => {
     const { actualBudget, principalBudget } = useSelector(state => state.reducerItinerary);
@@ -73,7 +74,7 @@ const ModalEditBudget = memo(({ isOpenModal, setIsOpenModal }) => {
 
     const updateValue = () => {
         dispatch(updateBudget(newBudget))
-        localStorage.setItem("budgetSession", newBudget)
+        localStorage.setItem(BUDGET, newBudget)
         setIsOpenModal(false)
     }
 

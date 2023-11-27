@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { updateBudget } from '../../redux/reducerItinerary';
 import FormFormik from '../commons/form/FormFormik';
 import { useGlobalContext } from '../../context/context';
+import { BUDGET, PARAMS } from '../../utils/constStorageCookie';
 
 const FormElement = ({ sizeGlobal }) => {
 
@@ -18,10 +19,10 @@ const FormElement = ({ sizeGlobal }) => {
         // Aggiorna direttamente il budget
         dispatch(updateBudget(parseFloat(otherParams.budget)))
         // E lo salva anche nello storage
-        localStorage.setItem("budgetSession", otherParams.budget)
+        localStorage.setItem(BUDGET, otherParams.budget)
         // Per tenere stabile i parametri di ricerca
-        localStorage.setItem("paramsSearch", JSON.stringify(params))
-        setParams(JSON.parse(localStorage.getItem("paramsSearch")))
+        localStorage.setItem(PARAMS, JSON.stringify(params))
+        setParams(JSON.parse(localStorage.getItem(PARAMS)))
         // Setta il context successivo
         setContext("flight")
         /**

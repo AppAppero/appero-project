@@ -1,6 +1,7 @@
 import { Form, Formik } from "formik";
-import { Col, FormCheck, FormGroup, Row } from "react-bootstrap";
+import { Col, FormGroup, Row } from "react-bootstrap";
 import * as Yup from "yup";
+import { CURRENCY } from "../../../utils/constStorageCookie";
 import {
     ERROR_DATE, ERROR_DATE_RETURN,
     ERROR_DATE_TODAY,
@@ -12,7 +13,7 @@ import {
     ERROR_REQUIRED_ADULTS,
     MESSAGE_INFO_ADULTS,
     MESSAGE_INFO_BUDGET,
-    MESSAGE_INFO_CHILDREN, MESSAGE_INFO_INFANTS
+    MESSAGE_INFO_CHILDREN, MESSAGE_INFO_INFANTS, MORE_THAN
 } from "../../../utils/message";
 import SearchIATA from "../../home/SearchIATA";
 import SingleInput from "./SingleInput";
@@ -23,10 +24,10 @@ const FormFormik = ({ buttonHidden, size, clickBottonNavigate }) => {
     const initialValues = {
         origin: "BRI",
         destination: "VLC",
-        departureDate: "2023-11-27",
-        returnDate: "2023-12-03",
+        departureDate: "2023-12-04",
+        returnDate: "2023-12-10",
         adults: 1,
-        budget: 300,
+        budget: 500,
         childrenNumber: "",
         infants: "",
         overnightStayCity: ""
@@ -60,7 +61,7 @@ const FormFormik = ({ buttonHidden, size, clickBottonNavigate }) => {
             departureDate: values.departureDate,
             returnDate: values.returnDate,
             adults: values.adults,
-            currencyCode: localStorage.getItem("currentCodCurrency"),
+            currencyCode: localStorage.getItem(CURRENCY),
             maxPrice: values.budget,
             children: values.childrenNumber === "" ? 0 : values.childrenNumber,
             infants: values.infants === "" ? 0 : values.infants,
@@ -94,7 +95,7 @@ const FormFormik = ({ buttonHidden, size, clickBottonNavigate }) => {
                 .required(ERROR_DATE + "ritorno"),
 
             budget: Yup.number()
-                // .min(300, MORE_THAN)
+                .min(process.env.REACT_APP_MIN_BUDGET, MORE_THAN)
                 .positive(ERROR_NEGATIVE)
                 .required(ERROR_EMPTY),
 
@@ -150,6 +151,19 @@ const FormFormik = ({ buttonHidden, size, clickBottonNavigate }) => {
                                     touched={touched.origin}
                                 />
 
+                                {/* Custom component: Per Gestire meglio l'autocompletamento dei codIATA */}
+                                <SearchIATA
+                                    size={size}
+                                    values={values.destination}
+                                    onBlur={handleBlur}
+                                    setFieldValue={setFieldValue}
+                                    placeholder='Destinazione'
+                                    name='destination'
+                                    errors={errors.destination}
+                                    touched={touched.destination}
+                                />
+
+
                                 <SingleInput
                                     labelUp={true}
                                     type='date'
@@ -161,6 +175,25 @@ const FormFormik = ({ buttonHidden, size, clickBottonNavigate }) => {
                                     errors={errors.departureDate}
                                     touched={touched.departureDate}
                                 />
+
+                            </Col>
+
+
+                            <Col xs={12} md={4}>
+
+
+                                <SingleInput
+                                    labelUp={true}
+                                    type='date'
+                                    onBlur={handleBlur}
+                                    value={values.returnDate}
+                                    nameValue="returnDate"
+                                    nameInput="Data di ritorno"
+                                    handleChange={handleChange}
+                                    errors={errors.returnDate}
+                                    touched={touched.returnDate}
+                                />
+
 
                                 <SingleInput
                                     labelUp={false}
@@ -175,50 +208,6 @@ const FormFormik = ({ buttonHidden, size, clickBottonNavigate }) => {
                                     isInfo={true}
                                     messageInfo={MESSAGE_INFO_BUDGET}
                                 />
-
-                            </Col>
-
-
-                            <Col xs={12} md={4}>
-                                {/* Custom component: Per Gestire meglio l'autocompletamento dei codIATA */}
-                                <SearchIATA
-                                    size={size}
-                                    values={values.destination}
-                                    onBlur={handleBlur}
-                                    setFieldValue={setFieldValue}
-                                    placeholder='Destinazione'
-                                    name='destination'
-                                    errors={errors.destination}
-                                    touched={touched.destination}
-                                />
-
-                                <SingleInput
-                                    labelUp={true}
-                                    type='date'
-                                    onBlur={handleBlur}
-                                    value={values.returnDate}
-                                    nameValue="returnDate"
-                                    nameInput="Data di ritorno"
-                                    handleChange={handleChange}
-                                    errors={errors.returnDate}
-                                    touched={touched.returnDate}
-                                />
-
-                                {/* <SingleInput
-                                    labelUp={false}
-                                    type='text'
-                                    value={values.overnightStayCity}
-                                    nameValue="overnightStayCity"
-                                    nameInput="Città di alloggio"
-                                    handleChange={(value) => setFieldValue("overnightStayCity", value)}
-                                    errors={errors.overnightStayCity}
-                                    onBlur={handleBlur}
-                                    touched={touched.overnightStayCity}
-                                    isCheck={true}
-                                    messageCheck="Stessa della destinazione"
-                                    param={values.destination}
-                                    setFieldValue={setFieldValue}
-                                /> */}
 
 
                             </Col>

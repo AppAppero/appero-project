@@ -1,5 +1,6 @@
 import { createContext, useContext, useState } from "react";
 import useSize from "../hook/useSize";
+import { PARAMS } from "../utils/constStorageCookie";
 
 const AppContext = createContext();
 
@@ -18,7 +19,7 @@ const AppProvider = ({ children }) => {
     // Variabile per indicare in che contesto pagina ci troviamo
     const [context, setContext] = useState("flight")
     // Parametri di ricerca
-    const [params, setParams] = useState(JSON.parse(localStorage.getItem("paramsSearch")))
+    const [params, setParams] = useState(JSON.parse(localStorage.getItem(PARAMS)))
 
 
     return (

@@ -9,6 +9,7 @@ import NavBarOrizzontal from "../components/commons/menu/NavBarOrizzontal"
 import SideBar from "../components/commons/menu/SideBar"
 import useSize from "../hook/useSize"
 import { updateBudget } from "../redux/reducerItinerary"
+import { BUDGET } from "../utils/constStorageCookie"
 
 const ContainerScreen = () => {
 
@@ -18,7 +19,7 @@ const ContainerScreen = () => {
     useEffect(() => {
         // TODO : verrà rimosso con i salvataggi in db
         // Tiene stabile il budget principale ad ogni refresh pagina
-        dispatch(updateBudget(localStorage.getItem("budgetSession")))
+        dispatch(updateBudget(localStorage.getItem(BUDGET)))
     }, [])
 
 

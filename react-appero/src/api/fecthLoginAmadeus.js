@@ -1,5 +1,6 @@
 import axios from "axios";
 import Cookies from 'js-cookie';
+import { TOKEN_AMADEUS } from "../utils/constStorageCookie";
 
 const apiUrl = process.env.REACT_APP_LOGIN;
 const client_id = process.env.REACT_APP_CLIENT_ID;
@@ -30,7 +31,7 @@ const loginAmadeus = async (isLogin) => {
             const halfHourFromNow = new Date(new Date().getTime() + 30 * 60 * 1000);
 
             // Salva nei cookies impostando le sicurezze (httpOnly: true, secure: true) e la scadenza (expires: 7 giorni)
-            Cookies.set("token-amadeus", tokenAmadeus,
+            Cookies.set(TOKEN_AMADEUS, tokenAmadeus,
                 {
                     expires: halfHourFromNow,
                     // httpOnly: true, secure: true, sameSite: "None", domain: "localhost", path: "/"

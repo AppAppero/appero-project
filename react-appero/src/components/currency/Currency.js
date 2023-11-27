@@ -1,10 +1,11 @@
 import { Row } from "react-bootstrap"
+import { CURRENCY } from "../../utils/constStorageCookie"
 
 const Currency = ({ name, code, symbol, setCurrentCodCurrency, setIsOpenCurrency }) => {
 
     // Setta nel localStorage la moneta
     const handleChangeCurrentCodCurrency = (symbol) => {
-        localStorage.setItem("currentCodCurrency", symbol)
+        localStorage.setItem(CURRENCY, symbol)
         setCurrentCodCurrency(symbol)
         setIsOpenCurrency(false)
     }

@@ -38,7 +38,7 @@ const SingleInput = memo((
 
     // Per il min di budget
     const checkBudget = () => {
-        return nameValue === "budget" ? 300 : ""
+        return nameValue === "budget" ? process.env.REACT_APP_MIN_BUDGET : ""
     }
 
     const tooltip = (

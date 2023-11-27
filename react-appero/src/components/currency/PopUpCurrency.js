@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
+import { Button, FormControl, Modal, ModalBody, ModalHeader, ModalTitle } from "react-bootstrap";
+import { CURRENCY } from "../../utils/constStorageCookie";
 import currency from '../../utils/currency';
 import Currency from "./Currency";
-import { FormControl, Modal, ModalBody, ModalHeader, ModalTitle } from "react-bootstrap";
 
 const PopUpCurrency = () => {
     const [isOpenCurrency, setIsOpenCurrency] = useState(false)
@@ -11,12 +12,12 @@ const PopUpCurrency = () => {
 
     // Use Effect per il Currency (Tipo di moneta)
     useEffect(() => {
-        if (localStorage.getItem("currentCodCurrency")) {
-            setCurrentCodCurrency(localStorage.getItem("currentCodCurrency"))
+        if (localStorage.getItem(CURRENCY)) {
+            setCurrentCodCurrency(localStorage.getItem(CURRENCY))
         } else {
             // Default Euro:EUR
             setCurrentCodCurrency("EUR")
-            localStorage.setItem("currentCodCurrency", "EUR")
+            localStorage.setItem(CURRENCY, "EUR")
         }
     }, [currentCodCurrency])
 
@@ -30,13 +31,13 @@ const PopUpCurrency = () => {
 
     return (
         <>
-            <div
-                className="fw-bold fs-5 text-white"
+            <Button
+                className="text-light btn-light btn-md"
                 onClick={() => setIsOpenCurrency(!isOpenCurrency)}
-                style={{ cursor: "pointer" }}
+                style={{ background: "none" }}
             >
                 {currentCodCurrency}
-            </div>
+            </Button>
 
             <Modal show={isOpenCurrency} onHide={() => setIsOpenCurrency(!isOpenCurrency)}>
                 <ModalHeader closeButton>

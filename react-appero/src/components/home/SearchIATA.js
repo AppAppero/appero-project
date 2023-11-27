@@ -1,4 +1,4 @@
-import { memo, useState } from "react";
+import { memo, useCallback, useEffect, useState } from "react";
 import { Col, Row } from "react-bootstrap";
 import codeIATA from "../../utils/codeIATA";
 import SingleInput from "../commons/form/SingleInput";
@@ -19,6 +19,13 @@ const SearchIATA = memo(({
 
     const [showSearch, setShowSearch] = useState(false)
     const [searchResults, setSearchResults] = useState([]);
+    const [namesCity, setNamesCity] = useState([])
+
+
+    // const generateName = useCallback((value) => {
+    //     setNamesCity(nameCityByIATA(value))
+    //     return namesCity
+    // }, [])
 
     const handleInputChange = (e, setFieldValue) => {
         const { value, name } = e.target;
@@ -80,6 +87,7 @@ const SearchIATA = memo(({
         </>
     )
 })
+
 
 const search = {
     position: "absolute",

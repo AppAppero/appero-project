@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Row } from "react-bootstrap";
 import FormElement from "../components/home/FormElement";
-import Navbar from "../components/home/NavBar";
+import NavbarHome from "../components/home/NavBarHome";
 import SuggestedTravel from "../components/home/SuggestedTravel";
 import useSize from "../hook/useSize";
 import useTitle from "../hook/useTitle";
@@ -28,7 +28,7 @@ const Home = () => {
     <Container id="container" fluid style={containerStyle}>
 
       {/* NavBar  */}
-      <Navbar />
+      <NavbarHome />
 
       {/* Viaggi suggeriti */}
       <SuggestedTravel sizeGlobal={sizeGlobal} />
