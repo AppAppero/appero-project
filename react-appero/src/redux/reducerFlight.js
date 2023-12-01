@@ -2,6 +2,7 @@ import { createAction, createSlice, isAnyOf } from "@reduxjs/toolkit";
 import { login } from "../api/fecthLoginAmadeus";
 import instanceFlight from "../api/fetchFlight";
 import { bar_mil, bar_val_children } from '../utils/exFlights';
+import axios from "axios";
 
 
 // Create action : Crea il filtro per i voli migliori,economici e veloci
@@ -133,12 +134,10 @@ export const searchFlightAmadeus = (params, isTest) => async (dispatch) => {
     if (!isTest) {
         dispatch(loading(true))
         try {
-            await login()
-            let data = await instanceFlight.get("", { params: params });
+            let data = await axios.post("http://localhost:5000/api/search/flights", params)
             dispatch(loading(false))
             dispatch(containerFlights(data.data.data));
         } catch (e) {
-            console.log(e.response.status)
             dispatch(loading(false))
             dispatch(error(e.message));
         }
@@ -151,13 +150,13 @@ export const searchFlightAmadeus = (params, isTest) => async (dispatch) => {
 
 // Riordina in base al prezzo
 const reorderByPrice = (flights) => {
-    return flights.slice()
+    return flights?.slice()
         .sort((a, b) => a.price.grandTotal - b.price.grandTotal)
 }
 
 // Riordina in base alla durata
 const reorderDuration = (flights) => {
-    return flights.slice().sort((a, b) => {
+    return flights?.slice().sort((a, b) => {
         const durationA = getDurationInSeconds(a);
         const durationB = getDurationInSeconds(b);
 
@@ -271,7 +270,7 @@ const calculateHour = (flights) => {
 
 // Funzione di confronto per ordinare i voli basandosi su durata totale, numero di scali e costo totale
 function reorderBest(flights) {
-    return flights.slice().sort((flight1, flight2) => {
+    return flights?.slice().sort((flight1, flight2) => {
         const duration1 = getDurationInSeconds(flight1);
         const duration2 = getDurationInSeconds(flight2);
 

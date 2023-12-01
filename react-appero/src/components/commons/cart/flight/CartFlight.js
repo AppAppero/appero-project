@@ -23,7 +23,7 @@ const CartFlight = ({ flight }) => {
                         })
                     }
 
-                    <TotalActivity message="Totale Volo" price={flight?.price?.grandTotal} />
+                    <TotalActivity message="Totale Volo" price={flight?.price?.grandTotal}/>
 
                 </Card>
             }

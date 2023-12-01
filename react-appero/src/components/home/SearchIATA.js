@@ -1,8 +1,8 @@
-import { memo, useCallback, useEffect, useState } from "react";
+import { memo, useState } from "react";
 import { Col, Row } from "react-bootstrap";
 import codeIATA from "../../utils/codeIATA";
-import SingleInput from "../commons/form/SingleInput";
 import { nameCityByIATA } from "../../utils/formatState";
+import SingleInput from "../commons/form/SingleInput";
 
 
 //** PopUp per la ricerca delle città mentre si compila il form */
@@ -27,16 +27,18 @@ const SearchIATA = memo(({
     //     return namesCity
     // }, [])
 
-    const handleInputChange = (e, setFieldValue) => {
+    const handleInputChange = async (e, setFieldValue) => {
         const { value, name } = e.target;
-        //Filtra la lista degli IATA
-        const filteredResults =
-            codeIATA.filter(item =>
+        if (value.length >= 3) {
+            //Filtra la lista degli IATA
+            const filteredResults = codeIATA.filter(item =>
                 Object.values(item)[0].toLowerCase().includes(value.toLowerCase()));
 
-        //La setta nel modello da visualizzare
-        setSearchResults(filteredResults);
-        setShowSearch(true)
+            //La setta nel modello da visualizzare
+            setSearchResults(filteredResults);
+            setShowSearch(true)
+
+        }
         // Utile per l'override di handleChange di formik
         setFieldValue(name, value);
     };
@@ -76,6 +78,7 @@ const SearchIATA = memo(({
                             key={index}>
                             <Col xs={8}>
                                 {nameCityByIATA(Object.keys(el)[0])}
+
                             </Col>
                             <Col xs={2}>
                                 {Object.keys(el)[0]}

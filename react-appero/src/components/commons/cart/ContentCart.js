@@ -33,7 +33,10 @@ const ContentCart = () => {
                             {!isAllScreen ?
                                 (
                                     elements.map((el, key) => {
-                                        return <DropdownToggleCart key={key} title={el.title} >
+                                        return <DropdownToggleCart
+                                            totalPrice={itinerary?.flight?.price?.grandTotal}
+                                            key={key}
+                                            title={el.title} >
                                             {el.element}
                                         </DropdownToggleCart>
                                     })

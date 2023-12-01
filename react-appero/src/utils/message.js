@@ -1,7 +1,7 @@
 import { CURRENCY } from "./constStorageCookie"
 
 const ERROR_EMPTY = "Campo Obbligatorio !"
-const ERROR_MIN = "Minimo 2 caratteri !"
+const ERROR_MIN = "Minimo 3 caratteri !"
 const ERROR_0 = "Non può essere 0 !"
 const ERROR_NEGATIVE = "Non può essere un numero negativo!"
 const MORE_THAN = "Deve essere almeno di " + process.env.REACT_APP_MIN_BUDGET + " " + localStorage.getItem(CURRENCY)

@@ -14,7 +14,7 @@ const TotalActivity = ({ message, price }) => {
                 }
                 sm={10}
                 className="text-primary p-2 mb-2 text-center fw-bold p-1">
-                {message} : {price}
+                {message} : {price} €
             </Col>
         </Row>
     )

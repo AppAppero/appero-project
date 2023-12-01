@@ -82,9 +82,9 @@ const FormFormik = ({ buttonHidden, size, clickBottonNavigate }) => {
     const today = new Date();
     const validationSchema = Yup.object().shape(
         {
-            origin: Yup.string().min(2, ERROR_MIN).required(ERROR_EMPTY),
+            origin: Yup.string().min(3, ERROR_MIN).required(ERROR_EMPTY),
 
-            destination: Yup.string().min(2, ERROR_MIN).required(ERROR_EMPTY),
+            destination: Yup.string().min(3, ERROR_MIN).required(ERROR_EMPTY),
 
             departureDate: Yup.date()
                 .min(today, ERROR_DATE_TODAY)

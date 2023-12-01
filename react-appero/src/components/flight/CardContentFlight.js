@@ -3,7 +3,7 @@ import { Button, Card, Col, Row } from "react-bootstrap";
 import { FaArrowCircleRight } from "react-icons/fa";
 import { GoArrowSwitch } from 'react-icons/go';
 import { useDispatch, useSelector } from "react-redux";
-import rya from "../../images/imgEx/rya.png";
+import imgDef from "../../images/default-plane.avif";
 import { addFlight, removeFlight } from "../../redux/reducerItinerary";
 import { formatDuration, formatHourByDate } from "../../utils/formatDuration";
 import DetailFlight from "./DetailFlight";
@@ -46,12 +46,13 @@ const CardContentFlight = memo(({ selectIdFlight, setSelectIdFlight, flight }) =
             </Row>
             {
                 itineraries.map((iti, i) => (
-                    <Card className="mt-2 border-0 shadow-sm" key={i}>
+                    <Card className="mt-2 border-0 shadow-lg" key={i}>
                         {
                             iti?.segments.map((seg, ind) => (
-                                <Row key={ind} className='gx-0 m-2'>
+                                <Row key={ind} className='gx-0 m-3'>
                                     <Col xs={3}>
-                                        <img src={rya} />
+                                        {/* Se l'immagine è presente la visualizza altrimenti inserisci quella di default */}
+                                        {seg?.urlCarrier ? <img style={{ width: "50px" }} src={seg.urlCarrier} /> : <img className="rounded-pill" style={{ width: "50px" }} src={imgDef} />}
                                     </Col>
                                     <Col className="text-center" xs={3}>
                                         <Row>
