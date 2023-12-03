@@ -15,7 +15,7 @@ const ContainerScreen = () => {
 
     const { isAllScreen } = useSize().size;
     const dispatch = useDispatch()
-
+    
     useEffect(() => {
         // TODO : verrà rimosso con i salvataggi in db
         // Tiene stabile il budget principale ad ogni refresh pagina

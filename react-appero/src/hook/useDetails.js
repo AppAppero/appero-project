@@ -8,9 +8,15 @@ import { useEffect, useState } from "react";
 // Modello per i dettagli del volo
 const useDetails = () => {
 
-    let { params, context } = useGlobalContext()
+    let { params, paramsHotel, context } = useGlobalContext()
     const [details, setDetails] = useState([])
     const sizeIcon = 12
+
+    const generateStringRoom = () => {
+        return paramsHotel?.numberRoom === 1 ? 
+        paramsHotel?.numberRoom + " Stanza" : paramsHotel?.numberRoom + " Stanze"
+    }
+
 
     const detailsFlight =
         [
@@ -60,7 +66,7 @@ const useDetails = () => {
             detail: [
                 {
                     icon: <SiGooglemaps size={sizeIcon} />,
-                    text: nameCityByIATA(params?.destinationLocationCode)
+                    text: paramsHotel?.overnightCity
                 }
             ]
         },
@@ -79,11 +85,13 @@ const useDetails = () => {
             detail: [
                 {
                     icon: <BiSolidUser size={sizeIcon} />,
-                    text: checkTextPerson(params) + " - 1 Stanza"
+                    text: checkTextPerson(params) + " - " + generateStringRoom()
                 }
             ]
         }
     ]
+
+
 
     useEffect(() => {
         switch (context) {

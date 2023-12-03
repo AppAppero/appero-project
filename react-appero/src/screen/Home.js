@@ -1,16 +1,22 @@
-import React from "react";
-import { Container, Row } from "react-bootstrap";
+import React, { useEffect } from "react";
+import { Container } from "react-bootstrap";
 import FormElement from "../components/home/FormElement";
 import NavbarHome from "../components/home/NavBarHome";
 import SuggestedTravel from "../components/home/SuggestedTravel";
 import useSize from "../hook/useSize";
 import useTitle from "../hook/useTitle";
 import bg from "../images/bg.png";
+import { useGlobalContext } from "../context/context";
 
 const Home = () => {
   useTitle("Home")
 
   const sizeGlobal = useSize("container")
+  const { removeItemsLocalStorage } = useGlobalContext()
+
+  useEffect(() => {
+    removeItemsLocalStorage()
+  }, [])
 
   const containerStyle = {
     paddingBottom: "40px",

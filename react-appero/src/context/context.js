@@ -1,35 +1,33 @@
-import { createContext, useContext, useState } from "react";
-import useSize from "../hook/useSize";
-import { PARAMS } from "../utils/constStorageCookie";
+import { createContext, useContext, useEffect, useState } from "react";
+import { BUDGET, PARAMS, PARAMS_HOTEL } from "../utils/constStorageCookie";
 
 const AppContext = createContext();
 
 const AppProvider = ({ children }) => {
-    // Per capire la grandezza dello schermo
-    const { isMobile } = useSize().size;
+    // Nomi parametri del local storage
+    const nameItems = [BUDGET, PARAMS, PARAMS_HOTEL]
     // Per SideBar
     const [isOpen, setIsOpen] = useState(false);
-    // Per la colonna del blocco <Content />
-    const colContentXS = isOpen && !isMobile ? 7 : 8;
-    const colContentSM = isOpen && !isMobile ? 7 : 6;
-    const colContentMD = isOpen && !isMobile ? 7 : 7;
-
-    const [isLoading, setIsloading] = useState(true);
-
     // Variabile per indicare in che contesto pagina ci troviamo
     const [context, setContext] = useState("flight")
-    // Parametri di ricerca
+    // Parametri di ricerca iniziali
     const [params, setParams] = useState(JSON.parse(localStorage.getItem(PARAMS)))
+    // Parametri di hotel
+    const [paramsHotel, setParamsHotel] = useState(JSON.parse(localStorage.getItem(PARAMS_HOTEL)))
 
+    // Rimuove negli Items del local storage 
+    const removeItemsLocalStorage = () => {
+        nameItems.forEach(item => localStorage.removeItem(item))
+    }
 
     return (
         <AppContext.Provider value={
             {
+                removeItemsLocalStorage,
                 params, setParams,
+                paramsHotel, setParamsHotel,
                 context, setContext,
-                isLoading, setIsloading,
-                isOpen, setIsOpen,
-                colContentXS, colContentSM, colContentMD
+                isOpen, setIsOpen
             }
         }>
             {children}

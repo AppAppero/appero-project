@@ -273,8 +273,7 @@ const FormFormik = ({ buttonHidden, size, clickBottonNavigate }) => {
                         </FormGroup>
                     </Row>
                 </Form>
-            )
-            }
+            )}
 
         </Formik >
     )

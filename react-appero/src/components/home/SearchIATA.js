@@ -19,13 +19,7 @@ const SearchIATA = memo(({
 
     const [showSearch, setShowSearch] = useState(false)
     const [searchResults, setSearchResults] = useState([]);
-    const [namesCity, setNamesCity] = useState([])
 
-
-    // const generateName = useCallback((value) => {
-    //     setNamesCity(nameCityByIATA(value))
-    //     return namesCity
-    // }, [])
 
     const handleInputChange = async (e, setFieldValue) => {
         const { value, name } = e.target;

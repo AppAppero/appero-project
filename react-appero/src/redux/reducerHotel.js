@@ -5,7 +5,8 @@ const initialState = {
     isError: false,
     messageError: "",
     hotels: [],
-    filterHotel: []
+    filterHotel: [],
+    detailsHotel: {}
 }
 
 const reducerHotel = createSlice(
@@ -32,11 +33,14 @@ const reducerHotel = createSlice(
                 state.isError = false
                 state.messageError = ""
                 state.hotels = action.payload
+            },
+            setDetailsHotel: (state, action) => {
+                state.detailsHotel = action.payload
             }
         }
     }
 )
 
-export const { } = reducerHotel.actions;
+export const { setDetailsHotel } = reducerHotel.actions;
 
 export default reducerHotel.reducer;
