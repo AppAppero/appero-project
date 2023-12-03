@@ -6,6 +6,7 @@ import { searchFlightAmadeus } from '../../redux/reducerFlight';
 import ErrorElement from '../commons/ErrorElement';
 import Loading from '../commons/Loading';
 import CardContentFlight from './CardContentFlight';
+import TitleContent from '../commons/TitleContent';
 
 const ContentFlight = () => {
     let { params } = useGlobalContext()
@@ -25,12 +26,11 @@ const ContentFlight = () => {
 
     return (
         <>
-            {
-                !isLoading && !isError &&
-                <Row className='fw-bold fs-4 lh-1.5 text-dark mt-2'>
-                    <Col>Scegli il volo</Col>
-                </Row>
-            }
+            <TitleContent
+                isError={isError}
+                isLoading={isLoading}
+                title="Scegli il volo" />
+
             <Row className='gx-4'>
                 {
                     !isLoading && !isError ?

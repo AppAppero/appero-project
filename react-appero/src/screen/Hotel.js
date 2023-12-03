@@ -8,6 +8,8 @@ import { PARAMS_HOTEL } from '../utils/constStorageCookie';
 import { ERROR_0, ERROR_EMPTY, ERROR_MIN } from '../utils/message';
 import { setDetailsHotel } from "../redux/reducerHotel";
 import { useDispatch } from "react-redux";
+import HeaderFilterHotel from "../components/hotel/HeaderFilterHotel";
+import ContentHotel from "../components/hotel/ContentHotel";
 
 const Hotel = () => {
   useTitle("Hotel")
@@ -24,6 +26,8 @@ const Hotel = () => {
   return (
     <>
       {isOpenModal && <ModalFormHotel isOpenModal={isOpenModal} setIsOpenModal={setIsOpenModal} />}
+      <HeaderFilterHotel />
+      <ContentHotel />
     </>
   )
 }
