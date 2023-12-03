@@ -2,7 +2,6 @@ import { useEffect } from "react"
 import { Col, Container, Row } from "react-bootstrap"
 import { useDispatch } from "react-redux"
 import { Outlet } from "react-router-dom"
-import HeaderDetail from "../components/commons/HeaderDetail"
 import HeaderImg from "../components/commons/HeaderImg"
 import Cart from "../components/commons/cart/Cart"
 import NavBarOrizzontal from "../components/commons/menu/NavBarOrizzontal"
@@ -15,7 +14,7 @@ const ContainerScreen = () => {
 
     const { isAllScreen } = useSize().size;
     const dispatch = useDispatch()
-    
+
     useEffect(() => {
         // TODO : verrà rimosso con i salvataggi in db
         // Tiene stabile il budget principale ad ogni refresh pagina
@@ -30,7 +29,6 @@ const ContainerScreen = () => {
 
                 <Col xs={12} md={!isAllScreen ? 6 : 12}>
                     <HeaderImg />
-                    <HeaderDetail />
                     <Outlet />
                 </Col>
 

@@ -1,9 +1,12 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useState } from "react";
+import { useDispatch } from "react-redux";
+import { setDetailsHotel } from "../redux/reducerHotel";
 import { BUDGET, PARAMS, PARAMS_HOTEL } from "../utils/constStorageCookie";
 
 const AppContext = createContext();
 
 const AppProvider = ({ children }) => {
+    const dispatch = useDispatch()
     // Nomi parametri del local storage
     const nameItems = [BUDGET, PARAMS, PARAMS_HOTEL]
     // Per SideBar
@@ -12,20 +15,18 @@ const AppProvider = ({ children }) => {
     const [context, setContext] = useState("flight")
     // Parametri di ricerca iniziali
     const [params, setParams] = useState(JSON.parse(localStorage.getItem(PARAMS)))
-    // Parametri di hotel
-    const [paramsHotel, setParamsHotel] = useState(JSON.parse(localStorage.getItem(PARAMS_HOTEL)))
 
-    // Rimuove negli Items del local storage 
-    const removeItemsLocalStorage = () => {
+    // Rimuove negli Items del local storage e resetta alcuni stati
+    const reset = () => {
         nameItems.forEach(item => localStorage.removeItem(item))
+        dispatch(setDetailsHotel({}))
     }
 
     return (
         <AppContext.Provider value={
             {
-                removeItemsLocalStorage,
+                reset,
                 params, setParams,
-                paramsHotel, setParamsHotel,
                 context, setContext,
                 isOpen, setIsOpen
             }

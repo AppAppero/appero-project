@@ -1,33 +1,83 @@
 import { ErrorMessage, Form, Formik } from "formik";
 import React, { useEffect, useState } from 'react';
 import { Button, FormControl, Modal, ModalBody, ModalFooter, ModalHeader, ModalTitle } from 'react-bootstrap';
+import { useDispatch, useSelector } from "react-redux";
 import * as Yup from "yup";
+import HeaderDetail from "../components/commons/HeaderDetail";
+import ContentHotel from "../components/hotel/ContentHotel";
+import HeaderFilterHotel from "../components/hotel/HeaderFilterHotel";
 import { useGlobalContext } from '../context/context';
 import useTitle from '../hook/useTitle';
+import { setDetailsHotel } from "../redux/reducerHotel";
 import { PARAMS_HOTEL } from '../utils/constStorageCookie';
 import { ERROR_0, ERROR_EMPTY, ERROR_MIN } from '../utils/message';
-import { setDetailsHotel } from "../redux/reducerHotel";
-import { useDispatch } from "react-redux";
-import HeaderFilterHotel from "../components/hotel/HeaderFilterHotel";
-import ContentHotel from "../components/hotel/ContentHotel";
+import { checkTextCalculateDate, checkTextDate, checkTextPerson } from "../utils/formatState";
+import { BiSolidUser } from 'react-icons/bi';
+import { BsCalendar3 } from 'react-icons/bs';
+import { SiGooglemaps } from 'react-icons/si';
 
 const Hotel = () => {
   useTitle("Hotel")
-  const { setContext } = useGlobalContext()
+  const dispatch = useDispatch()
+  const sizeIcon = 12
+  const reducerHotel = useSelector(state => state.reducerHotel)
+  const { params, setContext } = useGlobalContext()
   const [isOpenModal, setIsOpenModal] = useState(true);
+  const { detailsHotel } = reducerHotel;
+
+  const generateStringRoom = () => {
+    return detailsHotel?.numberRoom === 1 ?
+      detailsHotel?.numberRoom + " Stanza" : detailsHotel?.numberRoom + " Stanze"
+  }
+
+  const hotelDetails = [
+    {
+      title: "Destinazione/hotel struttura",
+      detail: [
+        {
+          icon: <SiGooglemaps size={sizeIcon} />,
+          text: detailsHotel?.overnightCity
+        }
+      ]
+    },
+    {
+
+      title: "Check-in - Check-out",
+      detail: [
+        {
+          icon: <BsCalendar3 size={sizeIcon} />,
+          text: checkTextDate(params)
+        }
+      ]
+    },
+    {
+      title: "Soggiorno di " + checkTextCalculateDate(params),
+      detail: [
+        {
+          icon: <BiSolidUser size={sizeIcon} />,
+          text: checkTextPerson(params) + " - " + generateStringRoom()
+        }
+      ]
+    }
+  ]
 
   useEffect(() => {
     setContext("hotel")
     if (localStorage.getItem(PARAMS_HOTEL)) {
       setIsOpenModal(false)
+      dispatch(setDetailsHotel(JSON.parse(localStorage.getItem(PARAMS_HOTEL))))
     }
   }, [])
 
   return (
     <>
-      {isOpenModal && <ModalFormHotel isOpenModal={isOpenModal} setIsOpenModal={setIsOpenModal} />}
+      <ModalFormHotel
+        isOpenModal={isOpenModal}
+        setIsOpenModal={setIsOpenModal} />
+
+      <HeaderDetail details={hotelDetails} />
       <HeaderFilterHotel />
-      <ContentHotel />
+      <ContentHotel detailsHotel={detailsHotel} />
     </>
   )
 }

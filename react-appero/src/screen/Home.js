@@ -12,10 +12,10 @@ const Home = () => {
   useTitle("Home")
 
   const sizeGlobal = useSize("container")
-  const { removeItemsLocalStorage } = useGlobalContext()
+  const { reset } = useGlobalContext()
 
   useEffect(() => {
-    removeItemsLocalStorage()
+    reset()
   }, [])
 
   const containerStyle = {
