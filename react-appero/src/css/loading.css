@@ -51,13 +51,13 @@
 
 .cloud5 {
     left: -40px;
-    top: 110px;
+    top: 120px;
     animation-delay: 2.5s;
 }
 
 .cloud6 {
     left: -60px;
-    top: 140px;
+    top: 150px;
     animation-delay: 3s;
 }
 
@@ -74,6 +74,18 @@
   }
   
   .loading-spinner .cloud3 {
+    color: orange; /* Colore per l'icona cloud3 */
+  }
+
+  .loading-spinner .cloud4 {
+    color: green; /* Colore per l'icona cloud1 */
+  }
+  
+  .loading-spinner .cloud5 {
+    color: blue; /* Colore per l'icona cloud2 */
+  }
+  
+  .loading-spinner .cloud6 {
     color: orange; /* Colore per l'icona cloud3 */
   }
   

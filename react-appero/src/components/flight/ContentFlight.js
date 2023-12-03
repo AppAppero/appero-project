@@ -36,9 +36,6 @@ const ContentFlight = () => {
                     !isLoading && !isError ?
                         (
                             flights?.length > 0 ?
-                                <Row className='fw-bold fs-4 lh-1.5 text-dark mt-2'>
-                                    <Col>Scegli il volo</Col>
-                                </Row> &&
                                 (
                                     flights.map((flight, index) => {
                                         return (
