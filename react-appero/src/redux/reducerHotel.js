@@ -1,10 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    isLoading: true,
+    isLoading: false,
     isError: false,
     messageError: "",
-    hotels: [],
+    hotels: [{}],
     filterHotel: [],
     detailsHotel: {}
 }

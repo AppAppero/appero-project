@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Container } from "react-bootstrap";
-import FormElement from "../components/home/FormElement";
+import FormElement from "../components/home/form/FormElement";
 import NavbarHome from "../components/home/NavBarHome";
 import SuggestedTravel from "../components/home/SuggestedTravel";
 import useSize from "../hook/useSize";

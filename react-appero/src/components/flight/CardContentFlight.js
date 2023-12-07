@@ -35,104 +35,106 @@ const CardContentFlight = memo(({ selectIdFlight, setSelectIdFlight, flight }) =
     }, [counterCart])
 
     return (
-        <>
-            <Row>
-                {/* <Col xs={2} className="text-start m-0">
+        <Col xs={12}>
+            <Card
+                className='shadow-lg border-0 justify-content-center rounded-3 p-3 mt-4 border-none'>
+                <Row>
+                    {/* <Col xs={2} className="text-start m-0">
                     <Button size="sm" variant="warning" ><AiOutlineInfoCircle color="white"/></Button>
                 </Col> */}
-                <Col xs={12} className="text-end fw-bold text-success" style={{ fontSize: "15px" }}>
-                    Totale : {price?.grandTotal} €
-                </Col>
-            </Row>
-            {
-                itineraries.map((iti, i) => (
-                    <Card className="mt-2 border-0 shadow-lg" key={i}>
-                        {
-                            iti?.segments.map((seg, ind) => (
-                                <Row key={ind} className='gx-0 m-3'>
-                                    <Col xs={3}>
-                                        {/* Se l'immagine è presente la visualizza altrimenti inserisci quella di default */}
-                                        {seg?.urlCarrier ? <img style={{ width: "50px" }} src={seg.urlCarrier} /> : <img className="rounded-pill" style={{ width: "50px" }} src={imgDef} />}
-                                    </Col>
-                                    <Col className="text-center" xs={3}>
-                                        <Row>
-                                            <Col className="fw-bold">
-                                                {formatHourByDate(seg?.departure?.at)}
-                                            </Col>
-                                        </Row>
-                                        <Row>
-                                            <Col>
-                                                {seg?.departure?.iataCode}
-                                            </Col>
-                                        </Row>
-                                    </Col>
-                                    <Col xs={3} className="text-center">
-                                        <Row>
-                                            <Col>
-                                                {formatDuration(seg?.duration)}
-                                            </Col>
-                                        </Row>
-                                        <Row>
-                                            <Col>
-                                                <GoArrowSwitch size={20} />
-                                            </Col>
-                                        </Row>
-                                        <Row>
-                                            <Col>
-                                                {
-                                                    iti?.segments?.length === 1 ?
-                                                        "Diretto"
-                                                        : iti?.segments?.length - 1 + " Scali"
-                                                }
-                                            </Col>
-                                        </Row>
-                                    </Col>
-                                    <Col xs={3} className="text-center">
-                                        <Row>
-                                            <Col className="fw-bold">
-                                                {formatHourByDate(seg?.arrival?.at)}
-                                            </Col>
-                                        </Row>
-                                        <Row>
-                                            <Col>
-                                                {seg?.arrival?.iataCode}
-                                            </Col>
-                                        </Row>
-                                    </Col>
+                    <Col xs={12} className="text-end fw-bold text-success" style={{ fontSize: "15px" }}>
+                        Totale : {price?.grandTotal} €
+                    </Col>
+                </Row>
+                {
+                    itineraries.map((iti, i) => (
+                        <Card className="mt-2 border-0 shadow-lg" key={i}>
+                            {
+                                iti?.segments.map((seg, ind) => (
+                                    <Row key={ind} className='gx-0 m-3'>
+                                        <Col xs={3}>
+                                            {/* Se l'immagine è presente la visualizza altrimenti inserisci quella di default */}
+                                            {seg?.urlCarrier ? <img style={{ width: "50px" }} src={seg.urlCarrier} /> : <img className="rounded-pill" style={{ width: "50px" }} src={imgDef} />}
+                                        </Col>
+                                        <Col className="text-center" xs={3}>
+                                            <Row>
+                                                <Col className="fw-bold">
+                                                    {formatHourByDate(seg?.departure?.at)}
+                                                </Col>
+                                            </Row>
+                                            <Row>
+                                                <Col>
+                                                    {seg?.departure?.iataCode}
+                                                </Col>
+                                            </Row>
+                                        </Col>
+                                        <Col xs={3} className="text-center">
+                                            <Row>
+                                                <Col>
+                                                    {formatDuration(seg?.duration)}
+                                                </Col>
+                                            </Row>
+                                            <Row>
+                                                <Col>
+                                                    <GoArrowSwitch size={20} />
+                                                </Col>
+                                            </Row>
+                                            <Row>
+                                                <Col>
+                                                    {
+                                                        iti?.segments?.length === 1 ?
+                                                            "Diretto"
+                                                            : iti?.segments?.length - 1 + " Scali"
+                                                    }
+                                                </Col>
+                                            </Row>
+                                        </Col>
+                                        <Col xs={3} className="text-center">
+                                            <Row>
+                                                <Col className="fw-bold">
+                                                    {formatHourByDate(seg?.arrival?.at)}
+                                                </Col>
+                                            </Row>
+                                            <Row>
+                                                <Col>
+                                                    {seg?.arrival?.iataCode}
+                                                </Col>
+                                            </Row>
+                                        </Col>
 
-                                </Row>
-                            ))
-                        }
-                    </Card>
-                ))
-
-
-            }
-
-            <Row className="mt-3 gx-1">
-                <Col xs={10}>
-                    <Button
-                        style={{ width: "100%" }}
-                        variant={selectIdFlight !== id ? "secondary" : "warning"}
-                        className="btn-md btn-outline-warning shadow-sm text-white border-0"
-                        onClick={checkFlightItinery}
-                    >
-                        <Row>
-                            <Col xs={8} className="text-end">Seleziona volo</Col>
-                            <Col xs={4} className="text-end"><FaArrowCircleRight /></Col>
-                        </Row>
-                    </Button>
-                </Col>
-
-                <DetailFlight
-                    price={price}
-                    travelerPricings={travelerPricings}
-                    checkFlightItinery={checkFlightItinery}
-                />
-            </Row>
+                                    </Row>
+                                ))
+                            }
+                        </Card>
+                    ))
 
 
-        </>
+                }
+
+                <Row className="mt-3 gx-1">
+                    <Col xs={10}>
+                        <Button
+                            style={{ width: "100%" }}
+                            variant={selectIdFlight !== id ? "secondary" : "warning"}
+                            className="btn-md btn-outline-warning shadow-sm text-white border-0"
+                            onClick={checkFlightItinery}
+                        >
+                            <Row>
+                                <Col xs={8} className="text-end">Seleziona volo</Col>
+                                <Col xs={4} className="text-end"><FaArrowCircleRight /></Col>
+                            </Row>
+                        </Button>
+                    </Col>
+
+                    <DetailFlight
+                        price={price}
+                        travelerPricings={travelerPricings}
+                        checkFlightItinery={checkFlightItinery}
+                    />
+                </Row>
+
+            </Card>
+        </Col>
     )
 
 })

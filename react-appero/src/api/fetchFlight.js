@@ -2,7 +2,7 @@ import axios from "axios";
 import Cookies from 'js-cookie';
 
 const instanceFlight = axios.create({
-    baseURL: process.env.REACT_APP_EARCH_FLIGHT,
+    baseURL: process.env.REACT_APP_SEARCH_FLIGHT,
     headers: {
         Accept: "*/*",
     }

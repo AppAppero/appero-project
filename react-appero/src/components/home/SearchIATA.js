@@ -2,7 +2,7 @@ import { memo, useState } from "react";
 import { Col, Row } from "react-bootstrap";
 import codeIATA from "../../utils/codeIATA";
 import { nameCityByIATA } from "../../utils/formatState";
-import SingleInput from "../commons/form/SingleInput";
+import SingleInput from "./form/SingleInput";
 
 
 //** PopUp per la ricerca delle città mentre si compila il form */

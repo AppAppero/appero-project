@@ -3,7 +3,9 @@ import { login } from "../api/fecthLoginAmadeus";
 import instanceFlight from "../api/fetchFlight";
 import { bar_mil, bar_val_children } from '../utils/exFlights';
 import axios from "axios";
+import { SEARCH_FLIGHT } from "../utils/constAPI";
 
+const baseUrl = process.env.REACT_APP_HOST + process.env.REACT_APP_PORT;
 
 // Create action : Crea il filtro per i voli migliori,economici e veloci
 const filterFlight = createAction("filter-flight")
@@ -134,7 +136,7 @@ export const searchFlightAmadeus = (params, isTest) => async (dispatch) => {
     if (!isTest) {
         dispatch(loading(true))
         try {
-            let data = await axios.post("http://localhost:5000/api/search/flights", params)
+            let data = await axios.post(baseUrl + SEARCH_FLIGHT, params)
             dispatch(loading(false))
             dispatch(containerFlights(data.data.data));
         } catch (e) {

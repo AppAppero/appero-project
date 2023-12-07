@@ -2,10 +2,10 @@ import React from 'react';
 import { Col, Row } from "react-bootstrap";
 import { useDispatch } from 'react-redux';
 import { useNavigate } from "react-router-dom";
-import { updateBudget } from '../../redux/reducerItinerary';
-import FormFormik from '../commons/form/FormFormik';
-import { useGlobalContext } from '../../context/context';
-import { BUDGET, PARAMS } from '../../utils/constStorageCookie';
+import { updateBudget } from '../../../redux/reducerItinerary';
+import FormFormik from '../form/FormFormik';
+import { useGlobalContext } from '../../../context/context';
+import { BUDGET, PARAMS } from '../../../utils/constStorageCookie';
 
 const FormElement = ({ sizeGlobal }) => {
 

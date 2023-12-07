@@ -15,7 +15,7 @@ import {
     MESSAGE_INFO_BUDGET,
     MESSAGE_INFO_CHILDREN, MESSAGE_INFO_INFANTS, MORE_THAN
 } from "../../../utils/message";
-import SearchIATA from "../../home/SearchIATA";
+import SearchIATA from "../SearchIATA";
 import SingleInput from "./SingleInput";
 
 const FormFormik = ({ buttonHidden, size, clickBottonNavigate }) => {
@@ -24,13 +24,12 @@ const FormFormik = ({ buttonHidden, size, clickBottonNavigate }) => {
     const initialValues = {
         origin: "BRI",
         destination: "VLC",
-        departureDate: "2023-12-04",
-        returnDate: "2023-12-10",
+        departureDate: "2023-12-14",
+        returnDate: "2023-12-24",
         adults: 1,
         budget: 500,
         childrenNumber: "",
-        infants: "",
-        overnightStayCity: ""
+        infants: ""
     }
 
     /*  const initialValues = {
@@ -98,11 +97,7 @@ const FormFormik = ({ buttonHidden, size, clickBottonNavigate }) => {
                 .min(process.env.REACT_APP_MIN_BUDGET, MORE_THAN)
                 .positive(ERROR_NEGATIVE)
                 .required(ERROR_EMPTY),
-
-            // overnightStayCity: Yup.string()
-            //     .min(2, ERROR_MIN)
-            //     .required(ERROR_EMPTY),
-
+                
             adults: Yup.number()
                 .min(1, ERROR_MIN_ADULTS)
                 .max(9, ERROR_MAX_ADULTS)

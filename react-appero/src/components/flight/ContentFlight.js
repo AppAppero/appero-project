@@ -37,19 +37,15 @@ const ContentFlight = () => {
                         (
                             flights?.length > 0 ?
                                 (
-                                    flights.map((flight, index) => {
-                                        return (
-                                            <Col key={index} xs={12}>
-                                                <Card
-                                                    className='shadow-lg border-0 justify-content-center rounded-3 p-3 mt-4 border-none'>
-                                                    <CardContentFlight
-                                                        selectIdFlight={selectIdFlight}
-                                                        setSelectIdFlight={setSelectIdFlight}
-                                                        flight={flight} />
-                                                </Card>
-                                            </Col>
-                                        )
-                                    })
+                                    flights.map((flight, index) =>
+                                    (
+                                        <CardContentFlight
+                                            key={index}
+                                            selectIdFlight={selectIdFlight}
+                                            setSelectIdFlight={setSelectIdFlight}
+                                            flight={flight} />
+                                    )
+                                    )
                                 ) :
                                 (
                                     <ErrorElement>Nessun volo trovato per questi parametri , riprova!</ErrorElement>

@@ -5,44 +5,49 @@ import Loading from "../commons/Loading";
 import ErrorElement from "../commons/ErrorElement";
 import { PARAMS_HOTEL } from "../../utils/constStorageCookie";
 import CardContentHotel from "./CardContentHotel";
+import {hotel_val} from "../../utils/exHotel"
 
 const ContentHotel = ({ detailsHotel }) => {
     const reducerHotel = useSelector(state => state.reducerHotel)
-    const { hotels, isLoading, isError, messageError } = reducerHotel;
+    const { isLoading, isError, messageError } = reducerHotel;
 
 
     return (
         <>
-            <TitleContent
-                isError={isError}
-                isLoading={isLoading}
-                title={detailsHotel?.overnightCity} />
+            {
+                localStorage.getItem(PARAMS_HOTEL) &&
+                <>
+                    <TitleContent
+                        isError={isError}
+                        isLoading={isLoading}
+                        title={detailsHotel?.overnightCity} />
 
-            <Row className='gx-4'>
-                {
-                    !isLoading && !isError ?
-                        (hotels?.length > 0 ?
-                            (
-                                hotels.map((hotel, index) => {
-                                    return (
-                                        <Col key={index} xs={12}>
-                                            <Card
-                                                className='shadow-lg border-0 justify-content-center rounded-3 p-3 mt-4 border-none'>
-                                                <CardContentHotel hotel={hotel} />
-                                            </Card>
-                                        </Col>
+                    <Row className='gx-4'>
+                        {
+                            !isLoading && !isError ?
+                                (hotel_val?.length > 0 ?
+                                    (
+                                        hotel_val.map((hotel, index) =>
+                                        (
+                                            <CardContentHotel key={index} {...hotel} />
+                                        )
+                                        )
+                                    ) :
+                                    (
+                                        <ErrorElement>Nessun hotel trovato, riprova!</ErrorElement>
                                     )
-                                })
-                            ) :
-                            (localStorage.getItem(PARAMS_HOTEL) && <ErrorElement>Nessun hotel trovato, riprova!</ErrorElement>)
-                        ) :
-                        isLoading && !isError ? <Loading icon="hotel" /> :
-                            !isLoading && isError && <ErrorElement>{messageError}</ErrorElement>
-                }
+                                ) :
+                                (
+                                    isLoading && !isError ? <Loading icon="hotel" /> :
+                                        !isLoading && isError && <ErrorElement>{messageError}</ErrorElement>
+                                )
+                        }
 
-            </Row>
-
+                    </Row>
+                </>
+            }
         </>
+
     )
 }
 
