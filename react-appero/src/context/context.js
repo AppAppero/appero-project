@@ -15,6 +15,8 @@ const AppProvider = ({ children }) => {
     const [context, setContext] = useState("flight")
     // Parametri di ricerca iniziali
     const [params, setParams] = useState(JSON.parse(localStorage.getItem(PARAMS)))
+    // Parametri Hotel
+    const [paramsHotel, setParamsHotel] = useState()
 
     // Rimuove negli Items del local storage e resetta alcuni stati
     const reset = () => {
@@ -28,7 +30,8 @@ const AppProvider = ({ children }) => {
                 reset,
                 params, setParams,
                 context, setContext,
-                isOpen, setIsOpen
+                isOpen, setIsOpen,
+                paramsHotel, setParamsHotel
             }
         }>
             {children}

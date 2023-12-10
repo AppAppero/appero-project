@@ -1,16 +1,14 @@
-import { Card, Col, Row } from "react-bootstrap"
+import { Row } from "react-bootstrap";
 import { useSelector } from "react-redux";
-import TitleContent from "../commons/TitleContent";
-import Loading from "../commons/Loading";
-import ErrorElement from "../commons/ErrorElement";
 import { PARAMS_HOTEL } from "../../utils/constStorageCookie";
+import ErrorElement from "../commons/ErrorElement";
+import Loading from "../commons/Loading";
+import TitleContent from "../commons/TitleContent";
 import CardContentHotel from "./CardContentHotel";
-import {hotel_val} from "../../utils/exHotel"
 
 const ContentHotel = ({ detailsHotel }) => {
     const reducerHotel = useSelector(state => state.reducerHotel)
-    const { isLoading, isError, messageError } = reducerHotel;
-
+    const { hotels, isLoading, isError, messageError } = reducerHotel;
 
     return (
         <>
@@ -25,16 +23,16 @@ const ContentHotel = ({ detailsHotel }) => {
                     <Row className='gx-4'>
                         {
                             !isLoading && !isError ?
-                                (hotel_val?.length > 0 ?
+                                (hotels?.length > 0 ?
                                     (
-                                        hotel_val.map((hotel, index) =>
+                                        hotels?.map((hotel, index) =>
                                         (
                                             <CardContentHotel key={index} {...hotel} />
                                         )
                                         )
                                     ) :
                                     (
-                                        <ErrorElement>Nessun hotel trovato, riprova!</ErrorElement>
+                                        <ErrorElement>Nessun hotel trovato con i parametri di ricerca inseriti, riprova!</ErrorElement>
                                     )
                                 ) :
                                 (
