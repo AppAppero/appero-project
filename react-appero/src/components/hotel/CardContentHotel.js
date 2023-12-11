@@ -1,9 +1,10 @@
 import { Button, Card, Col, Row } from "react-bootstrap";
 import { FaStar } from "react-icons/fa";
+import { encodedSymbolCurrency } from "../../utils/commons/formatState";
 
 const CardContentHotel = ({
     urlPhotos, nameHotel, nearHotel, recapDetails, quantityRating,
-    availableRooms, mainDetailsHotel, rating, totalPrice, detailsPrice }) => {
+    availableRooms, mainDetailsHotel, rating, totalPrice, detailsPrice, currency }) => {
     return (
         <>
             <Col xs={12}>
@@ -46,14 +47,15 @@ const CardContentHotel = ({
                                 <Col style={sizeText} className="text-secondary">{quantityRating}</Col>
                             </Row>
                             <Row>
-                                <Col style={{ fontSize: "18px" }} className="fw-bold">{totalPrice} $</Col>
+                                <Col style={{ fontSize: "18px" }} className="fw-bold">{totalPrice} {encodedSymbolCurrency(currency)}</Col>
                             </Row>
                             <Row>
                                 <Col style={sizeText} className="text-secondary">{detailsPrice}</Col>
                             </Row>
                             <Row className="mt-2">
                                 <Col>
-                                    <Button variant="warning" className="text-light">
+                                    <Button
+                                        variant="warning" className="text-light">
                                         Seleziona Hotel
                                     </Button>
                                 </Col>

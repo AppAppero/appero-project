@@ -1,4 +1,5 @@
-import codeIATA from './codeIATA'
+import codeIATA from '../home/codeIATA'
+import currency from './currency'
 
 // Crea Stringa per formattare gli adulti e bambini
 export const checkTextPerson = (params) => {
@@ -56,4 +57,9 @@ export const nameCityByIATA = (param) => {
         return arr.slice(0, 1)?.join(' ')
 
     }
+}
+
+// Cerca(encoded) il simbolo della moneta
+export const encodedSymbolCurrency = (code) => {
+    return currency.filter(curr => curr.code === code)[0]?.symbol
 }

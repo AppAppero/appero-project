@@ -3,7 +3,7 @@ import { Button, Col, FormControl, Modal, ModalBody, ModalFooter, ModalHeader, M
 import { CiEdit } from "react-icons/ci";
 import { useDispatch, useSelector } from 'react-redux';
 import { updateBudget } from '../../../redux/reducerItinerary';
-import { BUDGET } from '../../../utils/constStorageCookie';
+import { BUDGET } from '../../../utils/commons/constStorageCookie';
 
 const Budget = () => {
     const { actualBudget, principalBudget } = useSelector(state => state.reducerItinerary);

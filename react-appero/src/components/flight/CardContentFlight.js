@@ -5,7 +5,7 @@ import { GoArrowSwitch } from 'react-icons/go';
 import { useDispatch, useSelector } from "react-redux";
 import imgDef from "../../images/default-plane.avif";
 import { addFlight, removeFlight } from "../../redux/reducerItinerary";
-import { formatDuration, formatHourByDate } from "../../utils/formatDuration";
+import { formatDuration, formatHourByDate } from "../../utils/commons/formatDuration";
 import DetailFlight from "./DetailFlight";
 
 const CardContentFlight = memo(({ selectIdFlight, setSelectIdFlight, flight }) => {
@@ -24,7 +24,7 @@ const CardContentFlight = memo(({ selectIdFlight, setSelectIdFlight, flight }) =
             dispatch(removeFlight())
         } else {
             setSelectIdFlight(id)
-            dispatch(addFlight(flight))
+            dispatch(addFlight(flight)) 
         }
     }
 

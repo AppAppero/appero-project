@@ -7,7 +7,7 @@ import ContentFlight from '../components/flight/ContentFlight';
 import HeaderFilterFlight from '../components/flight/HeaderFilterFlight';
 import { useGlobalContext } from '../context/context';
 import useTitle from '../hook/useTitle';
-import { checkTextCalculateDate, checkTextDate, checkTextPerson, nameCityByIATA } from '../utils/formatState';
+import { checkTextCalculateDate, checkTextDate, checkTextPerson, nameCityByIATA } from '../utils/commons/formatState';
 
 const Flight = () => {
     useTitle("Voli")

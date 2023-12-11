@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { updateBudget } from '../../../redux/reducerItinerary';
 import FormFormik from '../form/FormFormik';
 import { useGlobalContext } from '../../../context/context';
-import { BUDGET, PARAMS } from '../../../utils/constStorageCookie';
+import { BUDGET, PARAMS } from '../../../utils/commons/constStorageCookie';
 
 const FormElement = ({ sizeGlobal }) => {
 

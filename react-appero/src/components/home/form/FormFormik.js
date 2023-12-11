@@ -1,7 +1,7 @@
 import { Form, Formik } from "formik";
 import { Col, FormGroup, Row } from "react-bootstrap";
 import * as Yup from "yup";
-import { CURRENCY } from "../../../utils/constStorageCookie";
+import { CURRENCY } from "../../../utils/commons/constStorageCookie";
 import {
     ERROR_DATE, ERROR_DATE_RETURN,
     ERROR_DATE_TODAY,
@@ -14,7 +14,7 @@ import {
     MESSAGE_INFO_ADULTS,
     MESSAGE_INFO_BUDGET,
     MESSAGE_INFO_CHILDREN, MESSAGE_INFO_INFANTS, MORE_THAN
-} from "../../../utils/message";
+} from "../../../utils/commons/message";
 import SearchIATA from "../SearchIATA";
 import SingleInput from "./SingleInput";
 

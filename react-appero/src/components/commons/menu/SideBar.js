@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { useGlobalContext } from '../../../context/context';
 import '../../../css/sidebar.css';
 import useSize from '../../../hook/useSize';
-import { linksMenu } from '../../../utils/links';
+import { linksMenu } from '../../../utils/commons/links';
 
 
 const SideBar = () => {

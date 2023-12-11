@@ -1,11 +1,11 @@
-import { Button, Col, Nav, Navbar, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import logo from "../../images/logo.svg";
-import { linksNavBar } from '../../utils/links';
-import PopUpCurrency from '../commons/currency/PopUpCurrency';
-import useSize from '../../hook/useSize'
 import { useState } from 'react';
+import { Button, Col, Row } from 'react-bootstrap';
 import { SlMenu } from "react-icons/sl";
+import { Link } from 'react-router-dom';
+import useSize from '../../hook/useSize';
+import logo from "../../images/logo.svg";
+import { linksNavBar } from '../../utils/commons/links';
+import PopUpCurrency from '../commons/currency/PopUpCurrency';
 
 const NavbarHome = () => {
     const { isAllScreen } = useSize().size

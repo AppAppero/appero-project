@@ -1,7 +1,7 @@
 import { memo } from "react";
 import { Card, Col, Row } from "react-bootstrap";
-import { formatHourByDate } from "../../../../utils/formatDuration";
-import { checkTextDateByValue, nameCityByIATA } from "../../../../utils/formatState";
+import { formatHourByDate } from "../../../../utils/commons/formatDuration";
+import { checkTextDateByValue, nameCityByIATA } from "../../../../utils/commons/formatState";
 import HeaderCart from "../HeaderCart";
 import TotalActivity from "../TotalActivity";
 const CartFlight = ({ flight }) => {

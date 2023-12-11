@@ -8,7 +8,7 @@ import NavBarOrizzontal from "../components/commons/menu/NavBarOrizzontal"
 import SideBar from "../components/commons/menu/SideBar"
 import useSize from "../hook/useSize"
 import { updateBudget } from "../redux/reducerItinerary"
-import { BUDGET } from "../utils/constStorageCookie"
+import { BUDGET } from "../utils/commons/constStorageCookie"
 
 const ContainerScreen = () => {
 

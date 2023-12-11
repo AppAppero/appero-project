@@ -1,5 +1,5 @@
 import { Row } from "react-bootstrap"
-import { CURRENCY } from "../../../utils/constStorageCookie"
+import { CURRENCY } from "../../../utils/commons/constStorageCookie"
 
 const Currency = ({ name, code, symbol, setCurrentCodCurrency, setIsOpenCurrency }) => {
 

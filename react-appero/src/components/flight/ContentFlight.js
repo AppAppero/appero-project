@@ -16,7 +16,7 @@ const ContentFlight = () => {
     const [selectIdFlight, setSelectIdFlight] = useState(0)
 
     const searchFlight = useCallback(() => {
-        dispatch(searchFlightAmadeus(params, false));
+        dispatch(searchFlightAmadeus(params, true));
     }, [params]);
 
     useEffect(() => {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Col, Row } from 'react-bootstrap';
 import ex from '../../images/imgEx/ex.png';
-import { linksMenu } from '../../utils/links';
+import { linksMenu } from '../../utils/commons/links';
 import useSize from '../../hook/useSize';
 import { Link } from 'react-router-dom';
 

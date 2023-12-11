@@ -1,7 +1,7 @@
 import { createAction, createSlice, isAnyOf } from "@reduxjs/toolkit";
 import axios from "axios";
-import { SEARCH_FLIGHT } from "../utils/constAPI";
-import { bar_val_children } from '../utils/exFlights';
+import { SEARCH_FLIGHT } from "../utils/commons/constAPI";
+import { bar_val_children } from '../utils/flight/exFlights';
 
 // Create action : Crea il filtro per i voli migliori,economici e veloci
 const filterFlight = createAction("filter-flight")

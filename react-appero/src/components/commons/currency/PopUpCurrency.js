@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Button, FormControl, Modal, ModalBody, ModalHeader, ModalTitle } from "react-bootstrap";
-import { CURRENCY } from "../../../utils/constStorageCookie";
-import currency from '../../../utils/currency';
+import { CURRENCY } from "../../../utils/commons/constStorageCookie";
+import currency from '../../../utils/commons/currency';
 import Currency from "./Currency";
 
 const PopUpCurrency = () => {

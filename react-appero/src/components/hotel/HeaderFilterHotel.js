@@ -47,16 +47,9 @@ const colFilter = {
 // Component Modal per gestire i filtri con le chiamate
 const ModalFilter = memo(({ filterHotel, type, showModal, setShowModal }) => {
     const dispatch = useDispatch()
-    const { paramsHotel, setParamsHotel } = useGlobalContext()
+    const { params } = useGlobalContext()
     const [filter, setFilter] = useState()
     const [paramIdFilters, setParamIdFilters] = useState([])
-
-    // Setta i parametri selezionati dall'utente per un eventuale chiamata
-    useEffect(() => {
-        if (paramsHotel) {
-            setParamsHotel({ ...paramsHotel, categoriesFilter: paramIdFilters })
-        }
-    }, [paramIdFilters])
 
     // Gestisce i tipi di filtri tra principali e secondari
     useEffect(() => {
@@ -69,7 +62,8 @@ const ModalFilter = memo(({ filterHotel, type, showModal, setShowModal }) => {
 
     // Dopo aver raggruppato i parametri, clicca e fa la chiamata alla ricerca hotel
     const clickSearch = () => {
-        dispatch(searchHotel(paramsHotel, false, null))
+        let input = { params, paramIdFilters }
+        dispatch(searchHotel(input, true))
         setShowModal(false)
     }
 

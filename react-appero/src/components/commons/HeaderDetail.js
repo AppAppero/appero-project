@@ -1,7 +1,17 @@
 import React from 'react';
 import { Col, Row } from 'react-bootstrap';
+import { BiSolidUser } from 'react-icons/bi';
+import { BsCalendar3 } from 'react-icons/bs';
+import { SiGooglemaps } from 'react-icons/si';
 
-const HeaderDetail = ({details}) => {
+const HeaderDetail = ({ details }) => {
+    const sizeIcon = 12
+    const icons =
+        [
+            <SiGooglemaps size={sizeIcon} />,
+            <BsCalendar3 size={sizeIcon} />,
+            <BiSolidUser size={sizeIcon} />
+        ]
 
     return (
         <>
@@ -18,7 +28,7 @@ const HeaderDetail = ({details}) => {
                                 el.detail.map((d, i) => (
                                     <Row key={i}>
                                         <Col xs={1}>
-                                            {d?.icon}
+                                            {icons[index]}
                                         </Col>
                                         <Col className='mt-1' xs={9} md={9}
                                             style={d?.style ? d.style : { fontSize: "12px", fontWeight: "bold" }}>

@@ -3,7 +3,7 @@ import { Badge, Col, Modal, ModalBody, ModalHeader, Navbar, Row } from 'react-bo
 import { FaCartArrowDown } from "react-icons/fa";
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { linksMenu } from '../../../utils/links';
+import { linksMenu } from '../../../utils/commons/links';
 import ContentCart from '../cart/ContentCart';
 import { useGlobalContext } from '../../../context/context'
 

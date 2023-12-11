@@ -1,7 +1,7 @@
 import { memo, useState } from "react";
 import { Col, Row } from "react-bootstrap";
-import codeIATA from "../../utils/codeIATA";
-import { nameCityByIATA } from "../../utils/formatState";
+import codeIATA from "../../utils/home/codeIATA";
+import { nameCityByIATA } from "../../utils/commons/formatState";
 import SingleInput from "./form/SingleInput";
 
 
