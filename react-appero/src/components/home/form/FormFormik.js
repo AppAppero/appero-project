@@ -24,8 +24,8 @@ const FormFormik = ({ buttonHidden, size, clickBottonNavigate }) => {
     const initialValues = {
         origin: "BRI",
         destination: "VLC",
-        departureDate: "2023-12-14",
-        returnDate: "2023-12-24",
+        departureDate: "2023-12-31",
+        returnDate: "2024-01-24",
         adults: 1,
         budget: 500,
         childrenNumber: "",

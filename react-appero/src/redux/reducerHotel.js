@@ -13,6 +13,7 @@ const initialState = {
     isError: false,
     messageError: "",
     hotels: [],
+    selectHotelId: 0,
     filterHotel: {},
     detailsHotel: {},
     headerDetailHotel: []
@@ -46,6 +47,9 @@ const reducerHotel = createSlice(
             },
             setFilterHotel: (state, action) => {
                 state.filterHotel = action.payload
+            },
+            selectedHotel: (state, action) => {
+                state.selectHotelId = action.payload
             }
         },
         extraReducers: (builder) => {
@@ -57,7 +61,7 @@ const reducerHotel = createSlice(
     }
 )
 
-export const { setDetailsHotel, loading, containerHotels, setFilterHotel, error } = reducerHotel.actions;
+export const { selectedHotel, setDetailsHotel, loading, containerHotels, setFilterHotel, error } = reducerHotel.actions;
 
 // API per ricerca hotel
 export const searchHotel = (input, isTest) => async (dispatch, getState) => {

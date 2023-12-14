@@ -6,9 +6,11 @@ import { removeFlight } from "../../../redux/reducerItinerary";
 import { useDispatch } from "react-redux";
 import { FaHotel } from "react-icons/fa";
 import { MdSignalCellularConnectedNoInternet0Bar } from "react-icons/md";
+import { useGlobalContext } from '../../../context/context';
 
 const HeaderCart = ({ name }) => {
     const dispach = useDispatch()
+    const { removeElement } = useGlobalContext()
 
     // In base al nome richiesto, restituisce l'icona
     const switchIcon = () => {
@@ -26,8 +28,10 @@ const HeaderCart = ({ name }) => {
 
     // In base al nome, rimuove dall'itinerario l'elemento richiesto
     const checkRemove = () => {
-        if (name === "flight")
+        if (name === "flight") {
             dispach(removeFlight())
+            removeElement("Volo")
+        }
     }
 
 

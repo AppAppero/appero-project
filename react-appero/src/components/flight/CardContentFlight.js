@@ -3,15 +3,19 @@ import { Button, Card, Col, Row } from "react-bootstrap";
 import { FaArrowCircleRight } from "react-icons/fa";
 import { GoArrowSwitch } from 'react-icons/go';
 import { useDispatch, useSelector } from "react-redux";
+import { useGlobalContext } from "../../context/context";
 import imgDef from "../../images/default-plane.avif";
+import { selectedFlight } from "../../redux/reducerFlight";
 import { addFlight, removeFlight } from "../../redux/reducerItinerary";
 import { formatDuration, formatHourByDate } from "../../utils/commons/formatDuration";
+import CartFlight from "../commons/cart/flight/CartFlight";
 import DetailFlight from "./DetailFlight";
 
-const CardContentFlight = memo(({ selectIdFlight, setSelectIdFlight, flight }) => {
+const CardContentFlight = memo(({ selectFlightId, flight }) => {
     const { id, itineraries, price, travelerPricings } = flight;
     const { counterCart } = useSelector(state => state.reducerItinerary)
     const dispatch = useDispatch();
+    const { addElement, removeElement } = useGlobalContext()
 
     /**
      * Gestisce il bottone del carrello del volo controllando per id volo
@@ -19,19 +23,21 @@ const CardContentFlight = memo(({ selectIdFlight, setSelectIdFlight, flight }) =
      * Altrimenti lo rimuove spegnendo il bottone
      */
     const checkFlightItinery = () => {
-        if (id === selectIdFlight) {
-            setSelectIdFlight(0)
+        if (id === selectFlightId) {
+            dispatch(selectedFlight(0))
             dispatch(removeFlight())
+            removeElement("Volo")
         } else {
-            setSelectIdFlight(id)
-            dispatch(addFlight(flight)) 
+            dispatch(selectedFlight(id))
+            dispatch(addFlight(flight))
+            addElement("Volo", <CartFlight itinerary={flight} />)
         }
     }
 
     // Se il carrello è vuoto, toglie il seleziona da bottone
     useEffect(() => {
         if (counterCart === 0)
-            setSelectIdFlight(0)
+            dispatch(selectedFlight(0))
     }, [counterCart])
 
     return (
@@ -115,7 +121,7 @@ const CardContentFlight = memo(({ selectIdFlight, setSelectIdFlight, flight }) =
                     <Col xs={10}>
                         <Button
                             style={{ width: "100%" }}
-                            variant={selectIdFlight !== id ? "secondary" : "warning"}
+                            variant={selectFlightId !== id ? "secondary" : "warning"}
                             className="btn-md btn-outline-warning shadow-sm text-white border-0"
                             onClick={checkFlightItinery}
                         >

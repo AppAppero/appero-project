@@ -1,6 +1,23 @@
+import { useEffect, useState } from "react";
 import { Col, Dropdown, DropdownMenu, DropdownToggle, Row } from "react-bootstrap"
 
-const DropdownToggleCart = ({ children, title, totalPrice }) => {
+const DropdownToggleCart = ({ children, title, itinerary }) => {
+
+    const [totalPrice, setTotalPrice] = useState(0)
+
+    useEffect(() => {
+        switch (title) {
+            case "Volo": {
+                setTotalPrice(itinerary?.flight?.price?.grandTotal)
+                break;
+            }
+            case "Hotel": {
+                setTotalPrice(itinerary?.hotel?.totalPrice)
+                break;
+            }
+        }
+    }, [children])
+
     return (
         <Dropdown className="text-center mt-3 p-1">
             <Row
@@ -9,8 +26,8 @@ const DropdownToggleCart = ({ children, title, totalPrice }) => {
                 <Col xs={3} className="mt-2 fw-bold">
                     {title}
                 </Col>
-                <Col xs={6} style={{fontSize:"16px"}} 
-                className="text-success fw-bold text-center p-1 mt-1">
+                <Col xs={6} style={{ fontSize: "16px" }}
+                    className="text-success fw-bold text-center p-1 mt-1">
                     {totalPrice} €
                 </Col>
                 <Col xs={3} className="text-end">

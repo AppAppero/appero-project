@@ -13,7 +13,6 @@ import { ERROR_0, ERROR_EMPTY, ERROR_MIN } from '../../utils/commons/message';
 const ModalFormHotel = ({ params, isOpenModal, setIsOpenModal }) => {
 
     const dispatch = useDispatch()
-    const param_hotel = localStorage.getItem(PARAMS_HOTEL)
     // Formik
     const initialValues = { overnightCity: "", numberRoom: "" }
 
@@ -35,8 +34,8 @@ const ModalFormHotel = ({ params, isOpenModal, setIsOpenModal }) => {
 
         // Chiamate API
         let input = { params }
-        dispatch(searchHotel(input, false))
-        dispatch(getFilterHotel(input, false))
+        dispatch(searchHotel(input, true))
+        dispatch(getFilterHotel(input, true))
 
         // Chiudo il modal
         setIsOpenModal(false)

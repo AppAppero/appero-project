@@ -22,6 +22,7 @@ const initialState = {
     isError: false,
     messageError: "",
     flights: [],
+    selectFlightId: 0,
     filterFly: []
 }
 
@@ -50,6 +51,9 @@ const reducerFlight = createSlice(
                 state.isError = false
                 state.messageError = ""
                 state.flights = action.payload
+            },
+            selectedFlight: (state, action) => {
+                state.selectFlightId = action.payload
             }
         },
 
@@ -117,7 +121,7 @@ const reducerFlight = createSlice(
     }
 )
 
-export const { logged, loading, error, containerFlights } = reducerFlight.actions;
+export const { selectedFlight, logged, loading, error, containerFlights } = reducerFlight.actions;
 
 export { filterFlight, reorderFlight };
 

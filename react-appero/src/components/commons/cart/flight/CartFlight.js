@@ -4,7 +4,7 @@ import { formatHourByDate } from "../../../../utils/commons/formatDuration";
 import { checkTextDateByValue, nameCityByIATA } from "../../../../utils/commons/formatState";
 import HeaderCart from "../HeaderCart";
 import TotalActivity from "../TotalActivity";
-const CartFlight = ({ flight }) => {
+const CartFlight = ({ itinerary: flight }) => {
 
     return (
         <>
@@ -23,7 +23,7 @@ const CartFlight = ({ flight }) => {
                         })
                     }
 
-                    <TotalActivity message="Totale Volo" price={flight?.price?.grandTotal}/>
+                    <TotalActivity message="Totale Volo" price={flight?.price?.grandTotal} />
 
                 </Card>
             }

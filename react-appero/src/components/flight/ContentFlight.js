@@ -1,19 +1,18 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { Card, Col, Row } from 'react-bootstrap';
+import { Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { useGlobalContext } from '../../context/context';
 import { searchFlightAmadeus } from '../../redux/reducerFlight';
 import ErrorElement from '../commons/ErrorElement';
 import Loading from '../commons/Loading';
-import CardContentFlight from './CardContentFlight';
 import TitleContent from '../commons/TitleContent';
+import CardContentFlight from './CardContentFlight';
 
 const ContentFlight = () => {
     let { params } = useGlobalContext()
     const dispatch = useDispatch()
     const reducerFlight = useSelector(state => state.reducerFlight)
-    const { flights, isLoading, isError, messageError } = reducerFlight;
-    const [selectIdFlight, setSelectIdFlight] = useState(0)
+    const { selectFlightId, flights, isLoading, isError, messageError } = reducerFlight;
 
     const searchFlight = useCallback(() => {
         dispatch(searchFlightAmadeus(params, true));
@@ -41,8 +40,7 @@ const ContentFlight = () => {
                                     (
                                         <CardContentFlight
                                             key={index}
-                                            selectIdFlight={selectIdFlight}
-                                            setSelectIdFlight={setSelectIdFlight}
+                                            selectFlightId={selectFlightId}
                                             flight={flight} />
                                     )
                                     )

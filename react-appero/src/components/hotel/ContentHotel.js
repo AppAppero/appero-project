@@ -8,8 +8,7 @@ import CardContentHotel from "./CardContentHotel";
 
 const ContentHotel = () => {
     const reducerHotel = useSelector(state => state.reducerHotel)
-    const { hotels, isLoading, isError, messageError, detailsHotel } = reducerHotel;
-
+    const { hotels, selectHotelId, isLoading, isError, messageError, detailsHotel } = reducerHotel;
     return (
         <>
             {
@@ -25,7 +24,10 @@ const ContentHotel = () => {
                             !isLoading && !isError ?
                                 (hotels?.length > 0 ?
                                     (
-                                        hotels?.map((hotel, index) => (<CardContentHotel key={index} {...hotel} />))
+                                        hotels?.map((hotel, index) => (<CardContentHotel
+                                            key={index}
+                                            selectHotelId={selectHotelId}
+                                            hotel={hotel} />))
                                     ) :
                                     (
                                         <ErrorElement>Nessun hotel trovato con i parametri di ricerca inseriti, riprova!</ErrorElement>

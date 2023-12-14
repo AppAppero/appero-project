@@ -1,21 +1,17 @@
 import { Button, Col, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from 'react-router-dom';
+import { useGlobalContext } from "../../../context/context";
+import useSize from "../../../hook/useSize";
 import { cleanCart } from "../../../redux/reducerItinerary";
 import Budget from "./Budget";
 import DropdownToggleCart from "./DropdownToggleCart";
-import CartFlight from "./flight/CartFlight";
-import useSize from "../../../hook/useSize"
 
 const ContentCart = () => {
     const { isAllScreen } = useSize().size
     const { itinerary, counterCart } = useSelector(state => state.reducerItinerary);
     const dispach = useDispatch()
-
-    const elements = [
-        // CARRELLO VOLI 
-        { title: "Volo", element: <CartFlight {...itinerary} /> }
-    ]
+    const { elements, removeAll } = useGlobalContext()
 
     return (
         <>
@@ -32,9 +28,9 @@ const ContentCart = () => {
                         <>
                             {!isAllScreen ?
                                 (
-                                    elements.map((el, key) => {
+                                    elements?.map((el, key) => {
                                         return <DropdownToggleCart
-                                            totalPrice={itinerary?.flight?.price?.grandTotal}
+                                            itinerary={itinerary}
                                             key={key}
                                             title={el.title} >
                                             {el.element}
@@ -42,7 +38,7 @@ const ContentCart = () => {
                                     })
                                 ) :
                                 (
-                                    elements.map((el, key) => {
+                                    elements?.map((el, key) => {
                                         return <Row className="mt-2" key={key}>
                                             <Col>
                                                 {el.element}
@@ -62,7 +58,10 @@ const ContentCart = () => {
                                 {/* <NavigateButton action="preview" /> */}
                                 <Col className="text-center">
                                     <Button
-                                        onClick={() => dispach(cleanCart())}
+                                        onClick={() => {
+                                            dispach(cleanCart())
+                                            removeAll()
+                                        }}
                                         variant="danger">Svuota</Button>
                                 </Col>
                                 {/* <NavigateButton action="next" /> */}
