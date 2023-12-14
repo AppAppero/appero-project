@@ -941,13 +941,47 @@ const hotel_val = [
         "nameHotel": "Coworking Balance",
         "nearHotel": " Algiros  2,1 km dal centro A 2,4 km dalla spiaggia",
         "recapDetails": "1 Stanza - 1 Adulto - 5 Giorni",
-        "mainDetailsHotel": "Coworking Balance.\n8.0 Ottimo 627 recensioni.\n‎Algiros‬ • ‎2,1 km dal centro‬\n‎A 2,4 km dalla spiaggia‬.\n Letto in dormitorio : 1 letto.\n61 EUR.\nInclude tasse e costi.",
+        "mainDetailsHotel": "Coworking Balance.\n8.0 Ottimo 631 recensioni.\n‎Algiros‬ • ‎2,1 km dal centro‬\n‎A 2,4 km dalla spiaggia‬.\n Letto in dormitorio : 1 letto.\n60 EUR.\nInclude tasse e costi.",
         "rating": 8.0,
-        "quantityRating": "0 Ottimo 627 recensioni",
-        "totalPrice": 61,
+        "quantityRating": "0 Ottimo 631 recensioni",
+        "totalPrice": 60,
         "strikethroughPrice": null,
         "detailsPrice": " Include tasse e costi",
-        "currency": "EUR"
+        "currency": "EUR",
+        "checkin": {
+            "fromTime": "15:00",
+            "untilTime": "00:00"
+        },
+        "checkout": {
+            "fromTime": "00:00",
+            "untilTime": "11:00"
+        }
+    },
+    {
+        "hotelId": 476418,
+        "typology": null,
+        "availableRooms": null,
+        "urlPhotos": [
+            "https://cf.bstatic.com/xdata/images/hotel/square520/38059563.jpg?k=4b0f3ed1031851ae629246ab3c5e7a42ae384b14512efd962f9aa730ff0e168c&o="
+        ],
+        "nameHotel": "Quart Youth Hostel & Apartments",
+        "nearHotel": null,
+        "recapDetails": "1 Stanza - 1 Adulto - 5 Giorni",
+        "mainDetailsHotel": "Quart Youth Hostel & Apartments.\n7.7 Buono 4700 recensioni.\n‎In centro‬.\n Letto in dormitorio : 1 letto.\nPrezzo iniziale: 94 EUR. Prezzo attuale: 83 EUR..\nInclude tasse e costi.",
+        "rating": 7.7,
+        "quantityRating": "7 Buono 4700 recensioni",
+        "totalPrice": 83,
+        "strikethroughPrice": 93.6,
+        "detailsPrice": " Include tasse e costi",
+        "currency": "EUR",
+        "checkin": {
+            "fromTime": "15:00",
+            "untilTime": "23:00"
+        },
+        "checkout": {
+            "fromTime": "08:00",
+            "untilTime": "11:00"
+        }
     },
     {
         "hotelId": 494202,
@@ -959,49 +993,21 @@ const hotel_val = [
         "nameHotel": "The River Hostel",
         "nearHotel": null,
         "recapDetails": "1 Stanza - 1 Adulto - 5 Giorni",
-        "mainDetailsHotel": "The River Hostel.\n8.2 Ottimo 5177 recensioni.\n‎In centro‬\n‎Travel Sustainable‬.\n Letto in dormitorio : 1 letto.\nPrezzo iniziale: 98 EUR. Prezzo attuale: 79 EUR..\nInclude tasse e costi.\nCancellazione gratuita.",
+        "mainDetailsHotel": "The River Hostel.\n8.2 Ottimo 5180 recensioni.\n‎In centro‬\n‎Travel Sustainable‬.\n Letto in dormitorio : 1 letto.\nPrezzo iniziale: 98 EUR. Prezzo attuale: 79 EUR..\nInclude tasse e costi.",
         "rating": 8.2,
-        "quantityRating": "2 Ottimo 5177 recensioni",
+        "quantityRating": "2 Ottimo 5180 recensioni",
         "totalPrice": 79,
         "strikethroughPrice": 98.1,
         "detailsPrice": " Include tasse e costi",
-        "currency": "EUR"
-    },
-    {
-        "hotelId": 92283,
-        "typology": null,
-        "availableRooms": null,
-        "urlPhotos": [
-            "https://cf.bstatic.com/xdata/images/hotel/square520/106967435.jpg?k=f3dad3550f2715e7aed6555160558dc97598069b5a4088b4eec36bdbc63ec020&o="
-        ],
-        "nameHotel": "Red Nest Hostel",
-        "nearHotel": null,
-        "recapDetails": "1 Stanza - 1 Adulto - 5 Giorni",
-        "mainDetailsHotel": "Red Nest Hostel.\n7.4 Buono 955 recensioni.\n‎In centro‬\n‎Travel Sustainable‬.\n Letto in dormitorio : 1 letto.\nPrezzo iniziale: 82 EUR. Prezzo attuale: 60 EUR..\nInclude tasse e costi.",
-        "rating": 7.4,
-        "quantityRating": "4 Buono 955 recensioni",
-        "totalPrice": 60,
-        "strikethroughPrice": 82.32,
-        "detailsPrice": " Include tasse e costi",
-        "currency": "EUR"
-    },
-    {
-        "hotelId": 10531825,
-        "typology": null,
-        "availableRooms": null,
-        "urlPhotos": [
-            "https://cf.bstatic.com/xdata/images/hotel/square520/486554706.jpg?k=bb530a50fb893c2905d28a72f6ed8121184d05cf2993bb894e2def87761cce6b&o="
-        ],
-        "nameHotel": "SOM Hostel",
-        "nearHotel": " Eixample  1,4 km dal centro Travel Sustainable",
-        "recapDetails": "1 Stanza - 1 Adulto - 5 Giorni",
-        "mainDetailsHotel": "SOM Hostel.\n7.9 Buono 228 recensioni.\n‎Eixample‬ • ‎1,4 km dal centro‬\n‎Travel Sustainable‬.\n Letto in dormitorio : 1 letto.\nPrezzo iniziale: 100 EUR. Prezzo attuale: 81 EUR..\nInclude tasse e costi.",
-        "rating": 7.9,
-        "quantityRating": "9 Buono 228 recensioni",
-        "totalPrice": 81,
-        "strikethroughPrice": 100.0,
-        "detailsPrice": " Include tasse e costi",
-        "currency": "EUR"
+        "currency": "EUR",
+        "checkin": {
+            "fromTime": "15:00",
+            "untilTime": "00:00"
+        },
+        "checkout": {
+            "fromTime": "00:00",
+            "untilTime": "11:00"
+        }
     },
     {
         "hotelId": 8402158,
@@ -1013,13 +1019,47 @@ const hotel_val = [
         "nameHotel": "The Venue Hostel Boutique",
         "nearHotel": " Jesus  1,7 km dal centro Travel Sustainable",
         "recapDetails": "1 Stanza - 1 Adulto - 5 Giorni",
-        "mainDetailsHotel": "The Venue Hostel Boutique.\n8.0 Ottimo 1946 recensioni.\n‎Jesus‬ • ‎1,7 km dal centro‬\n‎Travel Sustainable‬.\n Letto in dormitorio : 1 letto.\nPrezzo iniziale: 93 EUR. Prezzo attuale: 84 EUR..\nInclude tasse e costi.",
+        "mainDetailsHotel": "The Venue Hostel Boutique.\n8.0 Ottimo 1951 recensioni.\n‎Jesus‬ • ‎1,7 km dal centro‬\n‎Travel Sustainable‬.\n Letto in dormitorio : 1 letto.\nPrezzo iniziale: 82 EUR. Prezzo attuale: 74 EUR..\nInclude tasse e costi.",
         "rating": 8.0,
-        "quantityRating": "0 Ottimo 1946 recensioni",
-        "totalPrice": 84,
-        "strikethroughPrice": 93.15,
+        "quantityRating": "0 Ottimo 1951 recensioni",
+        "totalPrice": 74,
+        "strikethroughPrice": 82.15,
         "detailsPrice": " Include tasse e costi",
-        "currency": "EUR"
+        "currency": "EUR",
+        "checkin": {
+            "fromTime": "14:00",
+            "untilTime": "23:30"
+        },
+        "checkout": {
+            "fromTime": "10:00",
+            "untilTime": "10:30"
+        }
+    },
+    {
+        "hotelId": 10531825,
+        "typology": null,
+        "availableRooms": null,
+        "urlPhotos": [
+            "https://cf.bstatic.com/xdata/images/hotel/square520/486554706.jpg?k=bb530a50fb893c2905d28a72f6ed8121184d05cf2993bb894e2def87761cce6b&o="
+        ],
+        "nameHotel": "SOM Hostel",
+        "nearHotel": " Eixample  1,4 km dal centro Travel Sustainable",
+        "recapDetails": "1 Stanza - 1 Adulto - 5 Giorni",
+        "mainDetailsHotel": "SOM Hostel.\n7.9 Buono 234 recensioni.\n‎Eixample‬ • ‎1,4 km dal centro‬\n‎Travel Sustainable‬.\n Letto in dormitorio : 1 letto.\nPrezzo iniziale: 87 EUR. Prezzo attuale: 71 EUR..\nInclude tasse e costi.",
+        "rating": 7.9,
+        "quantityRating": "9 Buono 234 recensioni",
+        "totalPrice": 71,
+        "strikethroughPrice": 87.5,
+        "detailsPrice": " Include tasse e costi",
+        "currency": "EUR",
+        "checkin": {
+            "fromTime": "14:00",
+            "untilTime": "00:00"
+        },
+        "checkout": {
+            "fromTime": "00:00",
+            "untilTime": "11:00"
+        }
     },
     {
         "hotelId": 9660995,
@@ -1031,13 +1071,47 @@ const hotel_val = [
         "nameHotel": "Limin Hostel Capsules",
         "nearHotel": " Camins al Grau  3,3 km dal centro A 1,3 km dalla spiaggia",
         "recapDetails": "1 Stanza - 1 Adulto - 5 Giorni",
-        "mainDetailsHotel": "Limin Hostel Capsules.\n6.2 Carino 1657 recensioni.\n‎Camins al Grau‬ • ‎3,3 km dal centro‬\n‎A 1,3 km dalla spiaggia‬.\n Camera con bagno condiviso : 1 letto.\nPrezzo iniziale: 144 EUR. Prezzo attuale: 117 EUR..\nInclude tasse e costi.",
+        "mainDetailsHotel": "Limin Hostel Capsules.\n6.2 Carino 1658 recensioni.\n‎Camins al Grau‬ • ‎3,3 km dal centro‬\n‎A 1,3 km dalla spiaggia‬.\n Camera con bagno condiviso : 1 letto.\nPrezzo iniziale: 144 EUR. Prezzo attuale: 117 EUR..\nInclude tasse e costi.",
         "rating": 6.2,
-        "quantityRating": "2 Carino 1657 recensioni",
+        "quantityRating": "2 Carino 1658 recensioni",
         "totalPrice": 117,
         "strikethroughPrice": 144.0,
         "detailsPrice": " Include tasse e costi",
-        "currency": "EUR"
+        "currency": "EUR",
+        "checkin": {
+            "fromTime": "12:00",
+            "untilTime": "00:00"
+        },
+        "checkout": {
+            "fromTime": "01:00",
+            "untilTime": "11:00"
+        }
+    },
+    {
+        "hotelId": 92283,
+        "typology": null,
+        "availableRooms": null,
+        "urlPhotos": [
+            "https://cf.bstatic.com/xdata/images/hotel/square520/106967435.jpg?k=f3dad3550f2715e7aed6555160558dc97598069b5a4088b4eec36bdbc63ec020&o="
+        ],
+        "nameHotel": "Red Nest Hostel",
+        "nearHotel": null,
+        "recapDetails": "1 Stanza - 1 Adulto - 5 Giorni",
+        "mainDetailsHotel": "Red Nest Hostel.\n7.4 Buono 957 recensioni.\n‎In centro‬\n‎Travel Sustainable‬.\n Letto in dormitorio : 1 letto.\nPrezzo iniziale: 94 EUR. Prezzo attuale: 68 EUR..\nInclude tasse e costi.",
+        "rating": 7.4,
+        "quantityRating": "4 Buono 957 recensioni",
+        "totalPrice": 68,
+        "strikethroughPrice": 93.5,
+        "detailsPrice": " Include tasse e costi",
+        "currency": "EUR",
+        "checkin": {
+            "fromTime": "15:00",
+            "untilTime": "23:30"
+        },
+        "checkout": {
+            "fromTime": "00:00",
+            "untilTime": "11:00"
+        }
     },
     {
         "hotelId": 25278,
@@ -1049,13 +1123,21 @@ const hotel_val = [
         "nameHotel": "Purple Nest Hostel",
         "nearHotel": null,
         "recapDetails": "1 Stanza - 1 Adulto - 5 Giorni",
-        "mainDetailsHotel": "Purple Nest Hostel.\n7.9 Buono 1956 recensioni.\n‎In centro‬\n‎Travel Sustainable‬.\n Letto in dormitorio : 1 letto.\nPrezzo iniziale: 87 EUR. Prezzo attuale: 63 EUR..\nInclude tasse e costi.",
+        "mainDetailsHotel": "Purple Nest Hostel.\n7.9 Buono 1962 recensioni.\n‎In centro‬\n‎Travel Sustainable‬.\n Letto in dormitorio : 1 letto.\nPrezzo iniziale: 93 EUR. Prezzo attuale: 68 EUR..\nInclude tasse e costi.",
         "rating": 7.9,
-        "quantityRating": "9 Buono 1956 recensioni",
-        "totalPrice": 63,
-        "strikethroughPrice": 86.79,
+        "quantityRating": "9 Buono 1962 recensioni",
+        "totalPrice": 68,
+        "strikethroughPrice": 93.3,
         "detailsPrice": " Include tasse e costi",
-        "currency": "EUR"
+        "currency": "EUR",
+        "checkin": {
+            "fromTime": "15:00",
+            "untilTime": "23:30"
+        },
+        "checkout": {
+            "fromTime": "00:00",
+            "untilTime": "11:00"
+        }
     },
     {
         "hotelId": 1163025,
@@ -1073,43 +1155,41 @@ const hotel_val = [
         "totalPrice": 92,
         "strikethroughPrice": null,
         "detailsPrice": " Include tasse e costi",
-        "currency": "EUR"
+        "currency": "EUR",
+        "checkin": {
+            "fromTime": "15:00",
+            "untilTime": "20:00"
+        },
+        "checkout": {
+            "fromTime": "09:00",
+            "untilTime": "11:00"
+        }
     },
     {
-        "hotelId": 5238345,
+        "hotelId": 9611518,
         "typology": null,
         "availableRooms": null,
         "urlPhotos": [
-            "https://cf.bstatic.com/xdata/images/hotel/square520/277993021.jpg?k=e273774bc29a62a98d0572a7b8c0ba650c081888dd9c21e771a1fe9497837d92&o="
+            "https://cf.bstatic.com/xdata/images/hotel/square520/428130564.jpg?k=cf0f6f3a518d87f4682288e6ef04786378d2cba245051978641ca7d68ef1d76f&o="
         ],
-        "nameHotel": "Art&Flats Hostel",
+        "nameHotel": "HotSpot Valencia",
         "nearHotel": null,
         "recapDetails": "1 Stanza - 1 Adulto - 5 Giorni",
-        "mainDetailsHotel": "Art&Flats Hostel.\n8.3 Ottimo 2577 recensioni.\n‎In centro‬.\n Letto in dormitorio : 1 letto.\nPrezzo iniziale: 106 EUR. Prezzo attuale: 86 EUR..\nInclude tasse e costi.",
-        "rating": 8.3,
-        "quantityRating": "3 Ottimo 2577 recensioni",
-        "totalPrice": 86,
-        "strikethroughPrice": 106.2,
+        "mainDetailsHotel": "HotSpot Valencia.\n5.7 OK 115 recensioni.\n‎In centro‬.\n Letto in dormitorio : 1 letto.\nPrezzo iniziale: 101 EUR. Prezzo attuale: 91 EUR..\nInclude tasse e costi.",
+        "rating": 5.7,
+        "quantityRating": "7 OK 115 recensioni",
+        "totalPrice": 91,
+        "strikethroughPrice": 100.8,
         "detailsPrice": " Include tasse e costi",
-        "currency": "EUR"
-    },
-    {
-        "hotelId": 1710137,
-        "typology": null,
-        "availableRooms": null,
-        "urlPhotos": [
-            "https://cf.bstatic.com/xdata/images/hotel/square520/66167611.jpg?k=700e8a1cce36df30826ee55b2d11814d5440a16cb3e6f1a62810017490d9f3e7&o="
-        ],
-        "nameHotel": "UP Hostel Valencia",
-        "nearHotel": null,
-        "recapDetails": "1 Stanza - 1 Adulto - 5 Giorni",
-        "mainDetailsHotel": "UP Hostel Valencia.\n7.7 Buono 3106 recensioni.\n‎Extramurs‬ • ‎350 m dal centro‬\n‎Travel Sustainable‬.\n Letto in dormitorio : 1 letto.\nPrezzo iniziale: 113 EUR. Prezzo attuale: 82 EUR..\nInclude tasse e costi.",
-        "rating": 7.7,
-        "quantityRating": "7 Buono 3106 recensioni",
-        "totalPrice": 82,
-        "strikethroughPrice": 112.5,
-        "detailsPrice": " Include tasse e costi",
-        "currency": "EUR"
+        "currency": "EUR",
+        "checkin": {
+            "fromTime": "14:00",
+            "untilTime": "00:00"
+        },
+        "checkout": {
+            "fromTime": "00:30",
+            "untilTime": "11:00"
+        }
     },
     {
         "hotelId": 7903765,
@@ -1121,49 +1201,21 @@ const hotel_val = [
         "nameHotel": "BIZZBEACH",
         "nearHotel": " Poblats Maritims  3,3 km dal centro A 1,5 km dalla spiaggia Travel Sustainable",
         "recapDetails": "1 Stanza - 1 Adulto - 5 Giorni",
-        "mainDetailsHotel": "BIZZBEACH.\n7.7 Buono 1548 recensioni.\n‎Poblats Maritims‬ • ‎3,3 km dal centro‬\n‎A 1,5 km dalla spiaggia‬\n‎Travel Sustainable‬.\n Dormitorio condiviso : 8 letti.\n91 EUR.\nInclude tasse e costi.",
+        "mainDetailsHotel": "BIZZBEACH.\n7.7 Buono 1550 recensioni.\n‎Poblats Maritims‬ • ‎3,3 km dal centro‬\n‎A 1,5 km dalla spiaggia‬\n‎Travel Sustainable‬.\n Dormitorio condiviso : 8 letti.\n86 EUR.\nInclude tasse e costi.",
         "rating": 7.7,
-        "quantityRating": "7 Buono 1548 recensioni",
-        "totalPrice": 91,
+        "quantityRating": "7 Buono 1550 recensioni",
+        "totalPrice": 86,
         "strikethroughPrice": null,
         "detailsPrice": " Include tasse e costi",
-        "currency": "EUR"
-    },
-    {
-        "hotelId": 4074640,
-        "typology": null,
-        "availableRooms": null,
-        "urlPhotos": [
-            "https://cf.bstatic.com/xdata/images/hotel/square520/162071950.jpg?k=b98e00ff38d2e2350231561aaf9f891a01c7196b41e004433c459afa3aefc343&o="
-        ],
-        "nameHotel": "Cantagua Hostel",
-        "nearHotel": " Quatre Carreres  1,4 km dal centro Travel Sustainable",
-        "recapDetails": "1 Stanza - 1 Adulto - 5 Giorni",
-        "mainDetailsHotel": "Cantagua Hostel.\n8.9 Favoloso 735 recensioni.\n‎Quatre Carreres‬ • ‎1,4 km dal centro‬\n‎Travel Sustainable‬.\n Letto in dormitorio : 1 letto.\nPrezzo iniziale: 151 EUR. Prezzo attuale: 122 EUR..\nInclude tasse e costi.\nCancellazione gratuita.",
-        "rating": 8.9,
-        "quantityRating": "9 Favoloso 735 recensioni",
-        "totalPrice": 122,
-        "strikethroughPrice": 150.535,
-        "detailsPrice": " Include tasse e costi",
-        "currency": "EUR"
-    },
-    {
-        "hotelId": 4594460,
-        "typology": null,
-        "availableRooms": null,
-        "urlPhotos": [
-            "https://cf.bstatic.com/xdata/images/hotel/square520/180416140.jpg?k=3d43ae5c8d1e008ec89f9c9a6f12479e775d937074746b6afd620962d7366dc2&o="
-        ],
-        "nameHotel": "Casa Serra - PATERNA - APARTAMENTO ALQUILA 3 HABITACIONES CON GARAJE",
-        "nearHotel": " Paterna  7 km da Valencia",
-        "recapDetails": "1 Stanza - 1 Adulto - 5 Giorni",
-        "mainDetailsHotel": "Casa Serra - PATERNA - APARTAMENTO ALQUILA 3 HABITACIONES CON GARAJE.\n7.3 Buono 342 recensioni.\n‎Paterna‬ • ‎7 km da Valencia‬.\n Camera privata : 1 letto.\n150 EUR.\nInclude tasse e costi.",
-        "rating": 7.3,
-        "quantityRating": "3 Buono 342 recensioni",
-        "totalPrice": 150,
-        "strikethroughPrice": null,
-        "detailsPrice": " Include tasse e costi",
-        "currency": "EUR"
+        "currency": "EUR",
+        "checkin": {
+            "fromTime": "13:30",
+            "untilTime": "21:30"
+        },
+        "checkout": {
+            "fromTime": "07:30",
+            "untilTime": "11:00"
+        }
     },
     {
         "hotelId": 3651449,
@@ -1181,25 +1233,15 @@ const hotel_val = [
         "totalPrice": 150,
         "strikethroughPrice": null,
         "detailsPrice": " Include tasse e costi",
-        "currency": "EUR"
-    },
-    {
-        "hotelId": 11168441,
-        "typology": null,
-        "availableRooms": null,
-        "urlPhotos": [
-            "https://cf.bstatic.com/xdata/images/hotel/square520/510616987.jpg?k=9249f245f86f39e0ed9ae59f0927c02251710e78e699b8b77c8960509a3cabf4&o="
-        ],
-        "nameHotel": "Sagunto 2",
-        "nearHotel": " Sagunto  25 km da Valencia",
-        "recapDetails": "1 Stanza - 1 Adulto - 5 Giorni",
-        "mainDetailsHotel": "Sagunto 2.\n‎Sagunto‬ • ‎25 km da Valencia‬.\n Camera con bagno condiviso : 1 letto.\nPrezzo iniziale: 152 EUR. Prezzo attuale: 125 EUR..\nInclude tasse e costi.",
-        "rating": 0.0,
-        "quantityRating": null,
-        "totalPrice": 125,
-        "strikethroughPrice": 151.5,
-        "detailsPrice": " Include tasse e costi",
-        "currency": "EUR"
+        "currency": "EUR",
+        "checkin": {
+            "fromTime": "13:00",
+            "untilTime": "19:00"
+        },
+        "checkout": {
+            "fromTime": "10:00",
+            "untilTime": "12:00"
+        }
     }
 ]
 export { hotel_val, detail_hotel_val };

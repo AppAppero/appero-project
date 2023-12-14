@@ -7,27 +7,18 @@ import TotalActivity from "../TotalActivity";
 const CartFlight = ({ itinerary: flight }) => {
 
     return (
-        <>
+        <Card className="p-2 border-0 bg-light">
+            <HeaderCart name="flight" />
             {
-                flight?.id &&
-                <Card className="p-2 border-0 bg-light">
-
-                    <HeaderCart name="flight" />
-
-                    {
-                        flight?.itineraries?.map((el, index) => {
-                            return <HeaderFlight
-                                key={index}
-                                index={index}
-                                {...el} />
-                        })
-                    }
-
-                    <TotalActivity message="Totale Volo" price={flight?.price?.grandTotal} />
-
-                </Card>
+                flight?.itineraries?.map((el, index) => {
+                    return <HeaderFlight
+                        key={index}
+                        index={index}
+                        {...el} />
+                })
             }
-        </>
+            <TotalActivity message="Totale Volo" price={flight?.price?.grandTotal} />
+        </Card>
     )
 }
 

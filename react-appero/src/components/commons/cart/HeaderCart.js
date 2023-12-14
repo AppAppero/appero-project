@@ -1,12 +1,11 @@
-import React from 'react'
-import { Button, Col, Row } from 'react-bootstrap'
-import { RiDeleteBack2Line } from 'react-icons/ri'
-import { MdOutlineFlight } from 'react-icons/md';
-import { removeFlight } from "../../../redux/reducerItinerary";
-import { useDispatch } from "react-redux";
+import React from 'react';
+import { Button, Col, Row } from 'react-bootstrap';
 import { FaHotel } from "react-icons/fa";
-import { MdSignalCellularConnectedNoInternet0Bar } from "react-icons/md";
+import { MdOutlineFlight, MdSignalCellularConnectedNoInternet0Bar } from 'react-icons/md';
+import { RiDeleteBack2Line } from 'react-icons/ri';
+import { useDispatch } from "react-redux";
 import { useGlobalContext } from '../../../context/context';
+import { removeFlight, removeHotel } from "../../../redux/reducerItinerary";
 
 const HeaderCart = ({ name }) => {
     const dispach = useDispatch()
@@ -31,6 +30,9 @@ const HeaderCart = ({ name }) => {
         if (name === "flight") {
             dispach(removeFlight())
             removeElement("Volo")
+        } else if (name === "hotel") {
+            dispach(removeHotel())
+            removeElement("Hotel")
         }
     }
 
