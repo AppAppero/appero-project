@@ -1,6 +1,5 @@
 import { createSlice, isAnyOf } from "@reduxjs/toolkit";
-import axios from "axios";
-import { GET_FILTER_HOTEL, SEARCH_HOTEL } from "../utils/commons/constAPI";
+import { getFilterHotelFetch, searchHotelFetch } from "../api/hotel/fetchHotel";
 import { checkTextCalculateDate, checkTextDate, checkTextPerson } from "../utils/commons/formatState";
 import { detail_hotel_val, hotel_val } from "../utils/hotel/exHotel";
 
@@ -66,17 +65,7 @@ export const { selectedHotel, setDetailsHotel, loading, containerHotels, setFilt
 // API per ricerca hotel
 export const searchHotel = (input, isTest) => async (dispatch, getState) => {
     if (!isTest) {
-        dispatch(loading(true))
-        try {
-            const url = process.env.REACT_APP_BASE_URL + SEARCH_HOTEL;
-            const hotelResult = await axios.post(url, createParams(input, getState))
-            dispatch(loading(false))
-            dispatch(containerHotels(hotelResult?.data))
-        } catch (e) {
-            dispatch(loading(false))
-            dispatch(error(e))
-        }
-        dispatch(loading(false))
+        searchHotelFetch(createParams(input, getState), dispatch)
     } else {
         dispatch(loading(false))
         dispatch(containerHotels(hotel_val))
@@ -87,20 +76,14 @@ export const searchHotel = (input, isTest) => async (dispatch, getState) => {
 // API per i Filtri degli Hotel
 export const getFilterHotel = (input, isTest) => async (dispatch, getState) => {
     if (!isTest) {
-        try {
-            const url = process.env.REACT_APP_BASE_URL + GET_FILTER_HOTEL;
-            const filterResult = await axios.post(url, createParams(input, getState))
-            dispatch(setFilterHotel(filterResult?.data))
-        } catch (e) {
-            dispatch(error(e))
-        }
+        getFilterHotelFetch(createParams(input, getState), dispatch)
     } else {
         dispatch(loading(false))
         dispatch(setFilterHotel(detail_hotel_val))
     }
 }
 
-// Crea i parametri degli hotel raggruppandoli in base all'utilità
+// Crea i parametri degli hotel raggruppandoli in base all'utilità (API FILTRI E RICERCA HOTEL)
 const createParams = ({ params, paramIdFilters = [] }, getState) => {
     const overnightCity = getState()?.reducerHotel?.detailsHotel?.overnightCity
     const numberRoom = getState()?.reducerHotel?.detailsHotel?.numberRoom

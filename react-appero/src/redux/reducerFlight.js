@@ -2,6 +2,7 @@ import { createAction, createSlice, isAnyOf } from "@reduxjs/toolkit";
 import axios from "axios";
 import { SEARCH_FLIGHT } from "../utils/commons/constAPI";
 import { bar_val_children } from '../utils/flight/exFlights';
+import { searchFlightFetch } from "../api/flight/fetchFlight";
 
 // Create action : Crea il filtro per i voli migliori,economici e veloci
 const filterFlight = createAction("filter-flight")
@@ -132,18 +133,9 @@ export { filterFlight, reorderFlight };
  * @param {*} isTest 
  * @returns 
  */
-export const searchFlightAmadeus = (params, isTest) => async (dispatch) => {
+export const searchFlight = (params, isTest) => async (dispatch) => {
     if (!isTest) {
-        dispatch(loading(true))
-        try {
-            const url = process.env.REACT_APP_BASE_URL + SEARCH_FLIGHT;
-            const data = await axios.post(url, params)
-            dispatch(loading(false))
-            dispatch(containerFlights(data?.data?.data));
-        } catch (e) {
-            dispatch(loading(false))
-            dispatch(error(e.message));
-        }
+        searchFlightFetch(params, dispatch)
     }
     else {
         dispatch(loading(false))

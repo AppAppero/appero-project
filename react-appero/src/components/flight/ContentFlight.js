@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { useGlobalContext } from '../../context/context';
-import { searchFlightAmadeus } from '../../redux/reducerFlight';
+import { searchFlight } from '../../redux/reducerFlight';
 import ErrorElement from '../commons/ErrorElement';
 import Loading from '../commons/Loading';
 import TitleContent from '../commons/TitleContent';
@@ -14,12 +14,12 @@ const ContentFlight = () => {
     const reducerFlight = useSelector(state => state.reducerFlight)
     const { selectFlightId, flights, isLoading, isError, messageError } = reducerFlight;
 
-    const searchFlight = useCallback(() => {
-        dispatch(searchFlightAmadeus(params, true));
+    const searchFlightCall = useCallback(() => {
+        dispatch(searchFlight(params, true));
     }, [params]);
 
     useEffect(() => {
-        searchFlight();
+        searchFlightCall();
     }, []);
 
 
