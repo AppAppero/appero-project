@@ -8,7 +8,7 @@ import CardContentHotel from "./CardContentHotel";
 
 const ContentHotel = () => {
     const reducerHotel = useSelector(state => state.reducerHotel)
-    const { hotels, selectHotelId, isLoading, isError, messageError, detailsHotel } = reducerHotel;
+    const { hotels, isLoading, isError, messageError, detailsHotel } = reducerHotel;
     return (
         <>
             {
@@ -26,7 +26,6 @@ const ContentHotel = () => {
                                     (
                                         hotels?.map((hotel, index) => (<CardContentHotel
                                             key={index}
-                                            selectHotelId={selectHotelId}
                                             hotel={hotel} />))
                                     ) :
                                     (

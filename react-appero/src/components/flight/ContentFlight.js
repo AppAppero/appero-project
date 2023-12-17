@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { useGlobalContext } from '../../context/context';
@@ -12,7 +12,7 @@ const ContentFlight = () => {
     let { params } = useGlobalContext()
     const dispatch = useDispatch()
     const reducerFlight = useSelector(state => state.reducerFlight)
-    const { selectFlightId, flights, isLoading, isError, messageError } = reducerFlight;
+    const { flights, isLoading, isError, messageError } = reducerFlight;
 
     const searchFlightCall = useCallback(() => {
         dispatch(searchFlight(params, true));
@@ -40,7 +40,6 @@ const ContentFlight = () => {
                                     (
                                         <CardContentFlight
                                             key={index}
-                                            selectFlightId={selectFlightId}
                                             flight={flight} />
                                     )
                                     )

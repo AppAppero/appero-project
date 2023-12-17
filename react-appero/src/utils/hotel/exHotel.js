@@ -1244,4 +1244,742 @@ const hotel_val = [
         }
     }
 ]
-export { hotel_val, detail_hotel_val };
+
+const detail_hotel = {
+    "ufi": -406131,
+    "hotel_id": 8143531,
+    "hotel_name": "Coworking Balance",
+    "url": "https://www.booking.com/hotel/es/hostal-orid.html",
+    "hotel_name_trans": "",
+    "review_nr": 648,
+    "arrival_date": "2024-01-10",
+    "departure_date": "2024-01-20",
+    "price_transparency_mode": "none",
+    "accommodation_type_name": "Hotel",
+    "latitude": 39.471509,
+    "longitude": -0.35168,
+    "address": "3 Carrer del Poeta Mas I Ros",
+    "address_trans": "",
+    "city": "València",
+    "city_trans": "Valencia",
+    "city_in_trans": "a Valencia",
+    "city_name_en": "Valencia",
+    "district": null,
+    "countrycode": "es",
+    "distance_to_cc": 2.14253209794695,
+    "default_language": "ru",
+    "country_trans": "Spagna",
+    "currency_code": "EUR",
+    "zip": "46021",
+    "timezone": "Europe/Madrid",
+    "rare_find_state": "NOT_RARE",
+    "soldout": 0,
+    "available_rooms": 7,
+    "max_rooms_in_reservation": 10,
+    "average_room_size_for_ufi_m2": "15.83",
+    "is_family_friendly": 0,
+    "is_closed": 0,
+    "is_crimea": 0,
+    "is_hotel_ctrip": 0,
+    "is_price_transparent": 0,
+    "is_genius_deal": 0,
+    "is_cash_accepted_check_enabled": 1,
+    "qualifies_for_no_cc_reservation": 0,
+    "hotel_include_breakfast": 0,
+    "cc1": "es",
+    "family_facilities": [],
+    "product_price_breakdown": {
+        "items": [
+            {
+                "name": "Tassa di soggiorno",
+                "kind": "charge",
+                "details": "Tassa di soggiorno 0 %",
+                "base": {
+                    "percentage": 0,
+                    "kind": "percentage"
+                },
+                "item_amount": {
+                    "value": 0,
+                    "amount_rounded": "€ 0",
+                    "amount_unrounded": "€ 0",
+                    "currency": "EUR"
+                },
+                "inclusion_type": "included"
+            },
+            {
+                "name": "IVA",
+                "kind": "charge",
+                "details": "IVA 10 %",
+                "inclusion_type": "included",
+                "item_amount": {
+                    "value": 11.9909090909091,
+                    "amount_unrounded": "€ 11,99",
+                    "amount_rounded": "€ 12",
+                    "currency": "EUR"
+                },
+                "base": {
+                    "kind": "percentage",
+                    "percentage": 10
+                }
+            }
+        ],
+        "benefits": [],
+        "charges_details": {
+            "amount": {
+                "currency": "EUR",
+                "value": 0
+            },
+            "translated_copy": "Include tasse e costi",
+            "mode": "all_included"
+        },
+        "excluded_amount": {
+            "currency": "EUR",
+            "value": 0,
+            "amount_rounded": "€ 0",
+            "amount_unrounded": "€ 0"
+        },
+        "net_amount": {
+            "amount_unrounded": "€ 119,91",
+            "amount_rounded": "€ 120",
+            "value": 119.909090909091,
+            "currency": "EUR"
+        },
+        "gross_amount_per_night": {
+            "amount_unrounded": "€ 13,19",
+            "amount_rounded": "€ 13",
+            "value": 13.19,
+            "currency": "EUR"
+        },
+        "has_long_stays_weekly_rate_price": 0,
+        "gross_amount": {
+            "value": 131.9,
+            "amount_rounded": "€ 132",
+            "amount_unrounded": "€ 131,90",
+            "currency": "EUR"
+        },
+        "all_inclusive_amount": {
+            "value": 131.9,
+            "amount_rounded": "€ 132",
+            "amount_unrounded": "€ 131,90",
+            "currency": "EUR"
+        },
+        "has_long_stays_monthly_rate_price": 0,
+        "included_taxes_and_charges_amount": {
+            "amount_unrounded": "€ 11,99",
+            "amount_rounded": "€ 12",
+            "value": 11.9909090909091,
+            "currency": "EUR"
+        },
+        "nr_stays": 7,
+        "gross_amount_hotel_currency": {
+            "value": 131.9,
+            "amount_rounded": "€ 132",
+            "amount_unrounded": "€ 131,90",
+            "currency": "EUR"
+        }
+    },
+    "composite_price_breakdown": {
+        "benefits": [],
+        "charges_details": {
+            "amount": {
+                "currency": "EUR",
+                "value": 0
+            },
+            "translated_copy": "Include tasse e costi",
+            "mode": "all_included"
+        },
+        "items": [
+            {
+                "kind": "charge",
+                "name": "Tassa di soggiorno",
+                "details": "Tassa di soggiorno 0 %",
+                "inclusion_type": "included",
+                "item_amount": {
+                    "currency": "EUR",
+                    "value": 0,
+                    "amount_rounded": "€ 0",
+                    "amount_unrounded": "€ 0"
+                },
+                "base": {
+                    "kind": "percentage",
+                    "percentage": 0
+                }
+            },
+            {
+                "details": "IVA 10 %",
+                "kind": "charge",
+                "name": "IVA",
+                "base": {
+                    "percentage": 10,
+                    "kind": "percentage"
+                },
+                "inclusion_type": "included",
+                "item_amount": {
+                    "amount_unrounded": "€ 11,99",
+                    "amount_rounded": "€ 12",
+                    "value": 11.9909090909091,
+                    "currency": "EUR"
+                }
+            }
+        ],
+        "has_long_stays_weekly_rate_price": 0,
+        "gross_amount": {
+            "value": 131.9,
+            "amount_unrounded": "€ 131,90",
+            "amount_rounded": "€ 132",
+            "currency": "EUR"
+        },
+        "excluded_amount": {
+            "value": 0,
+            "amount_rounded": "€ 0",
+            "amount_unrounded": "€ 0",
+            "currency": "EUR"
+        },
+        "gross_amount_per_night": {
+            "amount_rounded": "€ 13",
+            "amount_unrounded": "€ 13,19",
+            "value": 13.19,
+            "currency": "EUR"
+        },
+        "net_amount": {
+            "currency": "EUR",
+            "amount_unrounded": "€ 119,91",
+            "amount_rounded": "€ 120",
+            "value": 119.909090909091
+        },
+        "all_inclusive_amount": {
+            "currency": "EUR",
+            "amount_rounded": "€ 132",
+            "amount_unrounded": "€ 131,90",
+            "value": 131.9
+        },
+        "has_long_stays_monthly_rate_price": 0,
+        "included_taxes_and_charges_amount": {
+            "value": 11.9909090909091,
+            "amount_unrounded": "€ 11,99",
+            "amount_rounded": "€ 12",
+            "currency": "EUR"
+        },
+        "gross_amount_hotel_currency": {
+            "currency": "EUR",
+            "value": 131.9,
+            "amount_unrounded": "€ 131,90",
+            "amount_rounded": "€ 132"
+        }
+    },
+    "property_highlight_strip": [
+        {
+            "name": "Connessione WiFi gratuita",
+            "icon_list": [
+                {
+                    "size": 1,
+                    "icon": "iconset/wifi"
+                }
+            ]
+        },
+        {
+            "name": "Servizio in camera",
+            "icon_list": [
+                {
+                    "size": 1,
+                    "icon": "iconset/gourmet"
+                }
+            ]
+        },
+        {
+            "icon_list": [
+                {
+                    "size": 1,
+                    "icon": "iconset/nosmoking"
+                }
+            ],
+            "name": "Camere non fumatori"
+        },
+        {
+            "name": "Giardino",
+            "icon_list": [
+                {
+                    "size": 1,
+                    "icon": "iconset/garden"
+                }
+            ]
+        }
+    ],
+    "facilities_block": {
+        "facilities": [
+            {
+                "name": "Camere non fumatori",
+                "icon": "nosmoking"
+            },
+            {
+                "name": "Servizio in camera",
+                "icon": "clean"
+            },
+            {
+                "icon": "wifi",
+                "name": "WiFi disponibile ovunque"
+            },
+            {
+                "name": "Connessione WiFi gratuita",
+                "icon": "wifi"
+            }
+        ],
+        "name": "Tutti li vogliono, tutti li cercano:",
+        "type": "popular"
+    },
+    "top_ufi_benefits": [
+        {
+            "translated_name": "WiFi",
+            "icon": "wifi"
+        },
+        {
+            "translated_name": "Camere non fumatori",
+            "icon": "nosmoking"
+        },
+        {
+            "translated_name": "Terrazza",
+            "icon": "resort"
+        },
+        {
+            "translated_name": "Servizio in camera",
+            "icon": "clean"
+        },
+        {
+            "icon": "garden",
+            "translated_name": "Giardino"
+        },
+        {
+            "translated_name": "Aria condizionata",
+            "icon": "snowflake"
+        }
+    ],
+    "languages_spoken": {
+        "languagecode": [
+            "en-gb"
+        ]
+    },
+    "spoken_languages": [
+        "en-gb"
+    ],
+    "breakfast_review_score": {
+        "review_number": 0,
+        "review_score_word": "",
+        "review_snippet": "",
+        "rating": 0,
+        "review_count": 0,
+        "review_score": 0
+    },
+    "wifi_review_score": {
+        "rating": "9.0"
+    },
+    "info_banners": [
+        {
+            "show_after_dismissed": 1,
+            "messages": [
+                "Ricevi indicazioni di viaggio ed eventuali informazioni sulle restrizioni agli spostamenti prima di partire."
+            ],
+            "priority": 100,
+            "id": "coronavirus",
+            "secondary_action": {},
+            "collapsible": 1,
+            "show_after_dismissed_time": 24,
+            "primary_action": {
+                "action": "open-page",
+                "text": "Leggi di più",
+                "action_context": "covid19-faq"
+            },
+            "position_to_inject": 0,
+            "type": "banner",
+            "dismissable": 0,
+            "is_default_collapsed": 1,
+            "title": "Assistenza Coronavirus (COVID-19)"
+        }
+    ],
+    "min_room_distribution": {
+        "adults": 1,
+        "children": []
+    },
+    "available_deal_descriptions": [],
+    "tax_exceptions": [],
+    "booking_home": {},
+    "aggregated_data": {
+        "has_nonrefundable": 1,
+        "has_seating": 0,
+        "has_kitchen": 0,
+        "has_refundable": 1,
+        "common_kitchen_fac": []
+    },
+    "last_reservation": {
+        "time": "",
+        "country": null,
+        "countrycode": null
+    },
+    "free_facilities_cancel_breakfast": [
+        {
+            "facility_id": 105
+        }
+    ],
+    "room_recommendation": [
+        {
+            "extra_beds_for_children_price_in_hotel_currency": 0,
+            "babies": 0,
+            "extra_babycots_price_in_hotel_currency": 0,
+            "extra_beds_for_children_price": 0,
+            "children": 0,
+            "number_of_extra_beds_for_adults": 0,
+            "number_of_extra_babycots": 0,
+            "number_of_extra_beds_and_babycots_total": 0,
+            "adults": 1,
+            "number_of_extra_beds_for_children": 0,
+            "total_extra_bed_price": 0,
+            "extra_beds_for_adults_price_in_hotel_currency": 0,
+            "total_extra_bed_price_in_hotel_currency": 0,
+            "extra_babycots_price": 0,
+            "block_id": "814353147_344198244_1_0_0",
+            "extra_beds_for_adults_price": 0
+        }
+    ],
+    "hotel_text": {},
+    "districts": [
+        7543
+    ],
+    "preferences": [],
+    "hotel_important_information_with_codes": [],
+    "rooms": {
+        
+            "children_and_beds_text": {
+                "cribs_and_extra_beds": [
+                    {
+                        "highlight": 0,
+                        "text": "Non è possibile aggiungere letti extra o culle."
+                    }
+                ],
+                "children_at_the_property": [
+                    {
+                        "text": "Non è consentito l'accesso ai bambini.",
+                        "highlight": 0
+                    }
+                ],
+                "age_intervals": null,
+                "allow_children": 0
+            },
+            "photos": [
+                {
+                    "url_max300": "https://cf.bstatic.com/xdata/images/hotel/max300/486531830.jpg?k=127c78280f0a7a5fdd3ca2c1dedfd4fa64e74af739e2e3789601b6cdc3de9936&o=",
+                    "url_640x200": "https://cf.bstatic.com/xdata/images/hotel/640x200/486531830.jpg?k=127c78280f0a7a5fdd3ca2c1dedfd4fa64e74af739e2e3789601b6cdc3de9936&o=",
+                    "url_original": "https://cf.bstatic.com/xdata/images/hotel/max500/486531830.jpg?k=127c78280f0a7a5fdd3ca2c1dedfd4fa64e74af739e2e3789601b6cdc3de9936&o=",
+                    "photo_id": 486531830,
+                    "url_square180": "https://cf.bstatic.com/xdata/images/hotel/square180/486531830.jpg?k=127c78280f0a7a5fdd3ca2c1dedfd4fa64e74af739e2e3789601b6cdc3de9936&o=",
+                    "ratio": 1.33333333333333,
+                    "url_square60": "https://cf.bstatic.com/xdata/images/hotel/square60/486531830.jpg?k=127c78280f0a7a5fdd3ca2c1dedfd4fa64e74af739e2e3789601b6cdc3de9936&o=",
+                    "last_update_date": "2023-08-18 13:09:40",
+                    "urlMax1280": "https://cf.bstatic.com/xdata/images/hotel/1280x900/486531830.jpg?k=127c78280f0a7a5fdd3ca2c1dedfd4fa64e74af739e2e3789601b6cdc3de9936&o=",
+                    "new_order": 0,
+                    "url_max750": "https://cf.bstatic.com/xdata/images/hotel/max750/486531830.jpg?k=127c78280f0a7a5fdd3ca2c1dedfd4fa64e74af739e2e3789601b6cdc3de9936&o="
+                },
+                {
+                    "ratio": 0.75,
+                    "last_update_date": "2023-08-18 13:09:41",
+                    "url_square60": "https://cf.bstatic.com/xdata/images/hotel/square60/486531832.jpg?k=4b6518a13e1c7b865ac39321630174ad7341f50d7ff61f47300d2b6c54228074&o=",
+                    "new_order": 1,
+                    "url_max750": "https://cf.bstatic.com/xdata/images/hotel/max750/486531832.jpg?k=4b6518a13e1c7b865ac39321630174ad7341f50d7ff61f47300d2b6c54228074&o=",
+                    "urlMax1280": "https://cf.bstatic.com/xdata/images/hotel/1280x900/486531832.jpg?k=4b6518a13e1c7b865ac39321630174ad7341f50d7ff61f47300d2b6c54228074&o=",
+                    "url_max300": "https://cf.bstatic.com/xdata/images/hotel/max300/486531832.jpg?k=4b6518a13e1c7b865ac39321630174ad7341f50d7ff61f47300d2b6c54228074&o=",
+                    "url_640x200": "https://cf.bstatic.com/xdata/images/hotel/640x200/486531832.jpg?k=4b6518a13e1c7b865ac39321630174ad7341f50d7ff61f47300d2b6c54228074&o=",
+                    "url_square180": "https://cf.bstatic.com/xdata/images/hotel/square180/486531832.jpg?k=4b6518a13e1c7b865ac39321630174ad7341f50d7ff61f47300d2b6c54228074&o=",
+                    "photo_id": 486531832,
+                    "url_original": "https://cf.bstatic.com/xdata/images/hotel/max500/486531832.jpg?k=4b6518a13e1c7b865ac39321630174ad7341f50d7ff61f47300d2b6c54228074&o="
+                },
+                {
+                    "urlMax1280": "https://cf.bstatic.com/xdata/images/hotel/1280x900/367128024.jpg?k=77a5fc7e3fdbc24fed8448fa9414c9108a802a7dd21b374ed29d2d080a4f96ee&o=",
+                    "url_max750": "https://cf.bstatic.com/xdata/images/hotel/max750/367128024.jpg?k=77a5fc7e3fdbc24fed8448fa9414c9108a802a7dd21b374ed29d2d080a4f96ee&o=",
+                    "new_order": 2,
+                    "url_square60": "https://cf.bstatic.com/xdata/images/hotel/square60/367128024.jpg?k=77a5fc7e3fdbc24fed8448fa9414c9108a802a7dd21b374ed29d2d080a4f96ee&o=",
+                    "last_update_date": "2022-06-14 15:11:30",
+                    "ratio": 1.49943566591422,
+                    "url_original": "https://cf.bstatic.com/xdata/images/hotel/max500/367128024.jpg?k=77a5fc7e3fdbc24fed8448fa9414c9108a802a7dd21b374ed29d2d080a4f96ee&o=",
+                    "photo_id": 367128024,
+                    "url_square180": "https://cf.bstatic.com/xdata/images/hotel/square180/367128024.jpg?k=77a5fc7e3fdbc24fed8448fa9414c9108a802a7dd21b374ed29d2d080a4f96ee&o=",
+                    "url_640x200": "https://cf.bstatic.com/xdata/images/hotel/640x200/367128024.jpg?k=77a5fc7e3fdbc24fed8448fa9414c9108a802a7dd21b374ed29d2d080a4f96ee&o=",
+                    "url_max300": "https://cf.bstatic.com/xdata/images/hotel/max300/367128024.jpg?k=77a5fc7e3fdbc24fed8448fa9414c9108a802a7dd21b374ed29d2d080a4f96ee&o="
+                },
+                {
+                    "url_square180": "https://cf.bstatic.com/xdata/images/hotel/square180/486531831.jpg?k=621e2a01dee63cc41847cd8c9a6cf727d8d7fda840d56d73e87b52b9da697670&o=",
+                    "photo_id": 486531831,
+                    "url_original": "https://cf.bstatic.com/xdata/images/hotel/max500/486531831.jpg?k=621e2a01dee63cc41847cd8c9a6cf727d8d7fda840d56d73e87b52b9da697670&o=",
+                    "url_640x200": "https://cf.bstatic.com/xdata/images/hotel/640x200/486531831.jpg?k=621e2a01dee63cc41847cd8c9a6cf727d8d7fda840d56d73e87b52b9da697670&o=",
+                    "url_max300": "https://cf.bstatic.com/xdata/images/hotel/max300/486531831.jpg?k=621e2a01dee63cc41847cd8c9a6cf727d8d7fda840d56d73e87b52b9da697670&o=",
+                    "new_order": 3,
+                    "url_max750": "https://cf.bstatic.com/xdata/images/hotel/max750/486531831.jpg?k=621e2a01dee63cc41847cd8c9a6cf727d8d7fda840d56d73e87b52b9da697670&o=",
+                    "urlMax1280": "https://cf.bstatic.com/xdata/images/hotel/1280x900/486531831.jpg?k=621e2a01dee63cc41847cd8c9a6cf727d8d7fda840d56d73e87b52b9da697670&o=",
+                    "last_update_date": "2023-08-18 13:09:41",
+                    "url_square60": "https://cf.bstatic.com/xdata/images/hotel/square60/486531831.jpg?k=621e2a01dee63cc41847cd8c9a6cf727d8d7fda840d56d73e87b52b9da697670&o=",
+                    "ratio": 0.75
+                }
+            ],
+            "private_bathroom_highlight": {
+                "has_highlight": 0
+            },
+            "description": "",
+            "bed_configurations": [
+                {
+                    "bed_types": [
+                        {
+                            "bed_type": 1,
+                            "description_localized": null,
+                            "name": "letto/i singolo/i",
+                            "description": "larghezza 90-130 cm",
+                            "count": 1,
+                            "name_with_count": "1 letto singolo",
+                            "description_imperial": "larghezza 35-51 pollici"
+                        }
+                    ]
+                }
+            ],
+            "highlights": [
+                {
+                    "key": "wifi",
+                    "translated_name": "WiFi gratis",
+                    "icon": "wifi"
+                }
+            ],
+            "facilities": [],
+            "is_high_floor_guaranteed": 0,
+            "private_bathroom_count": 0,
+            "has_wifi_score": 1
+        
+    },
+    "block": [
+        {
+            "extrabed_available": 0,
+            "half_board": 0,
+            "can_reserve_free_parking": 0,
+            "room_count": 14,
+            "bh_room_highlights": [],
+            "room_id": 814353147,
+            "babycots_available": 0,
+            "is_last_minute_deal": 0,
+            "refundable_until_epoch": 1704495599,
+            "number_of_bathrooms": 0,
+            "genius_discount_percentage": 0,
+            "deposit_required": 1,
+            "nr_adults": 1,
+            "is_vp2_enrolled": 1,
+            "pod_ios_migrate_policies_to_smp_fullon": 0,
+            "room_name": "Posto Letto in Dormitorio Misto",
+            "must_reserve_free_parking": 0,
+            "number_of_bedrooms": 0,
+            "choose_when_you_pay": 1,
+            "max_occupancy": "1",
+            "mealplan": "La tariffa di questa camera non include alcun pasto.",
+            "is_secret_deal": 0,
+            "block_text": {
+                "policies": [
+                    {
+                        "content": "Puoi cancellare gratuitamente fino a 4 giorni prima dell'arrivo. Se cancelli nei 4 giorni prima dell'arrivo, la penale di cancellazione sarà l'importo totale della prenotazione. Se non ti presenti, la penale per la mancata presentazione sarà l'importo totale della prenotazione.",
+                        "class": "POLICY_CANCELLATION"
+                    },
+                    {
+                        "content": "L'importo totale della prenotazione viene addebitato al momento della prenotazione.",
+                        "class": "POLICY_PREPAY"
+                    },
+                    {
+                        "title": "Pagamenti tramite Booking.com",
+                        "class": "POLICY_BMP",
+                        "content": "Booking.com gestirà il pagamento per questa prenotazione, ma assicurati di avere contanti per eventuali extra durante il soggiorno."
+                    },
+                    {
+                        "content": "Smart Flex Reservations policy - 4 days until checkin",
+                        "class": "POLICY_TITLE"
+                    },
+                    {
+                        "class": "POLICY_REFUND_SCHEDULE",
+                        "content": " Riceverai il rimborso totale se cancelli prima delle 23:59 del giorno 5 gennaio 2024. Se cancelli a partire dal giorno 6 gennaio 2024, non potrai più ottenere nessun rimborso."
+                    }
+                ]
+            },
+            "smoking": 0,
+            "name_without_policy": "Posto Letto in Dormitorio Misto",
+            "is_smart_deal": 0,
+            "refundable_until": "2024-01-05 23:59:59 +0100",
+            "is_block_fit": 1,
+            "b_pay_later_deadline_epoch": 1704322740,
+            "refundable": 1,
+            "nr_children": 0,
+            "children_ages": [],
+            "breakfast_included": 0,
+            "max_children_free_age": 12,
+            "is_genius_deal": null,
+            "max_children_free": 0,
+            "extrabed_available_amount": null,
+            "name": "Posto Letto in Dormitorio Misto - Cancellazione gratuita - 4 days until checkin - Smart Flex Reservations policy",
+            "deals": {
+                "deal_attributes": {
+                    "has_secret_channel_option": 0
+                }
+            },
+            "babycots_available_amount": null,
+            "paymentterms": {
+                "cancellation": {
+                    "type": "free_cancellation",
+                    "timeline": {
+                        "currency_code": "EUR",
+                        "stages": [
+                            {
+                                "text_refundable": "Riceverai il rimborso totale se cancelli prima delle 23:59 del giorno 5 gennaio 2024.",
+                                "fee_rounded": 0,
+                                "limit_until_raw": "2024-01-05 23:59:59",
+                                "limit_from_raw": "2023-12-17 17:09:36",
+                                "fee": 0,
+                                "is_effective": 1,
+                                "date_until": "2024-01-05 23:59:59 +0100",
+                                "effective_number": 0,
+                                "fee_remaining": 131.9,
+                                "limit_from_date": "17 dicembre 2023",
+                                "current_stage": 1,
+                                "u_fee_remaining_pretty": "&#x20AC; 131",
+                                "stage_fee_pretty": "&#x20AC; 0",
+                                "stage_fee": 0,
+                                "u_fee_pretty": "&#x20AC; 0",
+                                "is_free": 1,
+                                "fee_pretty": "&#x20AC; 0",
+                                "u_stage_fee": "0.00",
+                                "limit_until": "5 gennaio 2024 23:59",
+                                "text": "Cancellazione gratuita fino alle 23:59 del 5 gen",
+                                "limit_until_time": "23:59",
+                                "fee_remaining_pretty": "&#x20AC; 131",
+                                "limit_timezone": "Valencia",
+                                "limit_from": "17 dicembre 2023 17:09",
+                                "b_state": "FREE",
+                                "u_fee_remaining": "131.90",
+                                "limit_until_date": "5 gennaio 2024",
+                                "u_fee": "0.00",
+                                "limit_from_time": "17:09",
+                                "u_stage_fee_pretty": "&#x20AC; 0",
+                                "b_number": 0,
+                                "stage_translation": "Cancellazione gratis"
+                            },
+                            {
+                                "limit_until": "6 gennaio 2024 00:00",
+                                "text": "Dalle 00:00 del 6 gen",
+                                "fee_remaining_pretty": "&#x20AC; 0",
+                                "limit_until_time": "00:00",
+                                "fee_pretty": "&#x20AC; 131",
+                                "is_free": 0,
+                                "u_stage_fee": "131.90",
+                                "date_from": "2024-01-06 00:00:00 +0100",
+                                "limit_from_time": "00:00",
+                                "u_fee": "131.90",
+                                "u_fee_remaining": "0.00",
+                                "limit_until_date": "6 gennaio 2024",
+                                "u_stage_fee_pretty": "&#x20AC; 132",
+                                "b_number": 1,
+                                "stage_translation": "Nessun rimborso se cancelli",
+                                "limit_timezone": "Valencia",
+                                "amount_pretty": "&#x20AC; 132",
+                                "limit_from": "6 gennaio 2024 00:00",
+                                "b_state": "NONREF",
+                                "limit_from_raw": "2024-01-06 00:00:00",
+                                "amount": "131.90",
+                                "fee": 131.9,
+                                "is_effective": 1,
+                                "text_refundable": "Se cancelli a partire dal giorno 6 gennaio 2024, non potrai più ottenere nessun rimborso.",
+                                "fee_rounded": 132,
+                                "limit_until_raw": "2024-01-06 00:00:00",
+                                "stage_fee_pretty": "&#x20AC; 132",
+                                "stage_fee": 131.9,
+                                "u_fee_pretty": "&#x20AC; 132",
+                                "fee_remaining": 0,
+                                "effective_number": 1,
+                                "limit_from_date": "6 gennaio 2024",
+                                "current_stage": 0,
+                                "u_fee_remaining_pretty": "&#x20AC; 0"
+                            }
+                        ],
+                        "policygroup_instance_id": "242/1/337",
+                        "u_currency_code": "EUR",
+                        "nr_stages": 2
+                    },
+                    "guaranteed_non_refundable": 0,
+                    "non_refundable_anymore": 0,
+                    "info": {
+                        "is_midnight": 1,
+                        "timezone_offset": "3600",
+                        "date": "6 gennaio 2024",
+                        "refundable_date_midnight": "2024-01-05T23:59:59+01:00",
+                        "date_raw": "2024-01-06 00:00:00",
+                        "date_before_raw": "2024-01-05",
+                        "timezone": "CET",
+                        "refundable_date": "2024-01-06T00:00:00+01:00",
+                        "refundable": 1,
+                        "time": "00:00",
+                        "time_before_midnight": "23:59",
+                        "date_before": "5 gennaio 2024"
+                    },
+                    "description": "Puoi cancellare gratuitamente fino a 4 giorni prima dell'arrivo. Se cancelli nei 4 giorni prima dell'arrivo, la penale di cancellazione sarà l'importo totale della prenotazione. Se non ti presenti, la penale per la mancata presentazione sarà l'importo totale della prenotazione.",
+                    "type_translation": "Cancellazione gratuita",
+                    "bucket": "SMP_FLEX"
+                },
+                "prepayment": {
+                    "description": "Un importo pari al totale potrà essere addebitato in qualsiasi momento.",
+                    "type": "full_prepayment",
+                    "extended_type_translation": "È richiesto il pagamento anticipato (RIMBORSABILE)",
+                    "info": {
+                        "prepayment_at_booktime": 1
+                    },
+                    "type_extended": "refundable_prepayment",
+                    "type_translation": "GARANTISCI LA PRENOTAZIONE - Paga ora",
+                    "simple_translation": "Pagamento anticipato",
+                    "timeline": {
+                        "policygroup_instance_id": "242/1/337",
+                        "stages": [
+                            {
+                                "is_effective": 1,
+                                "limit_from_raw": "2023-12-17 17:09:36",
+                                "fee": 131.9,
+                                "amount": "131.90",
+                                "fee_rounded": 132,
+                                "limit_until_raw": "2023-12-17 17:09:36",
+                                "u_fee_pretty": "&#x20AC; 132",
+                                "stage_fee_pretty": "&#x20AC; 132",
+                                "stage_fee": 131.9,
+                                "limit_from_date": "17 dicembre 2023",
+                                "current_stage": 1,
+                                "u_fee_remaining_pretty": "&#x20AC; 0",
+                                "effective_number": 0,
+                                "fee_remaining": 0,
+                                "limit_until_time": "17:09",
+                                "fee_remaining_pretty": "&#x20AC; 0",
+                                "limit_until": "17 dicembre 2023 17:09",
+                                "text": "Prima del soggiorno pagherai",
+                                "u_stage_fee": "131.90",
+                                "is_free": 0,
+                                "fee_pretty": "&#x20AC; 131",
+                                "b_number": 0,
+                                "limit_until_date": "17 dicembre 2023",
+                                "u_fee_remaining": "0.00",
+                                "u_fee": "131.90",
+                                "limit_from_time": "17:09",
+                                "u_stage_fee_pretty": "&#x20AC; 132",
+                                "b_state": "NONREF",
+                                "limit_timezone": "Valencia",
+                                "limit_from": "17 dicembre 2023 17:09",
+                                "amount_pretty": "&#x20AC; 132"
+                            }
+                        ],
+                        "currency_code": "EUR",
+                        "nr_stages": 1,
+                        "u_currency_code": "EUR"
+                    }
+                }
+            },
+            "is_flash_deal": 0,
+            "is_domestic_rate": 0,
+            "all_inclusive": 0,
+            "full_board": 0,
+            "roomtype_id": 26,
+            "block_id": "814353147_344198244_1_0_0"
+        }
+    ]
+}
+export { hotel_val, detail_hotel_val, detail_hotel };

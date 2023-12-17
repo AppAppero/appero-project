@@ -1,43 +1,13 @@
-import { memo, useEffect } from "react";
-import { Button, Card, Col, Row } from "react-bootstrap";
+import { memo } from "react";
+import { Card, Col, Row } from "react-bootstrap";
 import { FaStar } from "react-icons/fa";
-import { useDispatch, useSelector } from "react-redux";
-import { useGlobalContext } from "../../context/context";
-import { selectedHotel } from "../../redux/reducerHotel";
-import { addHotel, removeHotel } from "../../redux/reducerItinerary";
 import { encodedSymbolCurrency } from "../../utils/commons/formatState";
-import CartHotel from "../commons/cart/hotel/CartHotel";
+import ButtonCartHotel from "./ButtonCartHotel";
 import DetailHotel from "./DetailHotel";
 
-const CardContentHotel = memo(({ hotel, selectHotelId }) => {
-    const dispatch = useDispatch()
-    const { counterCart } = useSelector(state => state.reducerItinerary)
-    const { hotelId, urlPhotos, nameHotel, nearHotel, recapDetails, quantityRating,
+const CardContentHotel = memo(({ hotel }) => {
+    const { urlPhotos, nameHotel, nearHotel, recapDetails, quantityRating,
         availableRooms, mainDetailsHotel, rating, totalPrice, detailsPrice, currency } = hotel
-    const { addElement, removeElement } = useGlobalContext()
-    /**
-  * Gestisce il bottone del carrello dell'hotel controllando per id hotel
-  * Se non c'è lo aggiunge all'itinerario e illumina il bottone 
-  * Altrimenti lo rimuove spegnendo il bottone
-  */
-    const checkHotelItinery = () => {
-        if (hotelId === selectHotelId) {
-            dispatch(selectedHotel(0))
-            dispatch(removeHotel())
-            removeElement("Hotel")
-        } else {
-            dispatch(selectedHotel(hotelId))
-            dispatch(addHotel(hotel))
-            addElement("Hotel", <CartHotel itinerary={hotel} />)
-        }
-    }
-
-    // Se il carrello è vuoto, toglie il seleziona da bottone
-    useEffect(() => {
-        if (counterCart === 0)
-            dispatch(selectedHotel(0))
-    }, [counterCart])
-
     return (
         <Col xs={12}>
             <Card
@@ -89,12 +59,7 @@ const CardContentHotel = memo(({ hotel, selectHotelId }) => {
 
                         <Row className="mt-2">
                             <Col>
-                                <Button
-                                    onClick={checkHotelItinery}
-                                    variant={selectHotelId !== hotelId ? "secondary" : "warning"}
-                                    className="text-light btn-sm">
-                                    Seleziona Hotel
-                                </Button>
+                                <ButtonCartHotel hotel={hotel} />
                             </Col>
                         </Row>
                     </Col>

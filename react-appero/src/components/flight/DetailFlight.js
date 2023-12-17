@@ -1,10 +1,12 @@
-import React, { memo, useState } from 'react'
-import { Button, Col, Modal, ModalBody, ModalFooter, ModalHeader, ModalTitle, Row } from 'react-bootstrap'
-import { FaCartArrowDown } from "react-icons/fa";
+import React, { useState } from 'react';
+import { Button, Col, Modal, ModalBody, ModalFooter, ModalHeader, ModalTitle, Row } from 'react-bootstrap';
 import { AiFillCloseCircle } from "react-icons/ai";
 import { TbListDetails } from "react-icons/tb";
+import ButtonCartFlight from './ButtonCartFlight';
 
-const DetailFlight = ({ travelerPricings, price, checkFlightItinery }) => {
+const DetailFlight = ({ flight }) => {
+    const { price, travelerPricings } = flight;
+
 
     const [showDetail, setShowDetail] = useState(false)
 
@@ -72,11 +74,7 @@ const DetailFlight = ({ travelerPricings, price, checkFlightItinery }) => {
                         style={{ fontSize: "13px" }}
                         className='text-start fw-bold'>Toale prezzo : {price?.grandTotal} {price?.currency}</Col>
                     <Col xs={1}>
-                        <Button
-                            onClick={checkFlightItinery}
-                            size='sm' variant='warning'>
-                            <FaCartArrowDown color='white' />
-                        </Button>
+                        <ButtonCartFlight look_in_detail={true} flight={flight} />
                     </Col>
                     <Col xs={1} className='ms-3'>
                         <Button
