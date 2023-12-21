@@ -35,8 +35,8 @@ const Hotel = () => {
         isOpenModal={isOpenModal}
         setIsOpenModal={setIsOpenModal} />
 
-      <HeaderDetail details={headerDetailHotel} />
-      <RefreshDetailHotel params={params} />
+      <HeaderDetail details={headerDetailHotel} params={params}/>
+      
 
       <HeaderFilterHotel />
       <ContentHotel />

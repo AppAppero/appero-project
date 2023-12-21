@@ -1,11 +1,14 @@
 import { memo, useEffect, useState } from "react";
 import { Button, Card, Col, Modal, ModalBody, ModalFooter, ModalHeader, ModalTitle, Row } from "react-bootstrap";
+import { BiFilter } from "react-icons/bi";
 import { IoIosArrowDown } from "react-icons/io";
 import { useDispatch, useSelector } from 'react-redux';
 import { useGlobalContext } from "../../context/context";
+import useSize from "../../hook/useSize";
 import { searchHotel } from "../../redux/reducerHotel";
 
 const HeaderFilterHotel = () => {
+    const { isAllScreen } = useSize().size
     const { filterHotel } = useSelector(state => state.reducerHotel)
     const [selectFilter, setSelectFilter] = useState("")
     const [showModal, setShowModal] = useState(false)
@@ -18,26 +21,52 @@ const HeaderFilterHotel = () => {
     }
 
     return (
-        <Row className="p-2 mt-2 bg-primary rounded-3 text-center text-light">
+
+        <>
             {
-                filterHotel?.mainFilter?.map((el, key) => (
-                    <Col
-                        onClick={() => handleClickFilter(el.field)}
-                        key={key}
-                        style={colFilter}>{el.title} <IoIosArrowDown />
-                    </Col>
-                ))
+                !isAllScreen ? (
+                    <Row className="p-2 mt-2 bg-primary rounded-3 text-center text-light">
+                        {filterHotel?.mainFilter?.map((el, key) => (
+                            <Col
+                                onClick={() => handleClickFilter(el.field)}
+                                key={key}
+                                style={colFilter}
+                            >
+                                {el.title} <IoIosArrowDown />
+                            </Col>
+                        ))}
+                        <Col
+                            onClick={() => handleClickFilter("other")}
+                            style={{ cursor: "pointer" }}
+                        >
+                            Altri <IoIosArrowDown />
+                        </Col>
+                    </Row>
+                ) :
+                    (
+                        <Row className="text-light gx-0">
+                            <Col className="rounded-3 text-center p-2 mt-2 bg-primary"
+                                xs={12}
+                                onClick={() => handleClickFilter("mobile")}
+                                style={{ cursor: "pointer" }}
+                            >
+                                Filtra <BiFilter size={22} />
+                            </Col>
+                        </Row>
+                    )
+
             }
-            <Col onClick={() => handleClickFilter("other")}
-                style={{ cursor: "pointer" }}>Altri <IoIosArrowDown /></Col>
 
             <ModalFilter
                 showModal={showModal}
                 setShowModal={setShowModal}
                 filterHotel={filterHotel}
-                type={selectFilter} />
-        </Row>
-    )
+                type={selectFilter}
+            />
+        </>
+
+    );
+
 }
 const colFilter = {
     cursor: "pointer",
@@ -53,10 +82,14 @@ const ModalFilter = memo(({ filterHotel, type, showModal, setShowModal }) => {
 
     // Gestisce i tipi di filtri tra principali e secondari
     useEffect(() => {
-        if (type !== "other")
+        if (type !== "other" && type !== "mobile")
             setFilter(filterHotel?.mainFilter?.filter(f => f.field === type)[0])
-        else
+        else if (type === "other")
             setFilter({ title: "Altri filtri", secondaryFilter: filterHotel?.secondaryFilter })
+        else {
+            let collpase = [...filterHotel?.mainFilter, ...filterHotel?.secondaryFilter]
+            setFilter({ title: "Tutti i filtri", secondaryFilter: collpase })
+        }
 
     }, [type])
 
@@ -76,18 +109,27 @@ const ModalFilter = memo(({ filterHotel, type, showModal, setShowModal }) => {
                 </ModalTitle>
             </ModalHeader>
             <ModalBody>
-                {type !== "other" ?
-                    filter?.options?.map((op, key) =>
-                    (<OptionCheckBox key={key} {...op}
-                        paramIdFilters={paramIdFilters}
-                        setParamIdFilters={setParamIdFilters}
-                        filterStyle={filter?.filterStyle} />))
-                    :
-                    filter?.secondaryFilter?.map((sec, key) =>
-                    (<OptionManage key={key} {...sec}
-                        paramIdFilters={paramIdFilters}
-                        setParamIdFilters={setParamIdFilters}
-                    />))
+                {
+                    type !== "other" && type !== "mobile" ?
+                        filter?.options?.map((op, key) =>
+                        (<OptionCheckBox key={key} {...op}
+                            paramIdFilters={paramIdFilters}
+                            setParamIdFilters={setParamIdFilters}
+                            filterStyle={filter?.filterStyle} />))
+                        :
+                        type === "other" || type === "mobile" ?
+                            (
+                                filter?.secondaryFilter?.map((sec, key) =>
+                                (<OptionManage key={key} {...sec}
+                                    paramIdFilters={paramIdFilters}
+                                    setParamIdFilters={setParamIdFilters}
+                                />))
+
+                            ) :
+                            (
+                                <>
+                                </>
+                            )
                 }
             </ModalBody>
             <ModalFooter>

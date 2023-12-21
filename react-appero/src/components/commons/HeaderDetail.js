@@ -3,8 +3,9 @@ import { Col, Row } from 'react-bootstrap';
 import { BiSolidUser } from 'react-icons/bi';
 import { BsCalendar3 } from 'react-icons/bs';
 import { SiGooglemaps } from 'react-icons/si';
+import RefreshDetailHotel from '../hotel/RefreshDetailHotel';
 
-const HeaderDetail = ({ details }) => {
+const HeaderDetail = ({ details, params }) => {
     const sizeIcon = 12
     const icons =
         [
@@ -15,6 +16,8 @@ const HeaderDetail = ({ details }) => {
 
     return (
         <>
+
+            <RefreshDetailHotel params={params} />
             <Row className='rounded-3 p-1 justify-content-center gx-3'
                 style={{ background: "#F29F05" }}>
                 {
