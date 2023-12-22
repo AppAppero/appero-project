@@ -8,13 +8,12 @@ import { useGlobalContext } from '../context/context';
 import useTitle from '../hook/useTitle';
 import { setDetailsHotel } from "../redux/reducerHotel";
 import { PARAMS_HOTEL } from '../utils/commons/constStorageCookie';
-import RefreshDetailHotel from '../components/hotel/RefreshDetailHotel';
 
 const Hotel = () => {
   useTitle("Hotel")
   const dispatch = useDispatch()
   const { headerDetailHotel } = useSelector(state => state.reducerHotel)
-  const { params, setContext } = useGlobalContext()
+  const { params, setContext, context } = useGlobalContext()
   const [isOpenModal, setIsOpenModal] = useState(true);
 
 
@@ -35,8 +34,8 @@ const Hotel = () => {
         isOpenModal={isOpenModal}
         setIsOpenModal={setIsOpenModal} />
 
-      <HeaderDetail details={headerDetailHotel} params={params}/>
-      
+      <HeaderDetail details={headerDetailHotel} params={params} context={context} />
+
 
       <HeaderFilterHotel />
       <ContentHotel />

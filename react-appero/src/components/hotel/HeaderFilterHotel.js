@@ -25,9 +25,10 @@ const HeaderFilterHotel = () => {
         <>
             {
                 !isAllScreen ? (
-                    <Row className="p-2 mt-2 bg-primary rounded-3 text-center text-light">
+                    <Row className="p-3 mt-2 bg-primary rounded-3 text-center text-light overflow-wrap fw-bold gx-3"
+                     style={{fontSize:"13px"}}>
                         {filterHotel?.mainFilter?.map((el, key) => (
-                            <Col
+                            <Col xs={3}
                                 onClick={() => handleClickFilter(el.field)}
                                 key={key}
                                 style={colFilter}
@@ -35,7 +36,7 @@ const HeaderFilterHotel = () => {
                                 {el.title} <IoIosArrowDown />
                             </Col>
                         ))}
-                        <Col
+                        <Col xs={3}
                             onClick={() => handleClickFilter("other")}
                             style={{ cursor: "pointer" }}
                         >

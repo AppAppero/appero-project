@@ -1,6 +1,6 @@
 import axios from "axios";
 import { SEARCH_FLIGHT } from "../../utils/commons/constAPI";
-import { error, loading } from "../../redux/reducerHotel";
+import { error, loading } from "../../redux/reducerFlight";
 import { containerFlights } from "../../redux/reducerFlight";
 
 const instanceBookinCom = axios.create({

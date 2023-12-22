@@ -7,13 +7,14 @@ const RefreshDetailHotel = ({ params }) => {
     const [isOpenModal, setIsOpenModal] = useState(false);
     return (
         <>
-            <Col xs={12} className='text-center mt-1 position-relative'>
-                <Button
-                    onClick={() => setIsOpenModal(!isOpenModal)}
-                    className='btn-sm btn-outline-secondary btn-warning text-dark'
-                    style={{ position: "absolute", top: -10, left: -20 }}>
-                    <BiSolidEditAlt /></Button>
-            </Col>
+
+            <Button
+                onClick={() => setIsOpenModal(!isOpenModal)}
+                className='btn-warning text-light'
+                style={{padding:"2px 5px 2px 5px"}}
+            >
+                <BiSolidEditAlt /></Button>
+
             <ModalFormHotel
                 params={params}
                 isOpenModal={isOpenModal}

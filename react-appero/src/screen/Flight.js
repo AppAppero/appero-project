@@ -1,7 +1,4 @@
 import React, { useEffect } from 'react';
-import { BiSolidUser } from 'react-icons/bi';
-import { BsCalendar3 } from 'react-icons/bs';
-import { SiGooglemaps } from 'react-icons/si';
 import HeaderDetail from '../components/commons/HeaderDetail';
 import ContentFlight from '../components/flight/ContentFlight';
 import HeaderFilterFlight from '../components/flight/HeaderFilterFlight';
@@ -15,7 +12,6 @@ const Flight = () => {
     // Setta la variabile per indicare in che contesto pagina ci troviamo
     const { setContext } = useGlobalContext()
     let { params } = useGlobalContext()
-    const sizeIcon = 12
 
     const detailsFlight =
         [
@@ -23,7 +19,6 @@ const Flight = () => {
                 title: "Destinazione",
                 detail: [
                     {
-                        icon: <SiGooglemaps size={sizeIcon} />,
                         text: nameCityByIATA(params?.destinationLocationCode)
                     },
                     {
@@ -37,13 +32,10 @@ const Flight = () => {
                 title: "Data",
                 detail: [
                     {
-                        icon: <BsCalendar3 size={sizeIcon} />,
                         text: checkTextDate(params)
                     },
                     {
-                        icon: "",
-                        text: checkTextCalculateDate(params),
-                        style: { fontSize: "12px" }
+                        text: checkTextCalculateDate(params)
                     }
                 ]
             },
@@ -51,7 +43,6 @@ const Flight = () => {
                 title: "Persone",
                 detail: [
                     {
-                        icon: <BiSolidUser size={sizeIcon} />,
                         text: checkTextPerson(params)
                     }
                 ]
