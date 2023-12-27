@@ -7,6 +7,7 @@ import useSize from "../hook/useSize";
 import useTitle from "../hook/useTitle";
 import bg from "../images/bg.png";
 import { useGlobalContext } from "../context/context";
+import axios from "axios";
 
 const Home = () => {
   useTitle("Home")
@@ -30,11 +31,19 @@ const Home = () => {
     backgroundColor: "rgba(0, 0, 0, 0.4)"
   };
 
+  const click = async () => {
+    let response = await axios.get("travel-search-provider.eu-south-1.elasticbeanstalk.com/api/test")
+    console.log(response)
+  }
+
   return (
     <Container id="container" fluid style={containerStyle}>
 
       {/* NavBar  */}
       <NavbarHome />
+      <button onClick={click}>
+        Testssssssssssssssssssssssssssssssss
+      </button>
 
       {/* Viaggi suggeriti */}
       <SuggestedTravel sizeGlobal={sizeGlobal} />
